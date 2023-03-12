@@ -25,7 +25,7 @@
             <table>
                 <tr>
                     <th>01</th>
-                    <th>03</th>
+                    <th>02</th>
                 </tr>
             </table>
         </div>
