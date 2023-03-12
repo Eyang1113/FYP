@@ -1,0 +1,56 @@
+/*  Page  */
+body{
+    width: 100%;
+}
+div.left{
+    width: 20%; 
+    height: 100%; 
+    float: left; 
+}
+div.right{
+    margin-left: 20%; 
+    height: 100%; 
+}
+/*  Content on the Right   */
+div.contentR{
+    margin: auto;
+    width: 85%;
+    padding-top: 5%;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.contentR table{
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+.contentR th{
+    border: 1px solid black;
+    background-color: lightblue;
+    padding: 10px;
+}
+.contentR td{
+    border: 1px solid black;
+    padding: 10px;
+}
+.contentR h2{
+    padding: 10px;
+}
+/*  Content on the Left */
+div.contentL{
+    padding-top: 20.8%;
+    float: right;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.contentL table{
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+.contentL td{
+    padding: 10px;
+    color: black;
+}
+.contentL h2{
+    padding: 10px;
+}
