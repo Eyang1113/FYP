@@ -19,6 +19,9 @@ div.contentR{
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
 }
+.contentR hr{
+    border-top: 2px solid black;
+}
 .contentR table{
     width: 100%;
     border-collapse: collapse;
@@ -48,9 +51,34 @@ div.contentL{
     border: 1px solid black;
 }
 .contentL td{
-    padding: 10px;
+    padding: 15px;
     color: black;
+}
+.contentL a{
+    text-decoration: none;
+    color: gray;
+    padding: 5px 0;
+    position: relative;
+}
+.contentL a:hover{
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
 }
 .contentL h2{
     padding: 10px;
+}
+
+/*  Button  */
+button {
+	float: left;
+	background: #555;
+	padding: 10px 15px;
+	color: #fff;
+	border-radius: 5px;
+	margin-right: 10px;
+	border: none;
+}
+button:hover{
+	opacity: .7;
 }

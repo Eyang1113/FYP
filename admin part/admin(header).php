@@ -7,10 +7,10 @@
 <body>
     <div class="header">
         <nav>
-            <h2>FyPro</h2>
+            <h2>Fy<span>Pro</span></h2>
             <ul class="nav-links">
-                <li><a href="">Home</a></li>
-                <li><a href="">Product</a></li>
+                <li><a href="admin(home).php">Home</a></li>
+                <li><a href="admin(racquet).php">Product</a></li>
                 <li><a href="">Order</a></li>
                 <li><a href="">Account</a></li>
                 <li class="btn"><a href="">Sign Up</a></li>
