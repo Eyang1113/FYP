@@ -1,0 +1,16 @@
+body{
+    background-color: #24262b;
+}
+
+.player{
+    margin:75px 0;
+}
+
+h1{
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color:#fff;
+    padding-bottom:10px;
+}
+
