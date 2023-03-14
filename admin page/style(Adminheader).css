@@ -17,8 +17,11 @@ nav{
 nav h2{
     color: white;
 }
+nav span{
+    color: red;
+}
 .nav-links{
-    padding: 28px 0;
+    padding: 28px 0px;
 }
 .nav-links li{
     display: inline-block;

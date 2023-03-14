@@ -12,6 +12,7 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['admin_name'])) {
 </head>
 </head>
 <body>
+<?php include "admin(header).php"; ?>
      <div class="body">
           <h1>Hello, <?php echo $_SESSION['name']; ?></h1>
           <nav class="home-nav">
