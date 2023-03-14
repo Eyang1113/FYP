@@ -23,12 +23,12 @@
                 <div class="container">
                     <h4><b>Ms.Liyarna</b></h4><br>
                     <ul>
-                        <li>Position      : Supervisor of FyPro</li>
-                        <li>Birthday      : January 1, 1990</li>
-                        <li>Company Name  : FyPro</li>
-                        <li>Contact No    : 123-456-7890</li>
-                        <li>Email address : liyarna@fypro.com</li>
-                        <li>Instagram     : @liyarna</li>
+                        <li>Position      : </li>
+                        <li>Birthday      : </li>
+                        <li>Company Name  : </li>
+                        <li>Contact No    : </li>
+                        <li>Email address : </li>
+                        <li>Instagram     : </li>
                     </ul>
                 </div>
         </div>
