@@ -16,12 +16,12 @@
         <div id="wrap">
             <div id="columns" class="columns_4">
                 <figure>
-                    <img src="https://i.imgur.com/ruU04I6.jpg">
+                    <img src="#">
                     <figcaption>
-                        Green Checkered Shirt
+                        Racquet
                     </figcaption>
                     <span class="price">
-                        $44
+                        $4??
                     </span>
                     <a class="button" href="#">
                         Buy Now
@@ -29,12 +29,12 @@
                 </figure>
 
                 <figure>
-                    <img src="https://i.imgur.com/sPxEkEI.jpg">
+                    <img src="#">
                     <figcaption>
-                        Green and Black Flowers
+                    Racquet
                     </figcaption>
                     <span class="price">
-                        $44
+                        $??
                     </span>
                     <a class="button" href="#">
                         Buy Now
@@ -42,12 +42,12 @@
                 </figure>
 
                 <figure>
-                    <img src="https://i.imgur.com/S3Umfmb.jpg">
+                    <img src="#">
                     <figcaption>
-                        Black Dots
+                    Racquet
                     </figcaption>
                     <span class="price">
-                        $44
+                        $??
                     </span>
                     <a class="button" href="#">
                         Buy Now
@@ -55,12 +55,12 @@
                 </figure>
 
                 <figure>
-                    <img src="https://i.imgur.com/x1IZjjy.jpg">
+                    <img src="#">
                     <figcaption>
-                        Red Flowy
+                    Racquet
                     </figcaption>
                     <span class="price">
-                        $44
+                        $??
                     </span>
                     <a class="button" href="#">
                         Buy Now
@@ -68,12 +68,12 @@
                 </figure>
 
                 <figure>
-                    <img src="https://i.imgur.com/Jv8IWKQ.jpg">
+                    <img src="#">
                     <figcaption>
-                        Yellow Button-Up
+                    Racquet
                     </figcaption>
                     <span class="price">
-                        $44
+                        $??
                     </span>
                     <a class="button" href="#">
                         Buy Now
@@ -81,12 +81,12 @@
                 </figure>
 
                 <figure>
-                    <img src="https://i.imgur.com/MpLejRu.jpg">
+                    <img src="#">
                     <figcaption>
-                        Put a Bird On It
+                    Racquet
                     </figcaption>
                     <span class="price">
-                        $44
+                        $??
                     </span>
                     <a class="button" href="#">
                         Buy Now
@@ -94,12 +94,12 @@
                 </figure>
 
                 <figure>
-                    <img src="https://i.imgur.com/SZmPJ7W.jpg">
+                    <img src="#">
                     <figcaption>
-                        Polka Dots
+                    Racquet
                     </figcaption>
                     <span class="price">
-                        $44
+                        $??
                     </span>
                     <a class="button" href="#">
                         Buy Now
@@ -107,12 +107,12 @@
                 </figure>
 
                 <figure>
-                    <img src="https://i.imgur.com/OiEMgMx.jpg">
+                    <img src="#">
                     <figcaption>
-                        Blue Spots
+                    Racquet
                     </figcaption>
                     <span class="price">
-                        $44
+                        $??
                     </span>
                     <a class="button" href="#">
                         Buy Now
@@ -120,12 +120,12 @@
                 </figure>
 
                 <figure>
-                    <img src="https://i.imgur.com/HolvggB.jpg">
+                    <img src="#">
                     <figcaption>
-                        Pink Dots
+                        
                     </figcaption>
                     <span class="price">
-                        $44
+                        $??
                     </span>
                     <a class="button" href="#">
                         Buy Now
