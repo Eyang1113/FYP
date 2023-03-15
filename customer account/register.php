@@ -13,24 +13,48 @@ if (empty($_POST['username']) || empty($_POST['email']) || empty($_POST['passwor
 	exit('Please complete the registration form');
 }
 
-if ($stmt = $connect->prepare('SELECT user_id, password FROM user WHERE username = ?')) {
+if ($stmt = $connect->prepare('SELECT user_id FROM user WHERE username = ?')) {
 	$stmt->bind_param('s', $_POST['username']);
 	$stmt->execute();
 	$stmt->store_result();
 	if ($stmt->num_rows > 0) {
-		echo 'Username exists, please choose another!';
-	} else {
-		if ($stmt = $connect->prepare('INSERT INTO user (username, email, password) VALUES (?, ?, ?)')) {
-            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $stmt->bind_param('sss', $_POST['username'], $_POST['email'], $password);
-            $stmt->execute();
-        } else {
-            echo 'Could not prepare statement!';
-        }
+		echo '<script>alert("Username already exists, please choose another!");</script>';
+		echo '<script>window.location.href = "index.php";</script>';
+		exit;
 	}
 	$stmt->close();
 } else {
-	echo 'Could not prepare statement!';
+	echo 'Could not prepare statement for username check!';
+	exit;
 }
+
+if ($stmt = $connect->prepare('SELECT user_id FROM user WHERE email = ?')) {
+	$stmt->bind_param('s', $_POST['email']);
+	$stmt->execute();
+	$stmt->store_result();
+	if ($stmt->num_rows > 0) {
+		echo '<script>alert("Email already exists, please choose another!");</script>';
+		echo '<script>window.location.href = "index.php";</script>';
+		exit;
+	}
+	$stmt->close();
+} else {
+	echo 'Could not prepare statement for email check!';
+	exit;
+}
+
+if ($stmt = $connect->prepare('INSERT INTO user (username, email, password) VALUES (?, ?, ?)')) {
+	$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+	$stmt->bind_param('sss', $_POST['username'], $_POST['email'], $password);
+	$stmt->execute();
+	echo '<script>alert("Registration successful!");</script>';
+	echo '<script>window.location.href = "index.php";</script>';
+	$stmt->close();
+} else {
+	echo 'Could not prepare statement for user insertion!';
+	exit;
+}
+
 $connect->close();
+
 ?>
