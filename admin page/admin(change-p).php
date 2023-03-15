@@ -34,7 +34,7 @@ if (isset($_POST['op']) && isset($_POST['np'])
     	$np = md5($np);
         $admin_id = $_SESSION['admin_id'];
 
-        $sql = "SELECT y
+        $sql = "SELECT *
                 FROM admin WHERE 
                 admin_id='$admin_id' AND password='$op'";
         $result = mysqli_query($conn, $sql);

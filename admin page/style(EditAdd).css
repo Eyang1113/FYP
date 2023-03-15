@@ -4,10 +4,12 @@
     align-items: center;
     height: 100vh;
     flex-direction: column;
+    background: lightgray;
 }
 form {
     width: 500px;
-    border: 2px solid #ccc;
+    border:2px solid gray;
+    box-shadow: 0 0 10px 5px rgba(0,0,0,0.6);
     padding: 30px;
     background: #fff;
     border-radius: 15px;

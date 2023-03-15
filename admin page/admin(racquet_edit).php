@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include "admin(header).php"; ?>
     <title>Edit Racquet</title>
-    <link rel="stylesheet" href="style(Edit).css?v=<?php echo time(); ?>">
+    <?php include "admin(header).php"; ?>
+    <link rel="stylesheet" href="style(EditAdd).css?v=<?php echo time(); ?>">
 </head>
 <body>
     <?php
@@ -19,7 +19,7 @@
             <label>Racquet Name</label>
                 <input type="text" name="name" placeholder="Racquet Name" value="<?php echo $row['racquet_name']; ?>">
             <label>Racquet Price</label>
-                <input type="number" name="price" placeholder="Racquet Price" min="1" value="<?php echo $row['racquet_price']; ?>">
+                <input type="number" name="price" placeholder="Racquet Price" min="1" step=".01" value="<?php echo $row['racquet_price']; ?>">
             <label>Racquet Stock</label>
                 <input type="number" name="stock" placeholder="Racquet Stock" min="1" value="<?php echo $row['racquet_stock']; ?>">
             <label>Racquet Detail</label>

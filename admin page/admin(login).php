@@ -35,7 +35,8 @@ if (isset($_POST['aname']) && isset($_POST['password'])) {
             	$_SESSION['admin_name'] = $row['admin_name'];
             	$_SESSION['name'] = $row['name'];
             	$_SESSION['admin_id'] = $row['admin_id'];
-            	header("Location: admin(home).php");
+				$_SESSION['admin_email'] = $row['admin_email'];
+            	header("Location: admin(bag).php");
 		        exit();
             }else{
 				header("Location: admin(index).php?error=Incorect Username or password");

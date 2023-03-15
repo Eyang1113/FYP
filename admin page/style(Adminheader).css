@@ -53,3 +53,52 @@ nav span{
     border-radius: 3px;
     cursor: pointer;
 }
+/*   popup   */
+.popup{
+    border:2px solid gray;
+    box-shadow: 0 0 10px 5px rgba(0,0,0,0.6);
+    width: 400px;
+    background: #fff;
+    border-radius: 25px;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #333;
+    visibility: hidden;
+    transition: transform 0.4s, center 0.4s;
+}
+.open-popup{
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+.popup img{
+    width: 100px;
+    height: 100px;
+    margin-top: -50px;
+    border-radius: 75%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.popup h2{
+    margin: 30px 0 10px;
+}
+.popup p{
+    padding-top: 10px;
+    font-size: larger;
+}
+.popup button{
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: black;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+}

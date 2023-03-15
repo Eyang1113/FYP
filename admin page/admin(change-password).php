@@ -42,7 +42,7 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['admin_name'])) {
 				<br>
 
 			<button type="submit">CHANGE</button>
-			<a href="admin(home).php" class="ca">HOME</a>
+			<a href="#" class="ca">HOME</a>
 		</form>
 	</div>
 </body>
