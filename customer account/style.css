@@ -295,3 +295,126 @@
 .login-register p a:hover{
     text-decoration: underline;
 }
+
+.user-profile {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.user-profile h1 {
+    margin: 0;
+    font-size: 40px;
+}
+
+.user-profile hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+.user-profile .detail {
+    margin-top: 20px;
+}
+
+.user-profile .detail h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.user-profile table {
+    font-size: 20px;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.user-profile td {
+    padding: 10px;
+}
+
+.user-profile td:first-child {
+    font-weight: bold;
+    width: 150px;
+}
+
+.user-profile button{
+    width: 90px;
+    height: 35px;
+    background: black;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8sem;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+    margin: 20px;
+    margin-left: 50px;
+}
+
+.user-profile button:hover{
+    background-color: gray;
+    border: none;
+}
+
+.user-profile button a{
+    background: transparent;
+    color: white;
+    text-decoration: none;
+}
+
+.edit-profile {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.edit-profile h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.edit-profile hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.edit-profile form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-profile label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.edit-profile input[type="text"],
+.edit-profile input[type="email"],
+.edit-profile input[type="password"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 0px 5px #ccc;
+}
+
+.edit-profile input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.edit-profile input[type="submit"]:hover {
+    background-color: #555;
+}
