@@ -36,7 +36,9 @@ if (isset($_POST['aname']) && isset($_POST['password'])) {
             	$_SESSION['name'] = $row['name'];
             	$_SESSION['admin_id'] = $row['admin_id'];
 				$_SESSION['admin_email'] = $row['admin_email'];
-            	header("Location: admin(bag).php");
+				$sql2 = "INSERT INTO loginhistory(username, name, email) VALUES('".$_SESSION['admin_name']."', '".$_SESSION['name']."', '".$_SESSION['admin_email']."')";
+				$result2 = mysqli_query($conn, $sql2);
+            	header("Location: admin(home).php");
 		        exit();
             }else{
 				header("Location: admin(index).php?error=Incorect Username or password");

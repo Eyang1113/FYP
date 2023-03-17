@@ -26,13 +26,12 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['admin_name'])) {
     <div class="popup" id="popup">
         <img src="acc.png">
         <h2>Hello, <?php echo $_SESSION['name']; ?></h2>
-        <p>Username : <?php echo $_SESSION['admin_name']; ?></p>
-        <p>E-mail : <?php echo $_SESSION['admin_email']; ?></p>
+        <p><b>Username : </b><?php echo $_SESSION['admin_name']; ?></p>
+        <p><b>E-mail : </b><?php echo $_SESSION['admin_email']; ?></p>
         <br>
         <p><a href="admin(change-password).php">Change Password</a></p>
         <button type="button" onclick="closePopup()">OK</button>
     </div>
-
     <script>
         let popup = document.getElementById("popup");
         function openPopup(){
