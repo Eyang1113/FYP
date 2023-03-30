@@ -29,6 +29,11 @@ if ($stmt = $connect->prepare('SELECT user_id FROM user WHERE username = ?')) {
 }
 
 if ($stmt = $connect->prepare('SELECT user_id FROM user WHERE email = ?')) {
+	if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+		echo '<script>alert("Email are incorrect, please enter a correct email!");</script>';
+		echo '<script>window.location.href = "index.php";</script>';
+		exit;
+	}
 	$stmt->bind_param('s', $_POST['email']);
 	$stmt->execute();
 	$stmt->store_result();
