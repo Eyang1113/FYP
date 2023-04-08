@@ -65,13 +65,13 @@
             <div class="blockU">
                 <p>Number Of User</p>
                 <span> = <?php echo $count_user; ?></span><br>
-                <a href="#">View User List</a>
+                <a href="admin(user).php">View User List</a>
             </div>
         </div>
         <br><br>
         <div class="row">
             <h3>Login History</h3>
-            <hr><br>
+            <hr><br><br>
             <table>
                 <tr>
                     <th>Id</th>

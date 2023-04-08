@@ -17,7 +17,8 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['admin_name'])) {
             <ul class="nav-links">
                 <li><a href="admin(home).php">Home</a></li>
                 <li><a href="admin(bag).php">Product</a></li>
-                <li><a href="">Order</a></li>
+                <li><a href="admin(user).php">User</a></li>
+                <li><a href="#">Order</a></li>
                 <li onclick="openPopup()"><a href="#">Account</a></li>
                 <li class="btn"><a href="admin(logout).php">Logout</a></li>
             </ul>
