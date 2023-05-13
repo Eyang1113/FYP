@@ -1,6 +1,7 @@
 /*  Page  */
 body{
     width: 100%;
+    background: lightgray;
 }
 div.left{
     width: 20%; 
@@ -25,15 +26,16 @@ div.contentR{
 .contentR table{
     width: 100%;
     border-collapse: collapse;
-    border: 1px solid black;
+    border: 2px solid black;
 }
 .contentR th{
-    border: 1px solid black;
+    border: 2px solid black;
     background-color: lightblue;
     padding: 10px;
 }
 .contentR td{
-    border: 1px solid black;
+    border: 2px solid black;
+    background-color: white;
     padding: 10px;
 }
 .contentR h2{
@@ -48,7 +50,7 @@ div.contentL{
 .contentL table{
     width: 100%;
     border-collapse: collapse;
-    border: 1px solid black;
+    border: 2px solid black;
 }
 .contentL td{
     padding: 15px;
@@ -56,7 +58,7 @@ div.contentL{
 }
 .contentL a{
     text-decoration: none;
-    color: gray;
+    color: rgb(38, 38, 38);
     padding: 5px 0;
     position: relative;
 }

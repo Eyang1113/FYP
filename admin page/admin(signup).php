@@ -41,6 +41,19 @@
                          placeholder="Username"><br>
                <?php }?>
 
+               <label>E-mail</label>
+               <?php if (isset($_GET['aemail'])) { ?>
+                    <input type="email"
+                         name="aemail"
+                         placeholder="E-mail"
+                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                         value="<?php echo $_GET['aemail']; ?>"><br>
+               <?php }else{ ?>
+                    <input type="email" 
+                         name="aemail" 
+                         placeholder="Email"
+                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"><br>
+               <?php }?>
 
                <label>Password</label>
                <input type="password" 

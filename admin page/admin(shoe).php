@@ -1,7 +1,7 @@
 <?php include "db_conn.php"; ?>
 <html>
 <head>
-    <title>Racquet</title>
+    <title>Shoe</title>
     <link rel="stylesheet" href="style(Product).css?v=<?php echo time(); ?>">
 </head>
 <body>
@@ -34,35 +34,35 @@
 
     <div class="right"> 
         <div class="contentR">
-            <h2>Racquet List</h2>
+            <h2>Shoe List</h2>
             <hr><br>
             <div class="addbtn">
-                <button onclick="document.location='admin(racquet_add).php'">Add Racquet</button>
+                <button onclick="document.location='admin(shoe_add).php'">Add Shoe</button>
             </div>
             <br><br><br>
             <table>
                 <tr>
-                    <th>Racquet ID</th>
-                    <th>Racquet Name</th>
-                    <th>Racquet Price</th>
-                    <th>Racquet Stock</th>
-                    <th>Racquet Detail</th>
+                    <th>Shoe ID</th>
+                    <th>Shoe Name</th>
+                    <th>Shoe Price</th>
+                    <th>Shoe Stock</th>
+                    <th>Shoe Detail</th>
                     <th colspan="2">Action</th>
                 </tr>
                 <?php
                     mysqli_select_db($conn, "fypro");
-                    $result = mysqli_query($conn, "SELECT * FROM racquet");	
+                    $result = mysqli_query($conn, "SELECT * FROM shoe");	
                     $count = mysqli_num_rows($result);
                     while($row = mysqli_fetch_assoc($result)){
                 ?>
                 <tr>
-                    <td><?php echo $row["racquet_id"]; ?></td>
-                    <td><?php echo $row["racquet_name"]; ?></td>
-                    <td><?php echo $row["racquet_price"]; ?></td>
-                    <td><?php echo $row["racquet_stock"]; ?></td>
-                    <td><?php echo $row["racquet_detail"]; ?></td>
-                    <td><a href="admin(racquet_edit).php?edit&racquetid=<?php echo $row['racquet_id']; ?>">Edit</a></td>
-                    <td><a href="admin(racquet).php?del&racquetid=<?php echo $row['racquet_id']; ?>" onclick="return confirmation();">Delete</a></td>
+                    <td><?php echo $row["shoe_id"]; ?></td>
+                    <td><?php echo $row["shoe_name"]; ?></td>
+                    <td><?php echo $row["shoe_price"]; ?></td>
+                    <td><?php echo $row["shoe_stock"]; ?></td>
+                    <td><?php echo $row["shoe_detail"]; ?></td>
+                    <td><a href="admin(shoe_edit).php?edit&shoeid=<?php echo $row['shoe_id']; ?>">Edit</a></td>
+                    <td><a href="admin(shoe).php?del&shoeid=<?php echo $row['shoe_id']; ?>" onclick="return confirmation();">Delete</a></td>
                 </tr>
                 <?php
                     }
@@ -74,13 +74,13 @@
 </html>
 <script type="text/javascript">
     function confirmation(){
-        answer = confirm("Do you want to delete this racquet?");
+        answer = confirm("Do you want to delete this shoe?");
         return answer;
     }
 </script>
 <?php
     if(isset($_REQUEST["del"])){
-        $racquetid = $_REQUEST["racquetid"];
-        mysqli_query($conn, "DELETE FROM racquet WHERE racquet_id = $racquetid");
-        header("Location: admin(racquet).php");
+        $shoeid = $_REQUEST["shoeid"];
+        mysqli_query($conn, "DELETE FROM shoe WHERE shoe_id = $shoeid");
+        header("Location: admin(shoe).php");
     }
