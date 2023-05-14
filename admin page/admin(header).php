@@ -25,7 +25,7 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['admin_name'])) {
         </nav>
     </div>
     <div class="popup" id="popup">
-        <img src="acc.png">
+        <img src="image/acc.png">
         <h2>Hello, <?php echo $_SESSION['name']; ?></h2>
         <p><b>Username : </b><?php echo $_SESSION['admin_name']; ?></p>
         <p><b>E-mail : </b><?php echo $_SESSION['admin_email']; ?></p>

@@ -10,14 +10,17 @@
         <form name="addfrm" method="post" action="">
             <h2>Add String</h2>
             <label>String Name</label>
-                <input type="text" name="name" placeholder="String Name">
+                <input type="text" name="name" placeholder="String Name" required>
             <label>String Price</label>
-                <input type="number" name="price" placeholder="String Price" min="1" step=".01">
+                <input type="number" name="price" placeholder="String Price" min="1" step=".01" required>
             <label>String Stock</label>
-                <input type="number" name="stock" placeholder="String Stock" min="1">
+                <input type="number" name="stock" placeholder="String Stock" min="1" required>
             <label>String Detail</label>
-                <textarea cols="60" rows="4" name="detail" placeholder="String Detail"></textarea>
+                <textarea cols="60" rows="4" name="detail" placeholder="String Detail" required></textarea>
+            <label>String Image</label>
+                <input type="text" name="image" placeholder="String Image" required>
             <br><button type="submit" name="savebtn">Add String</button>
+            <a href="admin(string).php" class="back">Back</a>
         </form>
 </body>
 </html>
@@ -28,8 +31,9 @@
         $nprice = $_POST["price"];
         $nstock = $_POST["stock"];
         $ndetail = $_POST["detail"];
-        mysqli_query($conn, "INSERT INTO string (string_name, string_price, string_stock, string_detail)
-                                        VALUES ('$nname', '$nprice', '$nstock', '$ndetail')");
+        $nimage = $_POST["image"];
+        mysqli_query($conn, "INSERT INTO string (string_name, string_price, string_stock, string_detail, string_image)
+                                        VALUES ('$nname', '$nprice', '$nstock', '$ndetail', $nimage')");
 ?>
 <script type="text/javascript">
     alert("<?php echo $nname. ' saved' ?>");

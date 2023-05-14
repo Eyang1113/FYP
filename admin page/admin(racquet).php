@@ -47,6 +47,7 @@
                     <th>Racquet Price</th>
                     <th>Racquet Stock</th>
                     <th>Racquet Detail</th>
+                    <th>Racquet Image</th>
                     <th colspan="2">Action</th>
                 </tr>
                 <?php
@@ -61,6 +62,7 @@
                     <td><?php echo $row["racquet_price"]; ?></td>
                     <td><?php echo $row["racquet_stock"]; ?></td>
                     <td><?php echo $row["racquet_detail"]; ?></td>
+                    <td><?php echo $row["racquet_images"]; ?></td>
                     <td><a href="admin(racquet_edit).php?edit&racquetid=<?php echo $row['racquet_id']; ?>">Edit</a></td>
                     <td><a href="admin(racquet).php?del&racquetid=<?php echo $row['racquet_id']; ?>" onclick="return confirmation();">Delete</a></td>
                 </tr>

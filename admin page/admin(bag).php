@@ -47,6 +47,7 @@
                     <th>Bag Price</th>
                     <th>Bag Stock</th>
                     <th>Bag Detail</th>
+                    <th>Bag Image</th>
                     <th colspan="2">Action</th>
                 </tr>
                 <?php
@@ -61,8 +62,9 @@
                     <td><?php echo $row["bag_price"]; ?></td>
                     <td><?php echo $row["bag_stock"]; ?></td>
                     <td><?php echo $row["bag_detail"]; ?></td>
+                    <td><?php echo $row["bag_image"]; ?></td>
                     <td><a href="admin(bag_edit).php?edit&bagid=<?php echo $row['bag_id']; ?>">Edit</a></td>
-                    <td><a href="admin(bag).php?del&bagid=<?php echo $row['bag_id']; ?>" onclick="return confirmation();">Delete</a></td>
+                    <td><a href="superadmin(bag).php?del&bagid=<?php echo $row['bag_id']; ?>" onclick="return confirmation();">Delete</a></td>
                 </tr>
                 <?php
                     }
@@ -73,14 +75,16 @@
 </body>
 </html>
 <script type="text/javascript">
-    function confirmation(){
-        answer = confirm("Do you want to delete this bag?");
-        return answer;
-    }
+        function confirmation(){
+            answer = confirm("Do you want to delete this bag?");
+            return answer;
+        }
 </script>
 <?php
-    if(isset($_REQUEST["del"])){
+if(isset($_REQUEST["del"])){
         $bagid = $_REQUEST["bagid"];
         mysqli_query($conn, "DELETE FROM bag WHERE bag_id = $bagid");
-        header("Location: admin(bag).php");
+        header("Location: superadmin(bag).php");
+        exit;
     }
+?>
