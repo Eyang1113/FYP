@@ -16,7 +16,7 @@
                 <input type="number" name="stock" placeholder="Bag Stock" min="1" required>
             <label>Bag Detail</label>
                 <textarea cols="60" rows="4" name="detail" placeholder="Bag Detail" required></textarea>
-            <label>Bag Name</label>
+            <label>Bag Image</label>
                 <input type="text" name="image" placeholder="Bag Image" required>
             <br><button type="submit" name="savebtn">Add Bag</button>
             <a href="superadmin(bag).php" class="back">Back</a>

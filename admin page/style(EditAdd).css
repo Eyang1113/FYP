@@ -55,3 +55,55 @@ button{
 button:hover{
     opacity: .7;
 }
+.box p {
+    text-align: left;
+    padding-left: 15px;
+    font-weight: bold;
+    line-height: 2.5;
+}
+.select {
+    width: 95%;
+    height: 30px;
+    font-size: 15px;
+    background: lightgray;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-left: 15px;
+}
+.buttons{
+    padding: 10px;
+}
+.update {
+    float: left;
+    margin-left: 25%;
+    height: 35px;
+    width: 50%;
+    background: yellow;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: black;
+}
+.delete{
+    float: left;
+    margin-left: 25%;
+    height: 35px;
+    width: 50%;
+    background: red;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: black;
+}
+.bk{
+    float: left;
+    margin-left: 25%;
+    height: 35px;
+    width: 50%;
+    background: lightgray;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: black;
+}
+span{
+    color: brown;
+}

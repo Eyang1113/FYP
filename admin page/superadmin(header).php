@@ -13,14 +13,14 @@ if (isset($_SESSION['superadmin_id']) && isset($_SESSION['superadmin_name'])) {
 <body>
     <div class="header">
         <nav>
-            <h2>Fy<span>Pro</span></h2>
+            <h2>Fy<span>Pro</span><span class="admin">(superadmin panel)</span></h2>
             <ul class="nav-links">
                 <li><a href="superadmin(home).php">Home</a></li>
                 <li><a href="superadmin(bag).php">Product</a></li>
                 <li><a href="superadmin(user).php">User</a></li>
                 <li><a href="superadmin(admin).php">Admin</a></li>
-                <li><a href="#">Order</a></li>
-                <li onclick="openPopup()"><a href="#">Account</a></li>
+                <li><a href="superadmin(order).php">Order</a></li>
+                <li onclick="openPopup()"><a>Account</a></li>
                 <li class="btn"><a href="superadmin(logout).php">Logout</a></li>
             </ul>
         </nav>

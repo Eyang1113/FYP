@@ -11,9 +11,6 @@
         <div class="content">
             <h2>User List</h2>
             <hr><br>
-            <div>
-                
-            </div>
             <br><br><br>
             <table>
                 <tr>

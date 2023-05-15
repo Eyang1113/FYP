@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-if (isset($_SESSION['admin_id']) && isset($_SESSION['admin_name'])) {
+if (isset($_SESSION['admin_id']) && isset($_SESSION['admin_name']) && isset($_SESSION['name'])){
 
 ?>
 <!DOCTYPE html>
@@ -13,13 +13,13 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['admin_name'])) {
 <body>
     <div class="header">
         <nav>
-            <h2>Fy<span>Pro</span></h2>
+            <h2>Fy<span>Pro</span><span class="admin">(admin panel)</span></h2>
             <ul class="nav-links">
                 <li><a href="admin(home).php">Home</a></li>
                 <li><a href="admin(bag).php">Product</a></li>
                 <li><a href="admin(user).php">User</a></li>
-                <li><a href="#">Order</a></li>
-                <li onclick="openPopup()"><a href="#">Account</a></li>
+                <li><a href="admin(order).php">Order</a></li>
+                <li onclick="openPopup()"><a>Account</a></li>
                 <li class="btn"><a href="admin(logout).php">Logout</a></li>
             </ul>
         </nav>
