@@ -296,15 +296,93 @@
     text-decoration: underline;
 }
 
+.poster-profile{
+    margin: 0;
+    padding: 0; 
+}
+
 .user-profile {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
 }
 
-.user-profile h1 {
+.sidebar-profile .sidebar {
+    font-family: 'Montserrat';
+    font-weight: normal;
+    margin-left: 20px;
+    margin-top: 40px;
+    background-color: #f2f2f2;
+    width: 200px;
+    padding: 0;
+    float: left;
+}
+
+.sidebar-profile .sidebar ul {
+    list-style-type: none;
+    padding: 0;
     margin: 0;
-    font-size: 40px;
+}
+
+.sidebar-profile .sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar-profile .sidebar a{
+    text-decoration: none;
+}
+
+.sidebar-profile .sidebar a p{
+    color: #080008;
+    margin: 10px;
+    text-decoration: none;
+    font-family: 'Montserrat';
+    font-weight: normal;
+}
+
+.sidebar-profile .sidebar a p:hover {
+    font-weight: bold;
+    color: #ff3d00;
+}
+
+.sidebar-profile .sidebar li:hover{
+    background-color: #c8c5c5;
+}
+
+.poster-profile .poster {
+    width: 100%; /* Adjust the width to your desired value */
+    height: 40vh; /* Adjust the height to your desired value */
+    object-fit: cover; /* Ensure the image covers the entire container */
+    position: relative; /* Make the container position relative */
+}
+.poster-profile .poster-text {
+    position: absolute; /* Position the text relative to the container */
+    top: 35%; /* Adjust the vertical position */
+    left: 50%; /* Adjust the horizontal position */
+    transform: translate(-50%, -50%); /* Center the text */
+    color: white; /* Set the color of the text */
+    font-size: 24px; /* Adjust the font size */
+    text-align: center; /* Align the text in the center */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a shadow to the text */
+}
+
+.poster-profile strong {
+    font-weight: 900;
+    font-size: 45px;
+    text-transform: uppercase;
+    display: block;
+    color: #fff;
+    padding-left: 0;
+    padding-right: 0px;
+}
+
+.poster-profile p {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #fff;
+    padding-left: 0;
+    padding-right: 0px;
 }
 
 .user-profile hr {
@@ -315,6 +393,15 @@
 
 .user-profile .detail {
     margin-top: 20px;
+}
+
+.user-profile .legend{
+    margin: 0 0 25px;
+    padding: 0;
+    box-sizing: border-box;
+    float: left;
+    line-height: 1.2;
+    font-size: 2rem;
 }
 
 .user-profile .detail h3 {
@@ -417,4 +504,65 @@
 
 .edit-profile input[type="submit"]:hover {
     background-color: #555;
+}
+
+.change-password {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.change-password h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.change-password hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.change-password form {
+    display: flex;
+    flex-direction: column;
+}
+
+.change-password label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.change-password input[type="password"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 0px 5px #ccc;
+}
+
+.change-password button[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.change-password button[type="submit"]:hover {
+    background-color: #555;
+}
+
+.change-password p.error {
+    color: #ff0000;
+    margin-top: 10px;
+}
+
+.change-password p.success {
+    color: #008000;
+    margin-top: 10px;
 }

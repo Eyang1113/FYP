@@ -30,29 +30,46 @@ $stmt->close();
 	<?php
         include('header.php');
 ?>
+		
+		<div class="poster-profile">
+			<img class ="poster" src="poster profile.jpg">
+			<div class="poster-text">
+			<strong>Hi, <?=$username?></strong>
+			<p>Welcome to your profile</p>
+			</div>
+		</div>
+
+		<div class="sidebar-profile">
+			<div class="sidebar">
+				<ul>
+					<li><a href="user_profile.php"><p>Account Information</p></a></li>
+					<li><a href="edit_profile.php"><p>Edit Profile</p></a></li>
+					<li><a href="change_password.php"><p>Change password</p></a></li>
+				</ul>
+			</div>
+		</div>
+		
 		<div class="user-profile">
-			<h1>Profile</h1><hr>
 			<div class="detail">
-				<h3>Account Details</h3>
+				<legend class="legend"><span>Account Information</span><hr></legend>
 				<table>
 					<tr>
-						<td>Username:</td>
+						<td>Username</td>
 						<td><?=$username?></td>
 					</tr>
 					<tr>
-						<td>Contact:</td>
+						<td>Contact</td>
 						<td><?=$contact?></td>
 					</tr>
 					<tr>
-						<td>Email:</td>
+						<td>Email</td>
 						<td><?=$email?></td>
 					</tr>
                     <tr>
-						<td>Address:</td>
+						<td>Address</td>
 						<td><?=$address?></td>
 					</tr>
 				</table>
-				<button><a href="edit_profile.php">Edit Profile</a></button>
 			</div>
 		</div>
 	</body>
