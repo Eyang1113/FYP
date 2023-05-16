@@ -22,7 +22,7 @@ if (!isset($_SESSION['loggedin'])) {
 				<ul>
 					<li><a href="user_profile.php"><p>Account Information</p></a></li>
 					<li><a href="edit_profile.php"><p>Edit Profile</p></a></li>
-					<li><a href="change_password.php"><p>Change password</p></a></li>
+					<li><a href="change_password.php"><p>Change Password</p></a></li>
 				</ul>
 			</div>
 		</div>
@@ -40,23 +40,43 @@ if (!isset($_SESSION['loggedin'])) {
 
 			<label>Old Password</label>
 			<input type="password" 
-				name="old-password" 
+				name="old-password"
+				id="old-password" 
 				placeholder="Old Password">
 				<br>
 
 			<label>New Password</label>
 			<input type="password" 
-				name="new-password" 
-				placeholder="New Password">
+				name="new-password"
+				id="new-password" 
+				placeholder="New Password"
+				pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+				required>
 				<br>
 
 			<label>Confirm New Password</label>
 			<input type="password" 
-				name="confirm-new-password" 
-				placeholder="Confirm New Password">
+				name="confirm-new-password"
+				id="confirm-new-password" 
+				placeholder="Confirm New Password"
+				required>
 				<br>
 
-			<button type="submit">Save Password</button>
+			<button type="submit" id="submit">Save Password</button>
+			<script>
+                var password1 = document.getElementById("new-password");
+                var password2 = document.getElementById("confirm-new-password");
+                var submit = document.getElementById("submit");
+
+            submit.onclick = function(){
+           if(password1.value != password2.value){
+             alert("Error! Confirm password not match");
+             return false;
+           }
+         }
+            
+        </script>
 		</form>
 	</div>
 </body>

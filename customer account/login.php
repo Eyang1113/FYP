@@ -28,10 +28,13 @@ if ($stmt = $con->prepare('SELECT user_id, password FROM user WHERE email = ?'))
             $_SESSION['id'] = $user_id;
             header('Location: index.php');
         } else {
-            echo 'Incorrect email and/or password!';
+            echo "<script>alert('Incorrect email and/or password!');</script>";
+            header("refresh:0.1; url=index.php");
         }
     } else {
-        echo 'Incorrect email and/or password!';
+        /*echo 'Incorrect email and/or password!';*/
+        echo "<script>alert('Incorrect email and/or password!');</script>";
+        header("refresh:0.1; url=index.php");
     }
 	$stmt->close();
 }

@@ -44,32 +44,36 @@ $stmt->close();
 				<ul>
 					<li><a href="user_profile.php"><p>Account Information</p></a></li>
 					<li><a href="edit_profile.php"><p>Edit Profile</p></a></li>
-					<li><a href="change_password.php"><p>Change password</p></a></li>
+					<li><a href="change_password.php"><p>Change Password</p></a></li>
 				</ul>
 			</div>
 		</div>
 		
 		<div class="user-profile">
 			<div class="detail">
-				<legend class="legend"><span>Account Information</span><hr></legend>
-				<table>
-					<tr>
-						<td>Username</td>
-						<td><?=$username?></td>
-					</tr>
-					<tr>
-						<td>Contact</td>
-						<td><?=$contact?></td>
-					</tr>
-					<tr>
-						<td>Email</td>
-						<td><?=$email?></td>
-					</tr>
-                    <tr>
-						<td>Address</td>
-						<td><?=$address?></td>
-					</tr>
-				</table>
+				<legend class="legend"><span><b>Account Information</b></span><hr></legend>
+
+				<div class="dashboard">
+					<ul>
+					<li>
+						<h3><?=$username?></h3>
+						<p>
+							<?=$email?><br>
+							<?=$contact?>
+						</p>
+					</li>
+				</ul>
+				<hr>
+				<ul>
+					<li>
+						<h3>My Addresses</h3>
+						<p>
+							<?=$address?>
+						</p>
+					</li>
+				</ul>
+				</div>
+				
 			</div>
 		</div>
 	</body>

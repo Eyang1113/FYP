@@ -26,12 +26,15 @@ if ($stmt = $con->prepare('SELECT password FROM user WHERE user_id = ?')) {
                 $new_password = password_hash($_POST['new-password'], PASSWORD_DEFAULT);
                 $stmt->bind_param('si', $new_password, $_SESSION['id']);
                 $stmt->execute();
+                header("refresh:0.5; url=user_profile.php");
             }
         } else {
-            echo 'Incorrect old password!';
+            echo "<script>alert('Incorrect old password');</script>";
+            header("refresh:0.1; url=change_password.php");
         }
     } else {
-        echo 'Incorrect old password!';
+        echo "<script>alert('Incorrect old password');</script>";
+        header("refresh:0.1; url=change_password.php");
     }
 	$stmt->close();
 }
