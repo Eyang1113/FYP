@@ -33,6 +33,9 @@ nav span{
     padding: 5px 0;
     position: relative;
 }
+.nav-links li a:hover{
+    cursor: pointer;
+}
 .nav-links li a::after{
     content: '';
     background: #ff3d00;
@@ -101,4 +104,8 @@ nav span{
     border-radius: 4px;
     cursor: pointer;
     box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+}
+.admin{
+    font-size: small;
+    color: white;
 }

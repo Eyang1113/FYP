@@ -22,6 +22,8 @@
         $count_shuttlecock = mysqli_num_rows($result_shuttlecock);
         $result_user = mysqli_query($conn, "SELECT * FROM user");	
         $count_user = mysqli_num_rows($result_user);
+        $result_order = mysqli_query($conn, "SELECT * FROM orders");	
+        $count_order = mysqli_num_rows($result_order);
     ?>
     <div class="main">
         <div class="row">
@@ -59,19 +61,19 @@
             </div>
             <div class="blockO">
                 <p>Number Of Order</p>
-                <span> = 0 </span><br>
-                <a href="#">View Order List</a>
+                <span> = <?php echo $count_order; ?></span><br>
+                <a href="admin(order).php">View Order List</a>
             </div>
             <div class="blockU">
                 <p>Number Of User</p>
                 <span> = <?php echo $count_user; ?></span><br>
-                <a href="#">View User List</a>
+                <a href="admin(user).php">View User List</a>
             </div>
         </div>
         <br><br>
         <div class="row">
             <h3>Login History</h3>
-            <hr><br>
+            <hr><br><br>
             <table>
                 <tr>
                     <th>Id</th>

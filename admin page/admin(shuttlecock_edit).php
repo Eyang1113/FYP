@@ -24,7 +24,10 @@
                 <input type="number" name="stock" placeholder="Shuttlecock Stock" min="1" value="<?php echo $row['shuttlecock_stock']; ?>">
             <label>Shuttlecock Detail</label>
                 <textarea cols="60" rows="4" name="detail" placeholder="Shuttlecock Detail"><?php echo $row['shuttlecock_detail']; ?></textarea>
+            <label>Shuttlecock Name</label>
+                <input type="text" name="image" placeholder="Shuttlecock Image" value="<?php echo $row['shuttlecock_image']; ?>">
             <br><button type="submit" name="savebtn">Update Product</button>
+            <a href="admin(shuttlecock).php" class="back">Back</a>
         </form>
         <?php
             }
@@ -38,7 +41,8 @@
         $nprice = $_POST["price"];
         $nstock = $_POST["stock"];
         $ndetail = $_POST["detail"];
-        mysqli_query($conn, "UPDATE shuttlecock SET shuttlecock_name='$nname', shuttlecock_price='$nprice', shuttlecock_stock='$nstock', shuttlecock_detail='$ndetail' WHERE shuttlecock_id=$shuttlecockid");
+        $nimage = $_POST["image"];
+        mysqli_query($conn, "UPDATE shuttlecock SET shuttlecock_name='$nname', shuttlecock_price='$nprice', shuttlecock_stock='$nstock', shuttlecock_detail='$ndetail', shuttlecock_image='$nimage' WHERE shuttlecock_id=$shuttlecockid");
 ?>
 <script type="text/javascript">
     alert("Product Update");

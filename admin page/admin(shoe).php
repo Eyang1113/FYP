@@ -47,6 +47,7 @@
                     <th>Shoe Price</th>
                     <th>Shoe Stock</th>
                     <th>Shoe Detail</th>
+                    <th>Shoe Image</th>
                     <th colspan="2">Action</th>
                 </tr>
                 <?php
@@ -61,6 +62,7 @@
                     <td><?php echo $row["shoe_price"]; ?></td>
                     <td><?php echo $row["shoe_stock"]; ?></td>
                     <td><?php echo $row["shoe_detail"]; ?></td>
+                    <td><?php echo $row["shoes_images"]; ?></td>
                     <td><a href="admin(shoe_edit).php?edit&shoeid=<?php echo $row['shoe_id']; ?>">Edit</a></td>
                     <td><a href="admin(shoe).php?del&shoeid=<?php echo $row['shoe_id']; ?>" onclick="return confirmation();">Delete</a></td>
                 </tr>
