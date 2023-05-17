@@ -7,6 +7,7 @@
     <meta name="description" content="header of FyPro">
     <title>Header</title>
     <link rel="stylesheet" href="header(customer).css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="searchbar.css">
 </head>
 <body>
     <div class="header">
@@ -17,31 +18,27 @@
                 <li><a href="#">Product</a>
                 <div class="dropdown-menu">
                     <ul>
-                        <li><a href="Racquet.php">Racquet</a></li>
-                        <li><a href="#">Shuttlecock</a></li>
-                        <li><a href="#">String</a></li>
-                        <li><a href="#">Shoes</a></li>
-                        <li><a href="#">Clothes</a></li>
-                        <li><a href="#">Bag</a></li>
+                        <li><a href="racquetlist.php">Racquet</a></li>
+                        <li><a href="shuttlecock.php">Shuttlecock</a></li>
+                        <li><a href="string.php">String</a></li>
+                        <li><a href="shoeslist.php">Shoes</a></li>
+                        <li><a href="clothes.php">Clothes</a></li>
+                        <li><a href="bag.php">Bag</a></li>
                     </ul>
                 </div>
                 <li><a href="Athlete.php">Athlete</a></li>
                 <li><a href="Aboutus.php">About Us</a></li>
                 <li>
-                    <form>
-                        <input style="height:35px;" type="text" name="search" id="search" placeholder="   Search for ......">
+                    <form action="search.php" method="get">
+                        <input type="text" name="search" id="search" placeholder="Search for ......">
                         <button type="submit" class="btn">Search</button>
                     </form>
                 </li>
-                <li><a href="PaymentPage.php"><i class="fa fa-shopping-cart fa-lg" style="color:white;"></a></i></li>
+                <li><a href="cart.php"><i class="fa fa-shopping-cart fa-lg" style="color:white;"></a></i></li>
                 <li><a href=""><i class="fa fa-user fa-lg" style="color:white;"></a></i></li>
             </ul>
         </nav>
     </div>
-    <script>
-
-
-    </script>
     <script src="script.js"></script>
 </body>
 </html>
