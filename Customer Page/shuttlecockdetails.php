@@ -1,7 +1,11 @@
 <?php
-ob_start();
 include("fyprodbconnection.php");
-include("header.php");
+ob_start();
+if (!isset($_SESSION['loggedin'])) {
+	include("header.php");
+}
+else
+	include("header(loggedin).php");
 
 // check if racquet_id is set in the URL
 if(isset($_GET['shuttlecock_id'])) {
@@ -29,7 +33,7 @@ if(isset($_GET['shuttlecock_id'])) {
 <html>
 <head>
     <title><?php echo $shuttlecock_name; ?></title>
-    <link rel="stylesheet" href="shuttlecockdetails.css">
+    <link rel="stylesheet" href="shuttlecockdetails.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <div class="container">

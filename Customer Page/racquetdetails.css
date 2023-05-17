@@ -5,12 +5,13 @@
 }
 
 .title {
-	color: white;
+	color: black;
 	font-size: 48px;
 	margin-bottom: 20px;
 }
 
 .product-details {
+	color: black;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -42,13 +43,13 @@
 }
 
 .product-price {
-	color: white;
+	color: black;
 	font-size: 32px;
 	margin-bottom: 20px;
 }
 
 .product-description {
-	color: white;
+	color: black;
 	font-size: 24px;
 	margin-bottom: 20px;
 }

@@ -1,8 +1,11 @@
 <?php
-ob_start();
 include("fyprodbconnection.php");
-include("header.php");
-
+ob_start();
+if (!isset($_SESSION['loggedin'])) {
+	include("header.php");
+}
+else
+	include("header(loggedin).php");
 // check if shoe_id is set in the URL
 if(isset($_GET['shoe_id'])) {
     $shoe_id = $_GET['shoe_id'];
@@ -29,7 +32,7 @@ if(isset($_GET['shoe_id'])) {
 <html>
 <head>
     <title><?php echo $shoe_name; ?></title>
-    <link rel="stylesheet" href="shoesdetails.css">
+    <link rel="stylesheet" href="shoesdetails.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <div class="container">

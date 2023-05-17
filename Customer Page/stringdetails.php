@@ -1,8 +1,11 @@
 <?php
-ob_start();
 include("fyprodbconnection.php");
-include("header.php");
-
+ob_start();
+if (!isset($_SESSION['loggedin'])) {
+	include("header.php");
+}
+else
+	include("header(loggedin).php");
 // check if string_id is set in the URL
 if(isset($_GET['string_id'])) {
     $string_id = $_GET['string_id'];
@@ -29,7 +32,7 @@ if(isset($_GET['string_id'])) {
 <html>
 <head>
     <title><?php echo $string_name; ?></title>
-    <link rel="stylesheet" href="stringdetails.css">
+    <link rel="stylesheet" href="stringdetails.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <div class="container">
