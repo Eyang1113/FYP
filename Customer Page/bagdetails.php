@@ -1,16 +1,21 @@
 <?php
 ob_start();
+session_start();
+if (!isset($_SESSION['loggedin'])) {
+    include("header.php");
+} else {
+    include("header(loggedin).php");
+}
 include("fyprodbconnection.php");
-include("header.php");
 
-// check if racquet_id is set in the URL
-if(isset($_GET['bag_id'])) {
+// check if bag_id is set in the URL
+if (isset($_GET['bag_id'])) {
     $bag_id = $_GET['bag_id'];
 
     // fetch product details from database
     $result = mysqli_query($connect, "SELECT * FROM bag WHERE bag_id = '$bag_id'");
     $row = mysqli_fetch_assoc($result);
-    if(!empty($row)){
+    if (!empty($row)) {
         $bag_name = $row["bag_name"];
         $bag_price = $row["bag_price"];
         $bag_image = $row["bag_image"];
@@ -22,14 +27,18 @@ if(isset($_GET['bag_id'])) {
     echo "Product ID not specified.";
     exit;
 }
-
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <title><?php echo $bag_name; ?></title>
-    <link rel="stylesheet" href="bagdetails.css">
+    <link rel="stylesheet" href="bagdetails.css?v=<?php echo time(); ?>">
+    <script>
+        function showAlert() {
+            alert("Added to cart successfully");
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -48,39 +57,28 @@ if(isset($_GET['bag_id'])) {
                     <input type="hidden" name="product_price" value="<?php echo $bag_price; ?>">
                     <input type="hidden" name="product_image" value="<?php echo $bag_image; ?>">
                     <input type="number" name="quantity" value="1" min="1" required>
-                    <button class="add-to-cart" type="submit" name="add_to_cart">Add to Cart</button>
+                    <button class="add-to-cart" type="submit" name="add_to_cart" onclick="showAlert()">Add to Cart</button>
                 </form>
             </div>
         </div>
     </div>
-    <?php include ('footer.php'); ?>
+    <?php include('footer.php'); ?>
 </body>
 </html>
 
 <?php
 // handle add to cart form submission
-if(isset($_POST['add_to_cart'])) {
-    echo '
-        <script>
-            alert("Add to Cart successfull");
-        </script>
-    ';
+if (isset($_POST['add_to_cart'])) {
+    $user_id = $_SESSION['id'];
     $bag_id = $_POST['bag_id'];
     $bag_name = $_POST['product_name'];
     $bag_price = $_POST['product_price'];
     $bag_image = $_POST['product_image'];
     $quantity = $_POST['quantity'];
-    $total = $quantity * $racquet_price;
-    $insert_cart_sql = "INSERT INTO cart(product_id, product_name, product_price, product_image, quantity, total_price) VALUES($bag_id, '$bag_name', $bag_price, '$bag_image', $quantity, $total); ";
+    $total = $quantity * $bag_price;
+    $insert_cart_sql = "INSERT INTO cart(product_id, product_name, product_price, product_image, quantity, total_price, user_id) VALUES ('$bag_id', '$bag_name', '$bag_price', '$bag_image', '$quantity', '$total', '$user_id')";
 
-    // echo $racquet_id;
-    // echo $racquet_name;
-    // echo $racquet_price;
-    // echo $racquet_image;
-    // echo $quantity;
-    // echo $total;
-
-    mysqli_query($connect,  $insert_cart_sql);
+    mysqli_query($connect, $insert_cart_sql);
     // redirect to cart page
     ob_clean();
     header('Location: cart.php');

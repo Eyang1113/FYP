@@ -1,7 +1,12 @@
 <?php
 ob_start();
+session_start();
+if (!isset($_SESSION['loggedin'])) {
+    include("header.php");
+} else {
+    include("header(loggedin).php");
+}
 include("fyprodbconnection.php");
-include("header.php");
 
 // check if racquet_id is set in the URL
 if(isset($_GET['shuttlecock_id'])) {
@@ -29,7 +34,12 @@ if(isset($_GET['shuttlecock_id'])) {
 <html>
 <head>
     <title><?php echo $shuttlecock_name; ?></title>
-    <link rel="stylesheet" href="shuttlecockdetails.css">
+    <link rel="stylesheet" href="shuttlecockdetails.css?v=<?php echo time(); ?>">
+    <script>
+        function showAlert() {
+            alert("Added to cart successfully");
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -48,7 +58,7 @@ if(isset($_GET['shuttlecock_id'])) {
                     <input type="hidden" name="product_price" value="<?php echo $shuttlecock_price; ?>">
                     <input type="hidden" name="product_image" value="<?php echo $shuttlecock_image; ?>">
                     <input type="number" name="quantity" value="1" min="1" required>
-                    <button class="add-to-cart" type="submit" name="add_to_cart">Add to Cart</button>
+                    <button class="add-to-cart" type="submit" name="add_to_cart" onclick="showAlert()">Add to Cart</button>
                 </form>
             </div>
         </div>
@@ -60,27 +70,16 @@ if(isset($_GET['shuttlecock_id'])) {
 <?php
 // handle add to cart form submission
 if(isset($_POST['add_to_cart'])) {
-    echo '
-        <script>
-            alert("Add to Cart successfullt");
-        </script>
-    ';
-    $racquet_id = $_POST['shuttlecock_id'];
-    $racquet_name = $_POST['product_name'];
-    $racquet_price = $_POST['product_price'];
-    $racquet_image = $_POST['product_image'];
+    $user_id = $_SESSION['id'];
+    $shuttlecock_id = $_POST['shuttlecock_id'];
+    $shuttlecock_name = $_POST['product_name'];
+    $shuttlecock_price = $_POST['product_price'];
+    $shuttlecock_image = $_POST['product_image'];
     $quantity = $_POST['quantity'];
     $total = $quantity * $shuttlecock_price;
-    $insert_cart_sql = "INSERT INTO cart(product_id, product_name, product_price, product_image, quantity, total_price) VALUES($shuttlecock_id, '$shuttlecock_name', $shuttlecock_price, '$shuttlecock_image', $quantity, $total); ";
+    $insert_cart_sql = "INSERT INTO cart(product_id, product_name, product_price, product_image, quantity, total_price, user_id) VALUES($shuttlecock_id, '$shuttlecock_name', $shuttlecock_price, '$shuttlecock_image', $quantity, $total, $user_id)";
 
-    // echo $racquet_id;
-    // echo $racquet_name;
-    // echo $racquet_price;
-    // echo $racquet_image;
-    // echo $quantity;
-    // echo $total;
-
-    mysqli_query($connect,  $insert_cart_sql);
+    mysqli_query($connect, $insert_cart_sql);
     // redirect to cart page
     ob_clean();
     header('Location: cart.php');

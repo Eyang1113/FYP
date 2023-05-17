@@ -1,10 +1,14 @@
 <?php
+include("fyprodbconnection.php");
 session_start();
-include('fyprodbconnection.php');
-include("header.php");
-
+$user_id = $_SESSION['id'];
+if (!isset($_SESSION['loggedin'])) {
+	include("header.php");
+}
+else
+	include("header(loggedin).php");
 // Retrieve the orders from the database
-$get_orders_sql = "SELECT customer_name, customer_number, customer_address, order_item, order_total_price, order_date, payment_method, payment_status FROM orders";
+$get_orders_sql = "SELECT * FROM orders where user_id = $user_id";
 $result_orders = mysqli_query($connect, $get_orders_sql);
 ?>
 

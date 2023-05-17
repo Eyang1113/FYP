@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2023 at 01:16 PM
+-- Generation Time: May 17, 2023 at 07:18 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -62,7 +62,7 @@ CREATE TABLE `bag` (
 --
 
 INSERT INTO `bag` (`bag_id`, `bag_name`, `bag_price`, `bag_stock`, `bag_detail`, `bag_image`) VALUES
-(3, 'Yonex Badminton Bag 01', '200.00', 45, 'Yonex is a popular brand that offers a variety of badminton bags for players of all levels. Their bags are made of high-quality materials that provide durability, style, and functionality.', 'image/Yonex badminton bag 01.jpg'),
+(3, 'Yonex Badminton Bag 01', '200.00', 45, 'Yonex is a popular brand that offers a variety of badminton bags for players of all levels. Their bags are made of high-quality materials that provide durability, style, and functionality.', 'image/Yonex badminton bag01.jpg'),
 (4, 'Li-Ning Badminton Bag 01', '200.00', 50, 'Li-Ning is another popular badminton brand that offers a variety of bags for players of all levels. Their bags are made of high-quality materials that provide durability, style, and functionality.', 'image/Li-Ning badminton bag 01.jpg\r\n');
 
 -- --------------------------------------------------------
@@ -78,8 +78,16 @@ CREATE TABLE `cart` (
   `product_price` decimal(10,2) NOT NULL,
   `product_image` varchar(255) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `total_price` decimal(10,2) NOT NULL
+  `total_price` decimal(10,2) NOT NULL,
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `product_id`, `product_name`, `product_price`, `product_image`, `quantity`, `total_price`, `user_id`) VALUES
+(49, 4, 'RSL Classic Tourney No. 3', '60.00', 'image/RSL Classic Tourney No. 3.jpg', 5, '300.00', 6);
 
 -- --------------------------------------------------------
 
@@ -127,20 +135,40 @@ INSERT INTO `loginhistory` (`id`, `username`, `name`, `email`, `time`) VALUES
 (2, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-14 15:30:01'),
 (3, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-14 17:23:44'),
 (4, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-14 17:43:21'),
-(5, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-14 17:52:50');
+(5, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-14 17:52:50'),
+(6, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-15 14:44:07'),
+(7, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-15 14:59:07'),
+(8, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-15 18:20:00'),
+(9, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-17 16:55:08'),
+(10, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-17 19:42:22');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order`
+-- Table structure for table `orders`
 --
 
-CREATE TABLE `order` (
+CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
-  `order_details` varchar(1000) NOT NULL,
   `order_date` date NOT NULL,
-  `order_price` float NOT NULL
+  `order_total_price` float NOT NULL,
+  `customer_name` varchar(255) NOT NULL,
+  `customer_number` varchar(255) NOT NULL,
+  `order_item` varchar(1000) NOT NULL,
+  `customer_address` varchar(1000) NOT NULL,
+  `payment_method` varchar(255) NOT NULL,
+  `payment_status` varchar(255) NOT NULL DEFAULT 'PENDING',
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `order_date`, `order_total_price`, `customer_name`, `customer_number`, `order_item`, `customer_address`, `payment_method`, `payment_status`, `user_id`) VALUES
+(20, '2023-05-18', 280, 'Jay', '0167869985', 'Yonex AS-50 - RM 70.00 x 4 = RM 280.00\n', '12, Jalan Nilai 20, Taman Murni', 'VISA', 'PENDING', 6),
+(21, '2023-05-18', 150, 'Jay', '0183882392', 'Yonex Clothes - RM 150.00 x 1 = RM 150.00\n', '12, Jalan Nibong 54', 'FPX', 'PENDING', 6),
+(22, '2023-05-18', 400, 'Alex', '0183882392', 'Yonex Badminton Bag 01 - RM 200.00 x 2 = RM 400.00\n', '15, Jalan Rose 23', 'FPX', 'PENDING', 8);
 
 -- --------------------------------------------------------
 
@@ -340,6 +368,18 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `username`, `email`, `contact`, `password`, `address`) VALUES
+(3, 'user1', 'user1@gmail.com', '', '5ebce7d6811d66582777a8f2e109815f', ''),
+(4, 'user', 'user@gmail.com', '', '$2y$10$p/OLSsu9Q9Hjcf6zKY44xeEq.Z9Qh0/IcHENdj1VVXdlxYpNWPfda', ''),
+(5, 'JaydenSi', 'jay@gmail.com', '013-2456789', '5ebce7d6811d66582777a8f2e109815f', '12, Jalan Hari 23, Taman Bulan, 81100'),
+(6, 'Jayden', 'jayden@gmail.com', '', '$2y$10$BWRzW5EqhnpzlhExUWoCGOCFNXbc7YfzzTS/1uGC3n/54SnLxo1ru', ''),
+(7, 'Si', 'Si@gmail.com', '', '$2y$10$P4adAqbTb6LC6Iqp3c1pF.AUR9nwCa3zun/rtRUspIPtr6D17f7.S', ''),
+(8, 'User8', 'user8@gmail.com', '', '$2y$10$pEEAWpoF8ECpdLPCXWXcRejpWiHK2c9VMOTzYyp5q.WPhWzktU57i', '');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -374,9 +414,9 @@ ALTER TABLE `loginhistory`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `order`
+-- Indexes for table `orders`
 --
-ALTER TABLE `order`
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`);
 
 --
@@ -465,7 +505,7 @@ ALTER TABLE `bag`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `clothes`
@@ -477,13 +517,13 @@ ALTER TABLE `clothes`
 -- AUTO_INCREMENT for table `loginhistory`
 --
 ALTER TABLE `loginhistory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `order`
+-- AUTO_INCREMENT for table `orders`
 --
-ALTER TABLE `order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `orders`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `racquet`
@@ -549,7 +589,7 @@ ALTER TABLE `supply receipt`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

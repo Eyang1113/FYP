@@ -1,7 +1,12 @@
 <?php
 ob_start();
+session_start();
+if (!isset($_SESSION['loggedin'])) {
+    include("header.php");
+} else {
+    include("header(loggedin).php");
+}
 include("fyprodbconnection.php");
-include("header.php");
 
 // check if shoe_id is set in the URL
 if(isset($_GET['shoe_id'])) {
@@ -29,7 +34,12 @@ if(isset($_GET['shoe_id'])) {
 <html>
 <head>
     <title><?php echo $shoe_name; ?></title>
-    <link rel="stylesheet" href="shoesdetails.css">
+    <link rel="stylesheet" href="shoesdetails.css?v=<?php echo time(); ?>">
+    <script>
+        function showAlert() {
+            alert("Added to cart successfully");
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -48,7 +58,7 @@ if(isset($_GET['shoe_id'])) {
                     <input type="hidden" name="product_price" value="<?php echo $shoe_price; ?>">
                     <input type="hidden" name="product_image" value="<?php echo $shoe_image; ?>">
                     <input type="number" name="quantity" value="1" min="1" required>
-                    <button class="add-to-cart" type="submit" name="add_to_cart">Add to Cart</button>
+                    <button class="add-to-cart" type="submit" name="add_to_cart" onclick="showAlert()">Add to Cart</button>
                 </form>
             </div>
         </div>
@@ -60,18 +70,14 @@ if(isset($_GET['shoe_id'])) {
 <?php
 // handle add to cart form submission
 if(isset($_POST['add_to_cart'])) {
-    echo '
-        <script>
-            alert("Added to Cart successfully");
-        </script>
-    ';
+    $user_id = $_SESSION['id'];
     $shoe_id = $_POST['shoe_id'];
     $shoe_name = $_POST['product_name'];
     $shoe_price = $_POST['product_price'];
     $shoe_image = $_POST['product_image'];
     $quantity = $_POST['quantity'];
     $total = $quantity * $shoe_price;
-    $insert_cart_sql = "INSERT INTO cart(product_id, product_name, product_price, product_image, quantity, total_price) VALUES('$shoe_id', '$shoe_name', '$shoe_price', '$shoe_image', '$quantity', '$total')";
+    $insert_cart_sql = "INSERT INTO cart(product_id, product_name, product_price, product_image, quantity, total_price, user_id) VALUES('$shoe_id', '$shoe_name', '$shoe_price', '$shoe_image', '$quantity', '$total', $user_id)";
 
     mysqli_query($connect,  $insert_cart_sql);
     // redirect to cart page

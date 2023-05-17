@@ -1,6 +1,7 @@
 <?php
 include("fyprodbconnection.php");
 session_start();
+$user_id = $_SESSION['id'];
 if (!isset($_SESSION['loggedin'])) {
 	include("header.php");
 }
@@ -44,7 +45,7 @@ if(isset($_POST['checkout'])) {
     
         <?php
         $total = 0;
-        $find_cart_sql = "SELECT * FROM cart";
+        $find_cart_sql = "SELECT * FROM cart where user_id = $user_id";
         $result_cart = mysqli_query($connect, $find_cart_sql);
         if(mysqli_num_rows($result_cart) > 0){
             while($row_cart = mysqli_fetch_assoc($result_cart)){

@@ -1,7 +1,12 @@
 <?php
 ob_start();
+session_start();
+if (!isset($_SESSION['loggedin'])) {
+    include("header.php");
+} else {
+    include("header(loggedin).php");
+}
 include("fyprodbconnection.php");
-include("header.php");
 
 // check if racquet_id is set in the URL
 if(isset($_GET['racquet_id'])) {
@@ -29,7 +34,12 @@ if(isset($_GET['racquet_id'])) {
 <html>
 <head>
     <title><?php echo $racquet_name; ?></title>
-    <link rel="stylesheet" href="racquetdetails.css">
+    <link rel="stylesheet" href="racquetdetails.css?v=<?php echo time(); ?>">
+    <script>
+        function showAlert() {
+            alert("Added to cart successfully");
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -48,7 +58,7 @@ if(isset($_GET['racquet_id'])) {
                     <input type="hidden" name="product_price" value="<?php echo $racquet_price; ?>">
                     <input type="hidden" name="product_image" value="<?php echo $racquet_image; ?>">
                     <input type="number" name="quantity" value="1" min="1" required>
-                    <button class="add-to-cart" type="submit" name="add_to_cart">Add to Cart</button>
+                    <button class="add-to-cart" type="submit" name="add_to_cart" onclick="showAlert()">Add to Cart</button>
                 </form>
             </div>
         </div>
@@ -60,25 +70,14 @@ if(isset($_GET['racquet_id'])) {
 <?php
 // handle add to cart form submission
 if(isset($_POST['add_to_cart'])) {
-    echo '
-        <script>
-            alert("Add to Cart successfull");
-        </script>
-    ';
+    $user_id = $_SESSION['id'];
     $racquet_id = $_POST['racquet_id'];
     $racquet_name = $_POST['product_name'];
     $racquet_price = $_POST['product_price'];
     $racquet_image = $_POST['product_image'];
     $quantity = $_POST['quantity'];
     $total = $quantity * $racquet_price;
-    $insert_cart_sql = "INSERT INTO cart(product_id, product_name, product_price, product_image, quantity, total_price) VALUES($racquet_id, '$racquet_name', $racquet_price, '$racquet_image', $quantity, $total); ";
-
-    // echo $racquet_id;
-    // echo $racquet_name;
-    // echo $racquet_price;
-    // echo $racquet_image;
-    // echo $quantity;
-    // echo $total;
+    $insert_cart_sql = "INSERT INTO cart(product_id, product_name, product_price, product_image, quantity, total_price, user_id) VALUES($racquet_id, '$racquet_name', $racquet_price, '$racquet_image', $quantity, $total, $user_id)";
 
     mysqli_query($connect,  $insert_cart_sql);
     // redirect to cart page

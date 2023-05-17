@@ -1,10 +1,14 @@
 <?php
+include("fyprodbconnection.php");
 session_start();
-include('fyprodbconnection.php');
-include("header.php");
-
+$user_id = $_SESSION['id'];
+if (!isset($_SESSION['loggedin'])) {
+	include("header.php");
+}
+else
+	include("header(loggedin).php");
 // Retrieve the cart items
-$find_cart_sql = "SELECT * FROM cart";
+$find_cart_sql = "SELECT * FROM cart where user_id = $user_id";
 $result_cart = mysqli_query($connect, $find_cart_sql);
 
 // Calculate the total price
@@ -44,11 +48,11 @@ if (isset($_POST['make_payment'])) {
         }
 
         // Insert the order into the database
-        $insert_order_sql = "INSERT INTO orders (customer_name, customer_number, customer_address, order_item, order_total_price, order_date, payment_method) VALUES ('$customer_name', '$customer_number', '$customer_address', '$order_items', $total, CURDATE(), '$payment_method')";
+        $insert_order_sql = "INSERT INTO orders (customer_name, customer_number, customer_address, order_item, order_total_price, order_date, payment_method, user_id) VALUES ('$customer_name', '$customer_number', '$customer_address', '$order_items', $total, CURDATE(), '$payment_method', $user_id)";
         mysqli_query($connect, $insert_order_sql);
 
         // Clear the cart after successful order placement
-        $clear_cart_sql = "DELETE FROM cart";
+        $clear_cart_sql = "DELETE FROM cart where user_id = $user_id";
         mysqli_query($connect, $clear_cart_sql);
 
         // Redirect to the order record page
