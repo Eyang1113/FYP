@@ -15,8 +15,13 @@ if (!isset($_SESSION['loggedin'])) {
 </head>
 <body>
 <?php
-        include('header.php');
-    ?>
+if (!isset($_SESSION['loggedin'])) {
+	include("header.php");
+}
+else
+	include("header(loggedin).php");
+
+?>
 	<div class="sidebar-profile">
 			<div class="sidebar">
 				<ul>
@@ -79,5 +84,8 @@ if (!isset($_SESSION['loggedin'])) {
         </script>
 		</form>
 	</div>
+		<?php 
+			include 'footer.php'; 
+		?>
 </body>
 </html>

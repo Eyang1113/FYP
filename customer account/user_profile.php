@@ -1,6 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['loggedin'])) {
+	echo "<script>alert('Please login first!');</script>";
 	header('Location: index.php');
 	exit;
 }
@@ -28,7 +29,12 @@ $stmt->close();
 	</head>
 	<body class="loggedin">
 	<?php
-        include('header.php');
+if (!isset($_SESSION['loggedin'])) {
+	include("header.php");
+}
+else
+	include("header(loggedin).php");
+
 ?>
 		
 		<div class="poster-profile">
@@ -76,5 +82,8 @@ $stmt->close();
 				
 			</div>
 		</div>
+		<?php 
+			include 'footer.php'; 
+		?>
 	</body>
 </html>

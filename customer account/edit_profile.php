@@ -28,8 +28,13 @@ $stmt->close();
     </head>
     <body class="loggedin">
     <?php
-        include('header.php');
-    ?>
+if (!isset($_SESSION['loggedin'])) {
+	include("header.php");
+}
+else
+	include("header(loggedin).php");
+
+?>
         <div class="sidebar-profile">
 			<div class="sidebar">
 				<ul>
@@ -54,5 +59,8 @@ $stmt->close();
                 <input type="submit" value="Save Account Information">
             </form>
         </div>
+        <?php 
+			include 'footer.php'; 
+		?>
     </body>
 </html>
