@@ -1,3 +1,14 @@
+<?php
+session_start();
+if (!isset($_SESSION['loggedin'])) {
+	echo "<script>alert('Please login first!');</script>";
+	header('Location: index.php');
+	exit;
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,7 +19,7 @@
     <body>
 
         <?php
-            include('header.php');
+            include('header(loggedin).php');
             include('swiper.php');
             include('footer.php');
         ?>

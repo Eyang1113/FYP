@@ -5,9 +5,16 @@
         <link rel="stylesheet" href="Aboutus.css">
     </head>
     <body>
-        <?php
-            include('header.php');
-        ?>
+    <?php
+include("fyprodbconnection.php");
+session_start();
+if (!isset($_SESSION['loggedin'])) {
+	include("header.php");
+}
+else
+	include("header(loggedin).php");
+
+?>
 
 <div class="about-section">
   <h1><i><b>Fy<span style="color:red;">Pro</span></b></i></h1>
@@ -79,5 +86,8 @@
         </div>
 
 </div>
+<?php 
+	include 'footer.php'; 
+	?>
     </body>
 </html>

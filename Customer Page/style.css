@@ -35,6 +35,13 @@
     position: relative;
 }
 
+.header .btnLogout a{
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 0;
+    position: relative;
+}
+
 .header .nav-links li a::after{
     content: '';
     background: #ff3d00;
@@ -65,8 +72,32 @@
     transition: .5s;
 }
 
+.header .btnLogout{
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
 .header .nav-links .btnLogin-popup:hover{
     background: #fff;
+    color: #162938;
+}
+
+.header .btnLogout:hover{
+    background: #fff;
+    color: #162938;
+}
+
+.header .btnLogout:hover a{
     color: #162938;
 }
 

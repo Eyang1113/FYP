@@ -1,7 +1,11 @@
 <?php
+include("fyprodbconnection.php");
 session_start();
-include('fyprodbconnection.php');
-include("header.php");
+if (!isset($_SESSION['loggedin'])) {
+	include("header.php");
+}
+else
+	include("header(loggedin).php");
 
 // Handle form submission
 if (isset($_POST['submit'])) {

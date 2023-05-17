@@ -33,7 +33,7 @@
                     </form>
                 </li>
                 <li><a href="cart.php"><i class="fa fa-shopping-cart fa-lg" style="color:white;"></a></i></li>
-                <li><a href="#"><i class="fa fa-user fa-lg" style="color:white;"></a></i></li>
+                <li><a href="user_profile.php"><i class="fa fa-user fa-lg" style="color:white;"></a></i></li>
                 <button class="btnLogin-popup">Login</button>
             </ul>
         </nav>

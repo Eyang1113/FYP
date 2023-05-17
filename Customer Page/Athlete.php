@@ -9,9 +9,16 @@
 
 </head>
 <body>
-    <?php
-    include('header.php');
-    ?>
+<?php
+include("fyprodbconnection.php");
+session_start();
+if (!isset($_SESSION['loggedin'])) {
+	include("header.php");
+}
+else
+	include("header(loggedin).php");
+
+?>
         <div class="playercontainer">
             <h1>Four kings in Badminton</h1>
             <div class="playerrow">

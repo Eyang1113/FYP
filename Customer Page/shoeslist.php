@@ -1,6 +1,12 @@
 <?php
 include("fyprodbconnection.php");
-include("header.php");
+session_start();
+if (!isset($_SESSION['loggedin'])) {
+	include("header.php");
+}
+else
+	include("header(loggedin).php");
+
 ?>
 
 <!DOCTYPE html>
