@@ -9,6 +9,10 @@ body {
     margin-bottom:10px;
 	text-align: center;
   }
+
+  p{
+    text-align: center;
+  }
   
   table {
 	width: 100%;
