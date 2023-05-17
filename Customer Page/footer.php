@@ -27,7 +27,7 @@
                 <div class="footer-col">
                     <h4>Get help ?</h4>
                     <ul>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="FAQ.php">FAQ</a></li>
                         <li><a href="#">Account Setting</a></li>
                         <li><a href="#">Payment options</a></li>
                         <li><a href="#">Contact Us</a></li>
