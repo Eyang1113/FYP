@@ -80,7 +80,7 @@ if(isset($_POST['checkout'])) {
     <br>
     <div class="checkout-container">
         <a href="mainpage.php" class="continue-shopping-link">Continue Shopping</a>
-        <?php if (isset($_SESSION['logged_in'])) { ?>
+        <?php if (isset($_SESSION['loggedin'])) { ?>
             <form action="" method="post">
                 <button class="checkout-button" type="submit" name="checkout">Checkout</button>
             </form>

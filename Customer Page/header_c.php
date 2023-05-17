@@ -17,15 +17,15 @@
                 <li><a href="#">Product</a>
                 <div class="dropdown-menu">
                     <ul>
-                        <li><a href="racquetlist.php">Racquet</a></li>
-                        <li><a href="shuttlecock.php">Shuttlecock</a></li>
-                        <li><a href="string.php">String</a></li>
-                        <li><a href="shoeslist.php">Shoes</a></li>
-                        <li><a href="clothes.php">Clothes</a></li>
-                        <li><a href="bag.php">Bag</a></li>
+                        <li><a href="Racquet.php">Racquet</a></li>
+                        <li><a href="#">Shuttlecock</a></li>
+                        <li><a href="#">String</a></li>
+                        <li><a href="#">Shoes</a></li>
+                        <li><a href="#">Clothes</a></li>
+                        <li><a href="#">Bag</a></li>
                     </ul>
                 </div>
-                <li><a href="Athlete.php">Athlete</a></li>
+                <li><a href="#">Athlete</a></li>
                 <li><a href="Aboutus.php">About Us</a></li>
                 <li>
                     <form>
@@ -33,9 +33,9 @@
                         <button type="submit" class="btn">Search</button>
                     </form>
                 </li>
-                <li><a href="cart.php"><i class="fa fa-shopping-cart fa-lg" style="color:white;"></a></i></li>
+                <li><a href="PaymentPage.php"><i class="fa fa-shopping-cart fa-lg" style="color:white;"></a></i></li>
                 <li><a href="user_profile.php"><i class="fa fa-user fa-lg" style="color:white;"></a></i></li>
-                <button class="btnLogin-popup"><a href="logout.php">Log Out</a></button>
+                <button class="btnLogin-popup">Login</button>
             </ul>
         </nav>
     </div>
