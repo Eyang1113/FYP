@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width-device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Main Page</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Index</title>
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
 </head>
 <body>
-    
     <div class="header">
         <nav>
             <h2>Fy<span style="color:red;">Pro</span></h2>
@@ -18,7 +17,7 @@
                 <div class="dropdown-menu">
                     <ul>
                         <li><a href="Racquet.php">Racquet</a></li>
-                        <li><a href="#">Shuttlecock</a></li>
+                        <li><a href="">Shuttlecock</a></li>
                         <li><a href="#">String</a></li>
                         <li><a href="#">Shoes</a></li>
                         <li><a href="#">Clothes</a></li>
@@ -39,9 +38,8 @@
             </ul>
         </nav>
     </div>
-    
-    <div class="wrapper">
 
+    <div class="wrapper">
         <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span>
         <div class="form-box login">
             <h2>Login</h2>
@@ -103,7 +101,10 @@
         </div>
 
     </div>
-
+    <?php
+            include('swiper.php');
+            include('footer.php');
+        ?>
     <script src="script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
