@@ -47,6 +47,7 @@
                     <th>Shuttlecock Price</th>
                     <th>Shuttlecock Stock</th>
                     <th>Shuttlecock Detail</th>
+                    <th>Shuttlecock Image</th>
                     <th colspan="2">Action</th>
                 </tr>
                 <?php
@@ -61,6 +62,7 @@
                     <td><?php echo $row["shuttlecock_price"]; ?></td>
                     <td><?php echo $row["shuttlecock_stock"]; ?></td>
                     <td><?php echo $row["shuttlecock_detail"]; ?></td>
+                    <td><?php echo $row["shuttlecock_image"]; ?></td>
                     <td><a href="admin(shuttlecock_edit).php?edit&shuttlecockid=<?php echo $row['shuttlecock_id']; ?>">Edit</a></td>
                     <td><a href="admin(shuttlecock).php?del&shuttlecockid=<?php echo $row['shuttlecock_id']; ?>" onclick="return confirmation();">Delete</a></td>
                 </tr>

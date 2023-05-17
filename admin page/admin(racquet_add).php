@@ -10,14 +10,17 @@
         <form name="addfrm" method="post" action="">
             <h2>Add Racquet</h2>
             <label>Racquet Name</label>
-                <input type="text" name="name" placeholder="Racquet Name">
+                <input type="text" name="name" placeholder="Racquet Name" required>
             <label>Racquet Price</label>
-                <input type="number" name="price" placeholder="Racquet Price" min="1" step=".01">
+                <input type="number" name="price" placeholder="Racquet Price" min="1" step=".01" required>
             <label>Racquet Stock</label>
-                <input type="number" name="stock" placeholder="Racquet Stock" min="1">
+                <input type="number" name="stock" placeholder="Racquet Stock" min="1" required>
             <label>Racquet Detail</label>
-                <textarea cols="60" rows="4" name="detail" placeholder="Racquet Detail"></textarea>
+                <textarea cols="60" rows="4" name="detail" placeholder="Racquet Detail" required></textarea>
+            <label>Racquet Image</label>
+                <input type="text" name="image" placeholder="Racquet Image" required>
             <br><button type="submit" name="savebtn">Add Racquet</button>
+            <a href="admin(racquet).php" class="back">Back</a>
         </form>
 </body>
 </html>
@@ -28,8 +31,9 @@
         $nprice = $_POST["price"];
         $nstock = $_POST["stock"];
         $ndetail = $_POST["detail"];
-        mysqli_query($conn, "INSERT INTO racquet (racquet_name, racquet_price, racquet_stock, racquet_detail)
-                                        VALUES ('$nname', '$nprice', '$nstock', '$ndetail')");
+        $nimage = $_POST["image"];
+        mysqli_query($conn, "INSERT INTO racquet (racquet_name, racquet_price, racquet_stock, racquet_detail, racquet_images)
+                                        VALUES ('$nname', '$nprice', '$nstock', '$ndetail', '$nimage')");
 ?>
 <script type="text/javascript">
     alert("<?php echo $nname. ' saved' ?>");

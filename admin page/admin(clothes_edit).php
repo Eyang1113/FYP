@@ -24,7 +24,10 @@
                 <input type="number" name="stock" placeholder="Clothes Stock" min="1" value="<?php echo $row['clothes_stock']; ?>">
             <label>Clothes Detail</label>
                 <textarea cols="60" rows="4" name="detail" placeholder="Clothes Detail"><?php echo $row['clothes_detail']; ?></textarea>
+            <label>Clothes Image</label>
+                <input type="text" name="image" placeholder="Clothes Image" value="<?php echo $row['clothes_image']; ?>">
             <br><button type="submit" name="savebtn">Update Product</button>
+            <a href="admin(clothes).php" class="back">Back</a>
         </form>
         <?php
             }
@@ -38,7 +41,8 @@
         $nprice = $_POST["price"];
         $nstock = $_POST["stock"];
         $ndetail = $_POST["detail"];
-        mysqli_query($conn, "UPDATE clothes SET clothes_name='$nname', clothes_price='$nprice', clothes_stock='$nstock', clothes_detail='$ndetail' WHERE clothes_id=$clothesid");
+        $nimage = $_POST["image"];
+        mysqli_query($conn, "UPDATE clothes SET clothes_name='$nname', clothes_price='$nprice', clothes_stock='$nstock', clothes_detail='$ndetail', clothes_image='$nimage' WHERE clothes_id=$clothesid");
 ?>
 <script type="text/javascript">
     alert("Product Update");

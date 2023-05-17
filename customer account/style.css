@@ -296,15 +296,93 @@
     text-decoration: underline;
 }
 
+.poster-profile{
+    margin: 0;
+    padding: 0; 
+}
+
 .user-profile {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
 }
 
-.user-profile h1 {
+.sidebar-profile .sidebar {
+    font-family: 'Montserrat';
+    font-weight: normal;
+    margin-left: 180px;
+    margin-top: 150px;
+    background-color: #f2f2f2;
+    width: 200px;
+    padding: 0;
+    float: left;
+}
+
+.sidebar-profile .sidebar ul {
+    list-style-type: none;
+    padding: 0;
     margin: 0;
-    font-size: 40px;
+}
+
+.sidebar-profile .sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar-profile .sidebar a{
+    text-decoration: none;
+}
+
+.sidebar-profile .sidebar a p{
+    color: #080008;
+    margin: 10px;
+    text-decoration: none;
+    font-family: 'Montserrat';
+    font-weight: normal;
+}
+
+.sidebar-profile .sidebar a p:hover {
+    font-weight: bold;
+    color: #ff3d00;
+}
+
+.sidebar-profile .sidebar li:hover{
+    background-color: #c8c5c5;
+}
+
+.poster-profile .poster {
+    width: 100%; 
+    height: 40vh; 
+    object-fit: cover; 
+    position: relative; 
+}
+.poster-profile .poster-text {
+    position: absolute; 
+    top: 35%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    color: white; 
+    font-size: 24px; 
+    text-align: center; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+.poster-profile strong {
+    font-weight: 900;
+    font-size: 45px;
+    text-transform: uppercase;
+    display: block;
+    color: #fff;
+    padding-left: 0;
+    padding-right: 0px;
+}
+
+.poster-profile p {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #fff;
+    padding-left: 0;
+    padding-right: 0px;
 }
 
 .user-profile hr {
@@ -315,55 +393,64 @@
 
 .user-profile .detail {
     margin-top: 20px;
+    margin-left: 100px;
 }
 
-.user-profile .detail h3 {
-    margin: 0;
-    font-size: 24px;
+.user-profile .legend{
+    margin: 0 0 25px;
+    padding: 0;
+    box-sizing: border-box;
+    float: none;
+    line-height: 1.2;
+    font-size: 2rem;
 }
 
-.user-profile table {
-    font-size: 20px;
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 30px;
-}
-
-.user-profile td {
-    padding: 10px;
-}
-
-.user-profile td:first-child {
-    font-weight: bold;
-    width: 150px;
-}
-
-.user-profile button{
-    width: 90px;
-    height: 35px;
-    background: black;
-    border: 2px solid #fff;
+.user-profile .dashboard{
+    border-top: 0;
+    border-bottom: 1px solid #ccc;
     outline: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.8sem;
-    color: #fff;
-    font-weight: 500;
-    margin-left: 40px;
-    transition: .5s;
-    margin: 20px;
-    margin-left: 50px;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    appearance: none;
+    box-sizing: border-box;
+    font-family: Gotham SSm A,Gotham SSm B,Arial,sans-serif;
+    font-style: normal;
+    font-size: 12px;
 }
 
-.user-profile button:hover{
-    background-color: gray;
-    border: none;
+.user-profile .dashboard ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 20px;
 }
 
-.user-profile button a{
-    background: transparent;
-    color: white;
-    text-decoration: none;
+.user-profile .dashboard ul li{
+    padding: 1px 5px;
+    flex-wrap: wrap;
+}
+
+.user-profile .dashboard ul li h3{
+    margin-bottom: 5px;
+    font-size: 21px;
+}
+
+.user-profile .dashboard ul li p{
+    margin: 0;
+    line-height: 18px;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
 }
 
 .edit-profile {
@@ -417,4 +504,65 @@
 
 .edit-profile input[type="submit"]:hover {
     background-color: #555;
+}
+
+.change-password {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.change-password h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.change-password hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.change-password form {
+    display: flex;
+    flex-direction: column;
+}
+
+.change-password label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.change-password input[type="password"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 0px 5px #ccc;
+}
+
+.change-password button[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.change-password button[type="submit"]:hover {
+    background-color: #555;
+}
+
+.change-password p.error {
+    color: #ff0000;
+    margin-top: 10px;
+}
+
+.change-password p.success {
+    color: #008000;
+    margin-top: 10px;
 }

@@ -47,6 +47,7 @@
                     <th>String Price</th>
                     <th>String Stock</th>
                     <th>String Detail</th>
+                    <th>String Image</th>
                     <th colspan="2">Action</th>
                 </tr>
                 <?php
@@ -61,6 +62,7 @@
                     <td><?php echo $row["string_price"]; ?></td>
                     <td><?php echo $row["string_stock"]; ?></td>
                     <td><?php echo $row["string_detail"]; ?></td>
+                    <td><?php echo $row["string_image"]; ?></td>
                     <td><a href="admin(string_edit).php?edit&stringid=<?php echo $row['string_id']; ?>">Edit</a></td>
                     <td><a href="admin(string).php?del&stringid=<?php echo $row['string_id']; ?>" onclick="return confirmation();">Delete</a></td>
                 </tr>

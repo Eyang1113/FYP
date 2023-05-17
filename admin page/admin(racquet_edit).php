@@ -24,7 +24,10 @@
                 <input type="number" name="stock" placeholder="Racquet Stock" min="1" value="<?php echo $row['racquet_stock']; ?>">
             <label>Racquet Detail</label>
                 <textarea cols="60" rows="4" name="detail" placeholder="Racquet Detail"><?php echo $row['racquet_detail']; ?></textarea>
+            <label>Racquet Name</label>
+                <input type="text" name="image" placeholder="Racquet Image" value="<?php echo $row['racquet_images']; ?>">
             <br><button type="submit" name="savebtn">Update Product</button>
+            <a href="admin(racquet).php" class="back">Back</a>
         </form>
         <?php
             }
@@ -38,7 +41,8 @@
         $nprice = $_POST["price"];
         $nstock = $_POST["stock"];
         $ndetail = $_POST["detail"];
-        mysqli_query($conn, "UPDATE racquet SET racquet_name='$nname', racquet_price='$nprice', racquet_stock='$nstock', racquet_detail='$ndetail' WHERE racquet_id=$racquetid");
+        $nimage = $_POST["image"];
+        mysqli_query($conn, "UPDATE racquet SET racquet_name='$nname', racquet_price='$nprice', racquet_stock='$nstock', racquet_detail='$ndetail', racquet_images='$nimage' WHERE racquet_id=$racquetid");
 ?>
 <script type="text/javascript">
     alert("Product Update");

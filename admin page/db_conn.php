@@ -1,13 +1,5 @@
 <?php
 
-$sname= "localhost";
-$unmae= "root";
-$password = "";
+$conn = mysqli_connect("localhost", "root", "", "fypro");
 
-$db_name = "fypro";
-
-$conn = mysqli_connect($sname, $unmae, $password, $db_name);
-
-if (!$conn) {
-	echo "Connection failed!";
-}
+?>
