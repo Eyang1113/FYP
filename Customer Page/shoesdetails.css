@@ -5,12 +5,13 @@
 }
 
 .title {
-	color: white;
+	color: black;
 	font-size: 48px;
 	margin-bottom: 20px;
 }
 
 .product-details {
+	color: black;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
