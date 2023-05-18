@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION['loggedin'])) {
 	echo "<script>alert('Please login first!');</script>";
-	header('Location: index.php');
+	echo "<script>window.location.href = 'index.php';</script>";
 	exit;
 }
 $DATABASE_HOST = 'localhost';

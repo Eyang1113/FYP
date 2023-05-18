@@ -1,12 +1,17 @@
 <?php
 include("fyprodbconnection.php");
 session_start();
-$user_id = $_SESSION['id'];
+
 if (!isset($_SESSION['loggedin'])) {
-	include("header.php");
+    echo "<script>alert('Please login first!');</script>";
+    echo "<script>window.location.href = 'index.php';</script>";
+	exit;
 }
-else
-	include("header(loggedin).php");
+else{
+    include("header(loggedin).php");
+    $user_id = $_SESSION['id'];
+}
+	
 
 // Handle remove from cart form submission
 if(isset($_POST['remove_from_cart'])) {

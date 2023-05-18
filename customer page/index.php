@@ -17,11 +17,11 @@
                 <div class="dropdown-menu">
                     <ul>
                         <li><a href="Racquet.php">Racquet</a></li>
-                        <li><a href="">Shuttlecock</a></li>
-                        <li><a href="#">String</a></li>
-                        <li><a href="#">Shoes</a></li>
-                        <li><a href="#">Clothes</a></li>
-                        <li><a href="#">Bag</a></li>
+                        <li><a href="shuttlecock.php">Shuttlecock</a></li>
+                        <li><a href="string.php">String</a></li>
+                        <li><a href="shoeslist.php">Shoes</a></li>
+                        <li><a href="clothes.php">Clothes</a></li>
+                        <li><a href="bag.php">Bag</a></li>
                     </ul>
                 </div>
                 <li><a href="#">Athlete</a></li>

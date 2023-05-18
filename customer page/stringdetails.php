@@ -58,7 +58,7 @@ if(isset($_GET['string_id'])) {
                     <input type="hidden" name="product_price" value="<?php echo $string_price; ?>">
                     <input type="hidden" name="product_image" value="<?php echo $string_image; ?>">
                     <input type="number" name="quantity" value="1" min="1" required>
-                    <button class="add-to-cart" type="submit" name="add_to_cart" onclick="showAlert()">Add to Cart</button>
+                    <button class="add-to-cart" type="submit" name="add_to_cart">Add to Cart</button>
                 </form>
             </div>
         </div>

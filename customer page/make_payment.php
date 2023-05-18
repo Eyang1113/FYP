@@ -73,8 +73,9 @@ if (isset($_POST['make_payment'])) {
     <link rel="stylesheet" href="make_payment.css?<?php echo time(); ?>">
 </head>
 <body>
-    <h1>Make Payment</h1>
+    
     <div class="payment-details">
+        <h1>Make Payment</h1>
         <h2>Order Summary</h2>
         <table>
             <thead>

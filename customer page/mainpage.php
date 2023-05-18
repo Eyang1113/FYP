@@ -1,7 +1,6 @@
 <?php
 session_start();
 if (!isset($_SESSION['loggedin'])) {
-	echo "<script>alert('Please login first!');</script>";
 	header('Location: index.php');
 	exit;
 }
