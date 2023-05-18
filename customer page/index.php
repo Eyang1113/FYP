@@ -24,7 +24,7 @@
                         <li><a href="bag.php">Bag</a></li>
                     </ul>
                 </div>
-                <li><a href="#">Athlete</a></li>
+                <li><a href="Athlete.php">Athlete</a></li>
                 <li><a href="Aboutus.php">About Us</a></li>
                 <li>
                     <form>
