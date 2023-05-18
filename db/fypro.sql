@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2023 at 07:18 PM
+-- Generation Time: May 17, 2023 at 10:42 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -87,7 +87,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `product_id`, `product_name`, `product_price`, `product_image`, `quantity`, `total_price`, `user_id`) VALUES
-(49, 4, 'RSL Classic Tourney No. 3', '60.00', 'image/RSL Classic Tourney No. 3.jpg', 5, '300.00', 6);
+(12, 5, 'Yonex Astrox 99', '825.00', 'image/yonex-astrox-99.jpg', 1, '825.00', 5);
 
 -- --------------------------------------------------------
 
@@ -138,9 +138,7 @@ INSERT INTO `loginhistory` (`id`, `username`, `name`, `email`, `time`) VALUES
 (5, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-14 17:52:50'),
 (6, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-15 14:44:07'),
 (7, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-15 14:59:07'),
-(8, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-15 18:20:00'),
-(9, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-17 16:55:08'),
-(10, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-17 19:42:22');
+(8, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-15 18:20:00');
 
 -- --------------------------------------------------------
 
@@ -166,9 +164,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `order_date`, `order_total_price`, `customer_name`, `customer_number`, `order_item`, `customer_address`, `payment_method`, `payment_status`, `user_id`) VALUES
-(20, '2023-05-18', 280, 'Jay', '0167869985', 'Yonex AS-50 - RM 70.00 x 4 = RM 280.00\n', '12, Jalan Nilai 20, Taman Murni', 'VISA', 'PENDING', 6),
-(21, '2023-05-18', 150, 'Jay', '0183882392', 'Yonex Clothes - RM 150.00 x 1 = RM 150.00\n', '12, Jalan Nibong 54', 'FPX', 'PENDING', 6),
-(22, '2023-05-18', 400, 'Alex', '0183882392', 'Yonex Badminton Bag 01 - RM 200.00 x 2 = RM 400.00\n', '15, Jalan Rose 23', 'FPX', 'PENDING', 8);
+(10, '2023-05-17', 2475, 'Si', '0183882392', 'Yonex Astrox 99 - RM 825.00 x 3 = RM 2,475.00\n', '12, Jalan Nibong', 'TNG', 'PENDING', 3),
+(11, '2023-05-17', 1565, 'Jay', '0183882392', 'Yonex Astrox 99 - RM 825.00 x 1 = RM 825.00\nVictor Jetspeed S 12 - RM 740.00 x 1 = RM 740.00\n', '12, Jalan Nibong', 'FPX', 'COMPLETE', 5);
 
 -- --------------------------------------------------------
 
@@ -374,10 +371,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`user_id`, `username`, `email`, `contact`, `password`, `address`) VALUES
 (3, 'user1', 'user1@gmail.com', '', '5ebce7d6811d66582777a8f2e109815f', ''),
 (4, 'user', 'user@gmail.com', '', '$2y$10$p/OLSsu9Q9Hjcf6zKY44xeEq.Z9Qh0/IcHENdj1VVXdlxYpNWPfda', ''),
-(5, 'JaydenSi', 'jay@gmail.com', '013-2456789', '5ebce7d6811d66582777a8f2e109815f', '12, Jalan Hari 23, Taman Bulan, 81100'),
-(6, 'Jayden', 'jayden@gmail.com', '', '$2y$10$BWRzW5EqhnpzlhExUWoCGOCFNXbc7YfzzTS/1uGC3n/54SnLxo1ru', ''),
-(7, 'Si', 'Si@gmail.com', '', '$2y$10$P4adAqbTb6LC6Iqp3c1pF.AUR9nwCa3zun/rtRUspIPtr6D17f7.S', ''),
-(8, 'User8', 'user8@gmail.com', '', '$2y$10$pEEAWpoF8ECpdLPCXWXcRejpWiHK2c9VMOTzYyp5q.WPhWzktU57i', '');
+(5, 'JaydenSi', 'jay@gmail.com', '013-2456789', '5ebce7d6811d66582777a8f2e109815f', '12, Jalan Hari 23, Taman Bulan, 81100');
 
 --
 -- Indexes for dumped tables
@@ -505,7 +499,7 @@ ALTER TABLE `bag`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `clothes`
@@ -517,13 +511,13 @@ ALTER TABLE `clothes`
 -- AUTO_INCREMENT for table `loginhistory`
 --
 ALTER TABLE `loginhistory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `racquet`
@@ -589,7 +583,7 @@ ALTER TABLE `supply receipt`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
