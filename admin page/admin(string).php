@@ -36,10 +36,15 @@
         <div class="contentR">
             <h2>String List</h2>
             <hr><br>
-            <div class="addbtn">
-                <button onclick="document.location='admin(string_add).php'">Add String</button>
+            <div class="actions">
+                <form method="GET" action="admin(string).php">
+                    <div class="search-form">
+                        <input type="text" name="search" placeholder="Search by String Name" class="search-input">
+                        <button type="submit" class="search-button">Search</button>
+                    </div>
+                </form>
+                <button class="add-button" onclick="document.location='admin(string_add).php'">Add String</button>
             </div>
-            <br><br><br>
             <table>
                 <tr>
                     <th>String ID</th>
@@ -52,9 +57,16 @@
                 </tr>
                 <?php
                     mysqli_select_db($conn, "fypro");
-                    $result = mysqli_query($conn, "SELECT * FROM string");	
+                    $search = isset($_GET['search']) ? $_GET['search'] : '';
+                    $query = "SELECT * FROM string WHERE string_name LIKE '%$search%'";
+                    $result = mysqli_query($conn, $query);
                     $count = mysqli_num_rows($result);
-                    while($row = mysqli_fetch_assoc($result)){
+                    
+                    if ($count == 0) {
+                        echo "<tr><td colspan='8'>No results found.</td></tr>";
+                    } 
+                    else{
+                        while($row = mysqli_fetch_assoc($result)){
                 ?>
                 <tr>
                     <td><?php echo $row["string_id"]; ?></td>
@@ -68,6 +80,7 @@
                 </tr>
                 <?php
                     }
+                }
                 ?>
             </table>
         </div>

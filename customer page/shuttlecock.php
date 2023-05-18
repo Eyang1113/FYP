@@ -13,7 +13,7 @@ else
 <html>
 <head>
 	<title>Shuttlecock List</title>
-	<link rel="stylesheet" href="shuttlecock.css">
+	<link rel="stylesheet" href="shuttlecock.css?v=<?php echo time(); ?>">
 </head>
 <body>
 	<div class="container">

@@ -13,7 +13,7 @@ else
 <html>
 <head>
 	<title>Racquet List</title>
-	<link rel="stylesheet" href="racquetlist.css">
+	<link rel="stylesheet" href="racquetlist.css?v=<?php echo time(); ?>">
 </head>
 <body>
 	<div class="container">

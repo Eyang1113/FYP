@@ -13,7 +13,7 @@ else
 <html>
 <head>
 	<title>Clothes List</title>
-	<link rel="stylesheet" href="clothes.css">
+	<link rel="stylesheet" href="clothes.css?v=<?php echo time(); ?>">
 </head>
 <body>
 	<div class="container">

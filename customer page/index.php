@@ -16,7 +16,7 @@
                 <li><a href="#">Product</a>
                 <div class="dropdown-menu">
                     <ul>
-                        <li><a href="Racquet.php">Racquet</a></li>
+                        <li><a href="racquetlist.php">Racquet</a></li>
                         <li><a href="shuttlecock.php">Shuttlecock</a></li>
                         <li><a href="string.php">String</a></li>
                         <li><a href="shoeslist.php">Shoes</a></li>
@@ -24,7 +24,7 @@
                         <li><a href="bag.php">Bag</a></li>
                     </ul>
                 </div>
-                <li><a href="#">Athlete</a></li>
+                <li><a href="Athlete.php">Athlete</a></li>
                 <li><a href="Aboutus.php">About Us</a></li>
                 <li>
                     <form>

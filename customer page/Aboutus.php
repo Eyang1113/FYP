@@ -34,8 +34,8 @@ else
                         <li>Birthday      : </li>
                         <li>Company Name  : Fypro</li>
                         <li>Contact No    : 06-2523826</li>
-                        <li>Email address : </li>
-                        <li>Instagram     : liyana.rosli@mmu.edu.my</li>
+                        <li>Email address : liyana.rosli@mmu.edu.my</li>
+                        <li>Instagram     : </li>
                     </ul>
                 </div>
         </div>
