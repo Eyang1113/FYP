@@ -28,6 +28,9 @@
                 <tr>
                     <td><a href="admin(shuttlecock).php">SHUTTLECOCK</a></td>
                 </tr>
+                <tr>
+                    <td><a href="admin(archive).php">ARCHIVED PRODUCT</a></td>
+                </tr>
             </table>
         </div>
     </div>
@@ -53,7 +56,7 @@
                     <th>Racquet Stock</th>
                     <th>Racquet Detail</th>
                     <th>Racquet Image</th>
-                    <th colspan="2">Action</th>
+                    <th>Action</th>
                 </tr>
                 <?php
                     mysqli_select_db($conn, "fypro");
@@ -75,8 +78,7 @@
                     <td><?php echo $row["racquet_stock"]; ?></td>
                     <td><?php echo $row["racquet_detail"]; ?></td>
                     <td><?php echo $row["racquet_images"]; ?></td>
-                    <td><a href="admin(racquet_edit).php?edit&racquetid=<?php echo $row['racquet_id']; ?>">Edit</a></td>
-                    <td><a href="admin(racquet).php?del&racquetid=<?php echo $row['racquet_id']; ?>" onclick="return confirmation();">Delete</a></td>
+                    <td><a href="admin(racquet_edit).php?edit&racquetid=<?php echo $row['racquet_id']; ?>">More</a></td>
                 </tr>
                 <?php
                     }
@@ -87,15 +89,3 @@
     </div>
 </body>
 </html>
-<script type="text/javascript">
-    function confirmation(){
-        answer = confirm("Do you want to delete this racquet?");
-        return answer;
-    }
-</script>
-<?php
-    if(isset($_REQUEST["del"])){
-        $racquetid = $_REQUEST["racquetid"];
-        mysqli_query($conn, "DELETE FROM racquet WHERE racquet_id = $racquetid");
-        header("Location: admin(racquet).php");
-    }

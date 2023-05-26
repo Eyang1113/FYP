@@ -29,9 +29,6 @@ if (isset($_POST['op']) && isset($_POST['np'])
       header("Location: admin(change-password).php?error=The confirmation password  does not match");
 	  exit();
     }else {
-    	// hashing the password
-    	$op = md5($op);
-    	$np = md5($np);
         $admin_id = $_SESSION['admin_id'];
 
         $sql = "SELECT *

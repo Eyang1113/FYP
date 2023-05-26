@@ -32,7 +32,10 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['admin_name'])) {
 			<label>New Password</label>
 			<input type="password" 
 				name="np" 
-				placeholder="New Password">
+				placeholder="New Password"
+				pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+				required>
 				<br>
 
 			<label>Confirm New Password</label>

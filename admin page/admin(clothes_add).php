@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="body">
-        <form name="addfrm" method="post" action="">
+        <form name="addfrm" method="post" action="" enctype="multipart/form-data">
             <h2>Add Clothes</h2>
             <label>Clothes Name</label>
                 <input type="text" name="name" placeholder="Clothes Name" required>
@@ -18,7 +18,7 @@
             <label>Clothes Detail</label>
                 <textarea cols="60" rows="4" name="detail" placeholder="Clothes Detail" required></textarea>
             <label>Clothes Image</label>
-                <input type="text" name="image" placeholder="Clothes Image" required>
+                <input type="file" name="image" accept="image/*" required>
             <br><button type="submit" name="savebtn">Add Clothes</button>
             <a href="admin(clothes).php" class="back">Back</a>
         </form>
@@ -31,7 +31,16 @@
         $nprice = $_POST["price"];
         $nstock = $_POST["stock"];
         $ndetail = $_POST["detail"];
-        $nimage = $_POST["image"];
+        // Check if a new image file was uploaded
+        if(isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            $file = $_FILES['image'];
+            $imagePath = 'image/' . $file['name'];
+            move_uploaded_file($file['tmp_name'], $imagePath);
+            $nimage = $imagePath;
+        } else {
+            // No new image uploaded, retain the existing image path
+            $nimage = $row['image'];
+        }
         mysqli_query($conn, "INSERT INTO clothes (clothes_name, clothes_price, clothes_stock, clothes_detail, clothes_image)
                                         VALUES ('$nname', '$nprice', '$nstock', '$ndetail', '$nimage')");
 ?>

@@ -24,16 +24,17 @@
             <p>Total Price : <span><?php echo $row["order_total_price"]; ?></span></p>
             <p>Payment Method : <span><?php echo $row["payment_method"]; ?></span></p>
             <input type="hidden" name="order_id" value="<?= $row['order_id']; ?>">
-            <select name="payment_status" class="select">
-                <option selected disabled><?= $row['payment_status']; ?></option>
+            <select name="delivery_status" class="select">
+                <option selected disabled><?= $row['delivery_status']; ?></option>
                 <option value="PENDING"><b>PENDING</b></option>
                 <option value="COMPLETE"><b>COMPLETE</b></option>
             </select>
             <br>
             <div class=buttons>
                 <button type="submit" name="savebtn" class="update"><b>Update Status</b></button><br><br>
-                <button type="submit"  onclick="return confirmation();" name="del" class="delete"><b>Delete</b></button><br><br>
-                <button type="submit" name="back" class="bk"><b>Back</b></button>
+                <button type="submit" onclick="return confirmation();" name="archivebtn" class="archive"><b>Archive</b></button><br><br>
+                <button type="submit" name="generatepdf" class="generatepdf" formaction="generatepdf.php" formtarget="_blank"><b>Generate PDF</b></button><br><br>
+                <a href="admin(order).php" class="bk"><b>Back</b></a>
             </div>
         </form>
     <?php
@@ -42,36 +43,45 @@
     </div>
 </body>
 </html>
+
 <?php
 if (isset($_POST["savebtn"])) {
     $orderid = $_POST["order_id"];
-    $nstatus = $_POST["payment_status"];
-    mysqli_query($conn, "UPDATE orders SET payment_status='$nstatus' WHERE order_id=$orderid");
+    $nstatus = $_POST["delivery_status"];
+    mysqli_query($conn, "UPDATE orders SET delivery_status='$nstatus' WHERE order_id=$orderid");
     ?>
     <script type="text/javascript">
-        alert("Status Update");
+        alert("Status Updated");
+        window.location.href = "admin(order).php";
     </script>
     <?php
-    header("refresh:0.1; url=admin(order).php");
 }
-?>
 
-<script type="text/javascript">
-            function confirmation(){
-                answer = confirm("Do you want to delete this order?");
-                return answer;
-            }
-    </script>
-<?php
-if (isset($_POST["del"])) {
-    $orderid = $_REQUEST["order_id"];
+if (isset($_POST["archivebtn"])) {
+    $orderid = $_POST["order_id"];
+
+    $result = mysqli_query($conn, "SELECT * FROM orders WHERE order_id=$orderid");
+    $row = mysqli_fetch_assoc($result);
+    $archiveDate = $row["order_date"];
+    $archiveName = $row["customer_name"];
+    $archiveNumber = $row["customer_number"];
+    $archiveAddress = $row["customer_address"];
+    $archiveItem = $row["order_item"];
+    $archiveTotalPrice = $row["order_total_price"];
+    $archivePaymentMethod = $row["payment_method"];
+
+    mysqli_query($conn, "INSERT INTO archive_order (order_date, customer_name, customer_number, customer_address, order_item, order_total_price, payment_method) VALUES ('$archiveDate', '$archiveName', '$archiveNumber', '$archiveAddress', '$archiveItem', '$archiveTotalPrice', '$archivePaymentMethod')");
     mysqli_query($conn, "DELETE FROM orders WHERE order_id = $orderid");
-    header("refresh:0.1; url=admin(order).php");
+    ?>
+    <script type="text/javascript">
+        alert("Order Archived");
+        window.location.href = "admin(order).php";
+    </script>
+    <?php
 }
 ?>
-
-<?php
-if (isset($_POST["back"])) {
-    header("refresh:0.1; url=admin(order).php");
-}
-?>
+<script type="text/javascript">
+    function confirmation(){
+        return confirm("Do you want to archive this order?");
+    }
+</script>

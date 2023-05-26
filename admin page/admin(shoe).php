@@ -28,6 +28,9 @@
                 <tr>
                     <td><a href="admin(shuttlecock).php">SHUTTLECOCK</a></td>
                 </tr>
+                <tr>
+                    <td><a href="admin(archive).php">ARCHIVED PRODUCT</a></td>
+                </tr>
             </table>
         </div>
     </div>
@@ -53,7 +56,7 @@
                     <th>Shoe Stock</th>
                     <th>Shoe Detail</th>
                     <th>Shoe Image</th>
-                    <th colspan="2">Action</th>
+                    <th>Action</th>
                 </tr>
                 <?php
                     mysqli_select_db($conn, "fypro");
@@ -75,8 +78,7 @@
                     <td><?php echo $row["shoe_stock"]; ?></td>
                     <td><?php echo $row["shoe_detail"]; ?></td>
                     <td><?php echo $row["shoes_images"]; ?></td>
-                    <td><a href="admin(shoe_edit).php?edit&shoeid=<?php echo $row['shoe_id']; ?>">Edit</a></td>
-                    <td><a href="admin(shoe).php?del&shoeid=<?php echo $row['shoe_id']; ?>" onclick="return confirmation();">Delete</a></td>
+                    <td><a href="admin(shoe_edit).php?edit&shoeid=<?php echo $row['shoe_id']; ?>">More</a></td>
                 </tr>
                 <?php
                     }
@@ -87,15 +89,3 @@
     </div>
 </body>
 </html>
-<script type="text/javascript">
-    function confirmation(){
-        answer = confirm("Do you want to delete this shoe?");
-        return answer;
-    }
-</script>
-<?php
-    if(isset($_REQUEST["del"])){
-        $shoeid = $_REQUEST["shoeid"];
-        mysqli_query($conn, "DELETE FROM shoe WHERE shoe_id = $shoeid");
-        header("Location: admin(shoe).php");
-    }

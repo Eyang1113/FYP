@@ -28,6 +28,9 @@
                 <tr>
                     <td><a href="admin(shuttlecock).php">SHUTTLECOCK</a></td>
                 </tr>
+                <tr>
+                    <td><a href="admin(archive).php">ARCHIVED PRODUCT</a></td>
+                </tr>
             </table>
         </div>
     </div>
@@ -53,7 +56,7 @@
                     <th>String Stock</th>
                     <th>String Detail</th>
                     <th>String Image</th>
-                    <th colspan="2">Action</th>
+                    <th>Action</th>
                 </tr>
                 <?php
                     mysqli_select_db($conn, "fypro");
@@ -75,8 +78,7 @@
                     <td><?php echo $row["string_stock"]; ?></td>
                     <td><?php echo $row["string_detail"]; ?></td>
                     <td><?php echo $row["string_image"]; ?></td>
-                    <td><a href="admin(string_edit).php?edit&stringid=<?php echo $row['string_id']; ?>">Edit</a></td>
-                    <td><a href="admin(string).php?del&stringid=<?php echo $row['string_id']; ?>" onclick="return confirmation();">Delete</a></td>
+                    <td><a href="admin(string_edit).php?edit&stringid=<?php echo $row['string_id']; ?>">More</a></td>
                 </tr>
                 <?php
                     }
@@ -87,15 +89,3 @@
     </div>
 </body>
 </html>
-<script type="text/javascript">
-    function confirmation(){
-        answer = confirm("Do you want to delete this string?");
-        return answer;
-    }
-</script>
-<?php
-    if(isset($_REQUEST["del"])){
-        $stringid = $_REQUEST["stringid"];
-        mysqli_query($conn, "DELETE FROM string WHERE string_id = $stringid");
-        header("Location: admin(string).php");
-    }

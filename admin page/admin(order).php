@@ -18,7 +18,7 @@
                     <th>Order Date</th>
                     <th>Customer Name</th>
                     <th>Customer Contact</th>
-                    <th>Payment Status</th>
+                    <th>Delivery Status</th>
                     <th>Action</th>
                 </tr>
                 <?php
@@ -32,7 +32,7 @@
                     <td><?php echo $row["order_date"]; ?></td>
                     <td><?php echo $row["customer_name"]; ?></td>
                     <td><?php echo $row["customer_number"]; ?></td>
-                    <td><?php echo $row["payment_status"]; ?></td>
+                    <td><?php echo $row["delivery_status"]; ?></td>
                     <td><a href="admin(order_detail).php?detail&orderid=<?php echo $row['order_id']; ?>">View Detail</a></td></td>
                 </tr>
                 <?php

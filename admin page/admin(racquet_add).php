@@ -18,7 +18,7 @@
             <label>Racquet Detail</label>
                 <textarea cols="60" rows="4" name="detail" placeholder="Racquet Detail" required></textarea>
             <label>Racquet Image</label>
-                <input type="text" name="image" placeholder="Racquet Image" required>
+                <input type="file" name="image" accept="image/*" required>
             <br><button type="submit" name="savebtn">Add Racquet</button>
             <a href="admin(racquet).php" class="back">Back</a>
         </form>
@@ -31,7 +31,19 @@
         $nprice = $_POST["price"];
         $nstock = $_POST["stock"];
         $ndetail = $_POST["detail"];
-        $nimage = $_POST["image"];
+        // Check if a new image file was uploaded
+        if(isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            $file = $_FILES['image'];
+            $imagePath = 'image/' . $file['name'];
+            move_uploaded_file($file['tmp_name'], $imagePath);
+            $nimage = $imagePath;
+        } else {
+            // No image uploaded, prompt the user to choose one
+            echo '<script type="text/javascript">';
+            echo 'alert("Please choose an image");';
+            echo '</script>';
+            exit; // Stop further execution
+        }
         mysqli_query($conn, "INSERT INTO racquet (racquet_name, racquet_price, racquet_stock, racquet_detail, racquet_images)
                                         VALUES ('$nname', '$nprice', '$nstock', '$ndetail', '$nimage')");
 ?>

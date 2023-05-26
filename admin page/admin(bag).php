@@ -28,6 +28,9 @@
                 <tr>
                     <td><a href="admin(shuttlecock).php">SHUTTLECOCK</a></td>
                 </tr>
+                <tr>
+                    <td><a href="admin(archive).php">ARCHIVED PRODUCT</a></td>
+                </tr>
             </table>
         </div>
     </div>
@@ -53,7 +56,7 @@
                     <th>Bag Stock</th>
                     <th>Bag Detail</th>
                     <th>Bag Image</th>
-                    <th colspan="2">Action</th>
+                    <th>Action</th>
                 </tr>
                 <?php
                     mysqli_select_db($conn, "fypro");
@@ -75,8 +78,7 @@
                     <td><?php echo $row["bag_stock"]; ?></td>
                     <td><?php echo $row["bag_detail"]; ?></td>
                     <td><?php echo $row["bag_image"]; ?></td>
-                    <td><a href="admin(bag_edit).php?edit&bagid=<?php echo $row['bag_id']; ?>">Edit</a></td>
-                    <td><a href="superadmin(bag).php?del&bagid=<?php echo $row['bag_id']; ?>" onclick="return confirmation();">Delete</a></td>
+                    <td><a href="admin(bag_edit).php?edit&bagid=<?php echo $row['bag_id']; ?>">More</a></td>
                 </tr>
                 <?php
                     }
@@ -87,17 +89,3 @@
     </div>
 </body>
 </html>
-<script type="text/javascript">
-        function confirmation(){
-            answer = confirm("Do you want to delete this bag?");
-            return answer;
-        }
-</script>
-<?php
-if(isset($_REQUEST["del"])){
-        $bagid = $_REQUEST["bagid"];
-        mysqli_query($conn, "DELETE FROM bag WHERE bag_id = $bagid");
-        header("Location: superadmin(bag).php");
-        exit;
-    }
-?>
