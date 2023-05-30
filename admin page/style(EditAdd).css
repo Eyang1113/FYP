@@ -83,8 +83,9 @@ button:hover{
     border: 1px solid black;
     border-radius: 10px;
     color: black;
+    font-family: 'Times New Roman', Times, serif;
 }
-.delete{
+.archive{
     float: left;
     margin-left: 25%;
     height: 35px;
@@ -93,8 +94,20 @@ button:hover{
     border: 1px solid black;
     border-radius: 10px;
     color: black;
+    font-family: 'Times New Roman', Times, serif;
 }
-.bk{
+.generatepdf{
+    float: left;
+    margin-left: 25%;
+    height: 35px;
+    width: 50%;
+    background: green;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+.bk {
     float: left;
     margin-left: 25%;
     height: 35px;
@@ -103,7 +116,14 @@ button:hover{
     border: 1px solid black;
     border-radius: 10px;
     color: black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
 }
+
 span{
     color: brown;
 }

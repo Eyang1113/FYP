@@ -28,6 +28,9 @@
                 <tr>
                     <td><a href="admin(shuttlecock).php">SHUTTLECOCK</a></td>
                 </tr>
+                <tr>
+                    <td><a href="admin(archive).php">ARCHIVED PRODUCT</a></td>
+                </tr>
             </table>
         </div>
     </div>
@@ -36,10 +39,15 @@
         <div class="contentR">
             <h2>Racquet List</h2>
             <hr><br>
-            <div class="addbtn">
-                <button onclick="document.location='admin(racquet_add).php'">Add Racquet</button>
+            <div class="actions">
+                <form method="GET" action="admin(racquet).php">
+                    <div class="search-form">
+                        <input type="text" name="search" placeholder="Search by Racquet Name" class="search-input">
+                        <button type="submit" class="search-button">Search</button>
+                    </div>
+                </form>
+                <button class="add-button" onclick="document.location='admin(racquet_add).php'">Add Racquet</button>
             </div>
-            <br><br><br>
             <table>
                 <tr>
                     <th>Racquet ID</th>
@@ -48,13 +56,20 @@
                     <th>Racquet Stock</th>
                     <th>Racquet Detail</th>
                     <th>Racquet Image</th>
-                    <th colspan="2">Action</th>
+                    <th>Action</th>
                 </tr>
                 <?php
                     mysqli_select_db($conn, "fypro");
-                    $result = mysqli_query($conn, "SELECT * FROM racquet");	
+                    $search = isset($_GET['search']) ? $_GET['search'] : '';
+                    $query = "SELECT * FROM racquet WHERE racquet_name LIKE '%$search%'";
+                    $result = mysqli_query($conn, $query);
                     $count = mysqli_num_rows($result);
-                    while($row = mysqli_fetch_assoc($result)){
+                    
+                    if ($count == 0) {
+                        echo "<tr><td colspan='8'>No results found.</td></tr>";
+                    } 
+                    else{
+                        while($row = mysqli_fetch_assoc($result)){
                 ?>
                 <tr>
                     <td><?php echo $row["racquet_id"]; ?></td>
@@ -63,26 +78,14 @@
                     <td><?php echo $row["racquet_stock"]; ?></td>
                     <td><?php echo $row["racquet_detail"]; ?></td>
                     <td><?php echo $row["racquet_images"]; ?></td>
-                    <td><a href="admin(racquet_edit).php?edit&racquetid=<?php echo $row['racquet_id']; ?>">Edit</a></td>
-                    <td><a href="admin(racquet).php?del&racquetid=<?php echo $row['racquet_id']; ?>" onclick="return confirmation();">Delete</a></td>
+                    <td><a href="admin(racquet_edit).php?edit&racquetid=<?php echo $row['racquet_id']; ?>">More</a></td>
                 </tr>
                 <?php
                     }
+                }
                 ?>
             </table>
         </div>
     </div>
 </body>
 </html>
-<script type="text/javascript">
-    function confirmation(){
-        answer = confirm("Do you want to delete this racquet?");
-        return answer;
-    }
-</script>
-<?php
-    if(isset($_REQUEST["del"])){
-        $racquetid = $_REQUEST["racquetid"];
-        mysqli_query($conn, "DELETE FROM racquet WHERE racquet_id = $racquetid");
-        header("Location: admin(racquet).php");
-    }

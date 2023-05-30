@@ -13,7 +13,7 @@ else
 <html>
 <head>
 	<title>String List</title>
-	<link rel="stylesheet" href="string.css">
+	<link rel="stylesheet" href="string.css?v=<?php echo time(); ?>">
 </head>
 <body>
 	<div class="container">

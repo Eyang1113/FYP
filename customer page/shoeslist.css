@@ -2,6 +2,7 @@
 	margin: 0 auto;
 	max-width: 1200px;
 	padding: 20px;
+	background-color: black;
 }
 
 .title {
@@ -30,15 +31,8 @@
 	overflow: hidden;
 }
 
-.product-image-front {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-
 .product-image-back {
-	position: absolute;
+    position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -46,9 +40,20 @@
 	object-fit: cover;
 	transform: rotateY(180deg);
 	transition: transform 0.5s;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
-.product-image:hover .product-image-back {
+.product-image-front {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.product-image:hover .product-image-front {
 	transform: rotateY(0deg);
 }
 

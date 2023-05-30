@@ -28,6 +28,9 @@
                 <tr>
                     <td><a href="admin(shuttlecock).php">SHUTTLECOCK</a></td>
                 </tr>
+                <tr>
+                    <td><a href="admin(archive).php">ARCHIVED PRODUCT</a></td>
+                </tr>
             </table>
         </div>
     </div>
@@ -36,10 +39,15 @@
         <div class="contentR">
             <h2>Bag List</h2>
             <hr><br>
-            <div class="addbtn">
-                <button onclick="document.location='admin(bag_add).php'">Add Bag</button>
+            <div class="actions">
+                <form method="GET" action="admin(bag).php">
+                    <div class="search-form">
+                        <input type="text" name="search" placeholder="Search by Bag Name" class="search-input">
+                        <button type="submit" class="search-button">Search</button>
+                    </div>
+                </form>
+                <button class="add-button" onclick="document.location='admin(bag_add).php'">Add Bag</button>
             </div>
-            <br><br><br>
             <table>
                 <tr>
                     <th>Bag ID</th>
@@ -48,13 +56,20 @@
                     <th>Bag Stock</th>
                     <th>Bag Detail</th>
                     <th>Bag Image</th>
-                    <th colspan="2">Action</th>
+                    <th>Action</th>
                 </tr>
                 <?php
                     mysqli_select_db($conn, "fypro");
-                    $result = mysqli_query($conn, "SELECT * FROM bag");	
+                    $search = isset($_GET['search']) ? $_GET['search'] : '';
+                    $query = "SELECT * FROM bag WHERE bag_name LIKE '%$search%'";
+                    $result = mysqli_query($conn, $query);
                     $count = mysqli_num_rows($result);
-                    while($row = mysqli_fetch_assoc($result)){
+                    
+                    if ($count == 0) {
+                        echo "<tr><td colspan='8'>No results found.</td></tr>";
+                    } 
+                    else{
+                        while($row = mysqli_fetch_assoc($result)){
                 ?>
                 <tr>
                     <td><?php echo $row["bag_id"]; ?></td>
@@ -63,28 +78,14 @@
                     <td><?php echo $row["bag_stock"]; ?></td>
                     <td><?php echo $row["bag_detail"]; ?></td>
                     <td><?php echo $row["bag_image"]; ?></td>
-                    <td><a href="admin(bag_edit).php?edit&bagid=<?php echo $row['bag_id']; ?>">Edit</a></td>
-                    <td><a href="superadmin(bag).php?del&bagid=<?php echo $row['bag_id']; ?>" onclick="return confirmation();">Delete</a></td>
+                    <td><a href="admin(bag_edit).php?edit&bagid=<?php echo $row['bag_id']; ?>">More</a></td>
                 </tr>
                 <?php
                     }
+                }
                 ?>
             </table>
         </div>
     </div>
 </body>
 </html>
-<script type="text/javascript">
-        function confirmation(){
-            answer = confirm("Do you want to delete this bag?");
-            return answer;
-        }
-</script>
-<?php
-if(isset($_REQUEST["del"])){
-        $bagid = $_REQUEST["bagid"];
-        mysqli_query($conn, "DELETE FROM bag WHERE bag_id = $bagid");
-        header("Location: superadmin(bag).php");
-        exit;
-    }
-?>

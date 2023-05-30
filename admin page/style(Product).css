@@ -1,86 +1,136 @@
-/*  Page  */
-body{
+/* Page */
+body {
     width: 100%;
     background: lightgray;
 }
-div.left{
-    width: 20%; 
-    height: 100%; 
-    float: left; 
+
+div.left {
+    width: 20%;
+    height: 100%;
+    float: left;
 }
-div.right{
-    margin-left: 20%; 
-    height: 100%; 
+
+div.right {
+    margin-left: 20%;
+    height: 100%;
 }
-/*  Content on the Right   */
-div.contentR{
+
+/* Content on the Right */
+div.contentR {
     margin: auto;
     width: 85%;
     padding-top: 5%;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
 }
-.contentR hr{
+
+.contentR hr {
     border-top: 2px solid black;
 }
-.contentR table{
+
+.contentR table {
     width: 100%;
     border-collapse: collapse;
     border: 2px solid black;
 }
-.contentR th{
+
+.contentR th {
     border: 2px solid black;
     background-color: lightblue;
     padding: 10px;
 }
-.contentR td{
+
+.contentR td {
     border: 2px solid black;
     background-color: white;
     padding: 10px;
 }
-.contentR h2{
+
+.contentR h2 {
     padding: 10px;
 }
-/*  Content on the Left */
-div.contentL{
+
+/* Content on the Left */
+div.contentL {
     padding-top: 20.8%;
     float: right;
     font-family: Arial, Helvetica, sans-serif;
 }
-.contentL table{
+
+.contentL table {
     width: 100%;
     border-collapse: collapse;
     border: 2px solid black;
 }
-.contentL td{
+
+.contentL td {
     padding: 15px;
     color: black;
 }
-.contentL a{
+
+.contentL a {
     text-decoration: none;
     color: rgb(38, 38, 38);
     padding: 5px 0;
     position: relative;
 }
-.contentL a:hover{
+
+.contentL a:hover {
     color: black;
     font-weight: bold;
     text-decoration: underline;
 }
-.contentL h2{
+
+.contentL h2 {
     padding: 10px;
 }
 
-/*  Button  */
-button {
-	float: left;
-	background: #555;
-	padding: 10px 15px;
-	color: #fff;
-	border-radius: 5px;
-	margin-right: 10px;
-	border: none;
+/* Button */
+.add-button {
+    float: right;
+    background: #555;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    margin-left: 10px;
 }
-button:hover{
-	opacity: .7;
+
+.add-button:hover {
+    opacity: 0.7;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    float: right;
+}
+
+.search-input {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    width: 300px;
+}
+
+.search-button {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 0 5px #555;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }

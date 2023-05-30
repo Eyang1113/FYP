@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2023 at 07:18 PM
+-- Generation Time: May 25, 2023 at 05:32 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -40,7 +40,54 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `admin_name`, `password`, `admin_email`, `name`) VALUES
-(2, 'jayden', '5ebce7d6811d66582777a8f2e109815f', 'jayden@gmail.com', 'Jayden');
+(2, 'jayden', '031113', 'jayden@gmail.com', 'Jayden'),
+(4, 'eyang1113', 'Yang_1113', 'eyang@gmail.com', 'Si E Yang');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `archive_order`
+--
+
+CREATE TABLE `archive_order` (
+  `id` int(11) NOT NULL,
+  `order_date` varchar(255) NOT NULL,
+  `customer_name` varchar(255) NOT NULL,
+  `customer_number` varchar(255) NOT NULL,
+  `customer_address` varchar(1000) NOT NULL,
+  `order_item` varchar(1000) NOT NULL,
+  `order_total_price` float NOT NULL,
+  `payment_method` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `archive_order`
+--
+
+INSERT INTO `archive_order` (`id`, `order_date`, `customer_name`, `customer_number`, `customer_address`, `order_item`, `order_total_price`, `payment_method`) VALUES
+(1, '2023-05-18', 'liyarna', '012-12345678', 'abc123', 'Yonex Astrox 99 - RM 825.00 x 3 = RM 2,475.00\nLi-Ning Clothes - RM 300.00 x 2 = RM 600.00\n', 3075, 'FPX');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `archive_product`
+--
+
+CREATE TABLE `archive_product` (
+  `product_id` int(11) NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `product_price` decimal(7,2) NOT NULL,
+  `product_stock` int(11) NOT NULL,
+  `product_detail` varchar(1000) NOT NULL,
+  `product_image` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `archive_product`
+--
+
+INSERT INTO `archive_product` (`product_id`, `product_name`, `product_price`, `product_stock`, `product_detail`, `product_image`) VALUES
+(13, 'Bag03', '120.00', 5, 'bag03', 'image/bag03.jpg');
 
 -- --------------------------------------------------------
 
@@ -87,7 +134,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `product_id`, `product_name`, `product_price`, `product_image`, `quantity`, `total_price`, `user_id`) VALUES
-(49, 4, 'RSL Classic Tourney No. 3', '60.00', 'image/RSL Classic Tourney No. 3.jpg', 5, '300.00', 6);
+(53, 5, 'Yonex Astrox 99', '825.00', 'image/yonex-astrox-99.jpg', 1, '825.00', 6),
+(54, 6, 'Victor Jetspeed S 12', '740.00', 'image/Victor Jetspeed S 12.jpg', 1, '740.00', 9);
 
 -- --------------------------------------------------------
 
@@ -116,6 +164,18 @@ INSERT INTO `clothes` (`clothes_id`, `clothes_name`, `clothes_price`, `clothes_s
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `faq`
+--
+
+CREATE TABLE `faq` (
+  `id` int(11) NOT NULL,
+  `question` text NOT NULL,
+  `rating` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `loginhistory`
 --
 
@@ -140,7 +200,11 @@ INSERT INTO `loginhistory` (`id`, `username`, `name`, `email`, `time`) VALUES
 (7, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-15 14:59:07'),
 (8, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-15 18:20:00'),
 (9, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-17 16:55:08'),
-(10, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-17 19:42:22');
+(10, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-17 19:42:22'),
+(11, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-18 16:34:14'),
+(12, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-24 16:55:31'),
+(13, 'eyang1113', 'Si E Yang', 'eyang@gmail.com', '2023-05-24 17:40:06'),
+(14, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-25 16:09:03');
 
 -- --------------------------------------------------------
 
@@ -157,7 +221,7 @@ CREATE TABLE `orders` (
   `order_item` varchar(1000) NOT NULL,
   `customer_address` varchar(1000) NOT NULL,
   `payment_method` varchar(255) NOT NULL,
-  `payment_status` varchar(255) NOT NULL DEFAULT 'PENDING',
+  `delivery_status` varchar(255) NOT NULL DEFAULT 'PENDING',
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -165,8 +229,8 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `order_date`, `order_total_price`, `customer_name`, `customer_number`, `order_item`, `customer_address`, `payment_method`, `payment_status`, `user_id`) VALUES
-(20, '2023-05-18', 280, 'Jay', '0167869985', 'Yonex AS-50 - RM 70.00 x 4 = RM 280.00\n', '12, Jalan Nilai 20, Taman Murni', 'VISA', 'PENDING', 6),
+INSERT INTO `orders` (`order_id`, `order_date`, `order_total_price`, `customer_name`, `customer_number`, `order_item`, `customer_address`, `payment_method`, `delivery_status`, `user_id`) VALUES
+(20, '2023-05-18', 280, 'Jay', '0167869985', 'Yonex AS-50 - RM 70.00 x 4 = RM 280.00\n', '12, Jalan Nilai 20, Taman Murni', 'VISA', 'COMPLETE', 6),
 (21, '2023-05-18', 150, 'Jay', '0183882392', 'Yonex Clothes - RM 150.00 x 1 = RM 150.00\n', '12, Jalan Nibong 54', 'FPX', 'PENDING', 6),
 (22, '2023-05-18', 400, 'Alex', '0183882392', 'Yonex Badminton Bag 01 - RM 200.00 x 2 = RM 400.00\n', '15, Jalan Rose 23', 'FPX', 'PENDING', 8);
 
@@ -377,7 +441,9 @@ INSERT INTO `user` (`user_id`, `username`, `email`, `contact`, `password`, `addr
 (5, 'JaydenSi', 'jay@gmail.com', '013-2456789', '5ebce7d6811d66582777a8f2e109815f', '12, Jalan Hari 23, Taman Bulan, 81100'),
 (6, 'Jayden', 'jayden@gmail.com', '', '$2y$10$BWRzW5EqhnpzlhExUWoCGOCFNXbc7YfzzTS/1uGC3n/54SnLxo1ru', ''),
 (7, 'Si', 'Si@gmail.com', '', '$2y$10$P4adAqbTb6LC6Iqp3c1pF.AUR9nwCa3zun/rtRUspIPtr6D17f7.S', ''),
-(8, 'User8', 'user8@gmail.com', '', '$2y$10$pEEAWpoF8ECpdLPCXWXcRejpWiHK2c9VMOTzYyp5q.WPhWzktU57i', '');
+(8, 'User8', 'user8@gmail.com', '018-6609887', '$2y$10$pEEAWpoF8ECpdLPCXWXcRejpWiHK2c9VMOTzYyp5q.WPhWzktU57i', '123ascefq'),
+(9, 'SiEYang', 'SiEYang@gmail.com', '', '$2y$10$K5hU82sssMwZ6sOFuLNlMOW7F.c4EDsf0dPB4rGBr/Pd6D8z.eCTy', ''),
+(10, 'ivan0530', 'ivan0530@gmail.com', '', '$2y$10$7EoZVBOMPzK97I9hQAAgbOeBXHYEYDpgqzRAes0FjuoVQM.zOemwy', '');
 
 --
 -- Indexes for dumped tables
@@ -388,6 +454,18 @@ INSERT INTO `user` (`user_id`, `username`, `email`, `contact`, `password`, `addr
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
+
+--
+-- Indexes for table `archive_order`
+--
+ALTER TABLE `archive_order`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `archive_product`
+--
+ALTER TABLE `archive_product`
+  ADD PRIMARY KEY (`product_id`);
 
 --
 -- Indexes for table `bag`
@@ -406,6 +484,12 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `clothes`
   ADD PRIMARY KEY (`clothes_id`);
+
+--
+-- Indexes for table `faq`
+--
+ALTER TABLE `faq`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `loginhistory`
@@ -493,19 +577,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `archive_order`
+--
+ALTER TABLE `archive_order`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `archive_product`
+--
+ALTER TABLE `archive_product`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `bag`
 --
 ALTER TABLE `bag`
-  MODIFY `bag_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `bag_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `clothes`
@@ -514,22 +610,28 @@ ALTER TABLE `clothes`
   MODIFY `clothes_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `faq`
+--
+ALTER TABLE `faq`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `loginhistory`
 --
 ALTER TABLE `loginhistory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `racquet`
 --
 ALTER TABLE `racquet`
-  MODIFY `racquet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `racquet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `receipt`
@@ -589,7 +691,7 @@ ALTER TABLE `supply receipt`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

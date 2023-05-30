@@ -4,6 +4,20 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="style(Home).css?v=<?php echo time(); ?>">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            width: 450px;
+            height: 450px;
+            margin: 0 auto;
+        }
+        
+        .summary-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+    </style>
 </head>
 <body>
     <?php include "admin(header).php"; ?>
@@ -29,46 +43,62 @@
         <div class="row">
             <h3>Summary</h3>
             <hr><br>
-            <div class="block">
-                <p>Number Of Bag</p>
-                <span> = <?php echo $count_bag; ?></span><br>
-                <a href="admin(bag).php">View Bag List</a>
+            <div class="chart-container">
+                <canvas id="summaryChart"></canvas>
             </div>
-            <div class="block">
-                <p>Number Of Clothes</p>
-                <span> = <?php echo $count_clothes; ?></span><br>
-                <a href="admin(clothes).php">View Clothes List</a>
-            </div>
-            <div class="block">
-                <p>Number Of Racquet</p>
-                <span> = <?php echo $count_racquet; ?></span><br>
-                <a href="admin(racquet).php">View Racquet List</a>
-            </div>
-            <div class="block">
-                <p>Number Of Shoe</p>
-                <span> = <?php echo $count_shoe; ?></span><br>
-                <a href="admin(shoe).php">View Shoe List</a>
-            </div>
-            <div class="block">
-                <p>Number Of String</p>
-                <span> = <?php echo $count_string; ?></span><br>
-                <a href="admin(string).php">View String List</a>
-            </div>
-            <div class="block">
-                <p>Number Of Shuttlecock</p>
-                <span> = <?php echo $count_shuttlecock; ?></span><br>
-                <a href="admin(shuttlecock).php">View Shuttlecock List</a>
-            </div>
-            <div class="blockO">
-                <p>Number Of Order</p>
-                <span> = <?php echo $count_order; ?></span><br>
-                <a href="admin(order).php">View Order List</a>
-            </div>
-            <div class="blockU">
-                <p>Number Of User</p>
-                <span> = <?php echo $count_user; ?></span><br>
-                <a href="admin(user).php">View User List</a>
-            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    var ctx = document.getElementById('summaryChart').getContext('2d');
+                    var chart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Bag', 'Clothes', 'Racquet', 'Shoe', 'String', 'Shuttlecock', 'User', 'Order'],
+                            datasets: [{
+                                data: [
+                                    <?php echo $count_bag; ?>,
+                                    <?php echo $count_clothes; ?>,
+                                    <?php echo $count_racquet; ?>,
+                                    <?php echo $count_shoe; ?>,
+                                    <?php echo $count_string; ?>,
+                                    <?php echo $count_shuttlecock; ?>,
+                                    <?php echo $count_user; ?>,
+                                    <?php echo $count_order; ?>
+                                ],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 10)',
+                                    'rgba(54, 162, 235, 10)',
+                                    'rgba(255, 206, 86, 10)',
+                                    'rgba(75, 192, 192, 10)',
+                                    'rgba(153, 102, 255, 10)',
+                                    'rgba(255, 159, 64, 10)',
+                                    'rgba(231, 233, 237, 10)',
+                                    'rgba(150, 150, 150, 10)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)',
+                                    'rgba(231, 233, 237, 1)',
+                                    'rgba(150, 150, 150, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    position: 'top'
+                                },
+                            }
+                        }
+                    });
+                });
+            </script>
+            <br>
         </div>
         <br><br>
         <div class="row">
