@@ -19,6 +19,7 @@ else
 	<div class="container">
 		<h1 class="title">Racquet List</h1>
 		<hr>
+
 		<div class="product-list">
 			<?php
 				$result = mysqli_query($connect, "SELECT * FROM racquet");
