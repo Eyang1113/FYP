@@ -49,7 +49,7 @@ else
             <h1>Edit Profile</h1><hr>
             <form action="update_profile.php" method="post">
                 <label for="username"><span>Username:</span></label>
-                <input type="text" name="username" value="<?=$username?>" required><br>
+                <input type="text" name="username" value="<?=$username?>" readonly><br>
                 <label for="email"><span>Email:</span></label>
                 <input type="email" name="email" value="<?=$email?>" readonly><br>
                 <label for="contact"><span>Contact:</span></label>
