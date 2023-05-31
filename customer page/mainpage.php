@@ -25,6 +25,13 @@ if (!isset($_SESSION['loggedin'])) {
                 margin-bottom: 20px;
                 color: white;
             }
+
+            h1{
+                color:white;
+                margin-left: 43%;
+                margin-top: 20px;
+                margin-bottom: -10px;
+            }
         </style>
     </head>
     <body>
@@ -37,6 +44,13 @@ if (!isset($_SESSION['loggedin'])) {
 
         <?php
             include('swiper.php');
+
+        ?>
+        <h1>New Product</h1>
+        <br><br>
+        
+        <?php              
+            include('racquetshow.php');
             include('footer.php');
         ?>
 
