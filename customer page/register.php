@@ -86,7 +86,7 @@ if ($stmt = $connect->prepare('INSERT INTO user (username, email, password, veri
         else {
             echo "Error sending verification email: " . $mail->ErrorInfo;
         }
-		echo '<script>alert("Registration successful!");</script>';
+		echo '<script>alert("Registration successful! Please verify your account in your email");</script>';
 		echo '<script>window.location.href = "index.php";</script>';
 	$stmt->close();
 } else {
