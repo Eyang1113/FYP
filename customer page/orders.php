@@ -38,7 +38,7 @@ if (isset($_SESSION['id'])) {
         <th>Total Price (RM)</th>
         <th>Order Date</th>
         <th>Payment Method</th>
-        <th>Payment Status</th>
+        <th>Delivery Status</th>
         <th>Action</th>
     </tr>
     </thead>
@@ -54,7 +54,7 @@ if (isset($_SESSION['id'])) {
             $order_total_price = $row_orders['order_total_price'];
             $order_date = $row_orders['order_date'];
             $payment_method = $row_orders['payment_method'];
-            $payment_status = $row_orders['payment_status'];
+            $payment_status = $row_orders['delivery_status'];
 
             // Decode the JSON string to an array
             $order_items = json_decode($order_items_json, true);
