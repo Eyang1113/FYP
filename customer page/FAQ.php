@@ -7,26 +7,38 @@ if (!isset($_SESSION['loggedin'])) {
 else
 	include("header(loggedin).php");
 
-// Handle form submission
+// Retrieve user ID
+$user_id = $_SESSION['id'];
+
+// Check if the user has any orders
+$check_orders_sql = "SELECT * FROM orders WHERE user_id = $user_id";
+$result_orders = mysqli_query($connect, $check_orders_sql);
+
+// Handle form submission if the user has orders
 if (isset($_POST['submit'])) {
-    $question = $_POST['question'];
-    $rating = $_POST['rating'];
+    if (mysqli_num_rows($result_orders) > 0) {
+        $question = $_POST['question'];
+        $rating = $_POST['rating'];
 
-    // Check if the question is not empty
-    if (!empty($question)) {
-        // Insert the feedback into the FAQ table
-        $insert_faq_sql = "INSERT INTO faq (question, rating) VALUES ('$question', '$rating')";
-        mysqli_query($connect, $insert_faq_sql);
+        // Check if the question is not empty
+        if (!empty($question)) {
+            // Insert the feedback into the FAQ table
+            $insert_faq_sql = "INSERT INTO faq (question, rating) VALUES ('$question', '$rating')";
+            mysqli_query($connect, $insert_faq_sql);
 
-        // Display success message
-        $notification = "Thank you for your feedback! Your question has been submitted.";
+            // Display success message
+            $notification = "Thank you for your feedback! Your question has been submitted.";
 
-        // Clear the form fields
-        $_POST['question'] = '';
-        $_POST['rating'] = '';
+            // Clear the form fields
+            $_POST['question'] = '';
+            $_POST['rating'] = '';
+        } else {
+            // Display error message if question is empty
+            $notification = "Please provide a question.";
+        }
     } else {
-        // Display error message if question is empty
-        $notification = "Please provide a question.";
+        // Display error message if the user has no orders
+        $notification = "Please make an order first before submitting a question.";
     }
 }
 
@@ -45,28 +57,32 @@ $result_faq = mysqli_query($connect, $fetch_faq_sql);
     <h1>FAQ - Customer Feedback</h1>
     <div class="feedback-container">
         <div class="feedback-form">
-            <form action="" method="post">
-                <div class="form-group">
-                    <label for="question">Suggestion:</label>
-                    <textarea name="question" rows="4" required><?php echo isset($_POST['question']) ? $_POST['question'] : ''; ?></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="rating">Rating:</label>
-                    <select name="rating" required>
-                        <option value="">Select rating</option>
-                        <option value="1">1 star</option>
-                        <option value="2">2 stars</option>
-                        <option value="3">3 stars</option>
-                        <option value="4">4 stars</option>
-                        <option value="5">5 stars</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <button type="submit" name="submit" class="submit-button">Submit</button>
-                </div>
-            </form>
-            <?php if (isset($notification)) { ?>
-                <p class="notification"><?php echo $notification; ?></p>
+            <?php if (mysqli_num_rows($result_orders) > 0) { ?>
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label for="question">Suggestion:</label>
+                        <textarea name="question" rows="4" required><?php echo isset($_POST['question']) ? $_POST['question'] : ''; ?></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="rating">Rating:</label>
+                        <select name="rating" required>
+                            <option value="">Select rating</option>
+                            <option value="1">1 star</option>
+                            <option value="2">2 stars</option>
+                            <option value="3">3 stars</option>
+                            <option value="4">4 stars</option>
+                            <option value="5">5 stars</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" name="submit" class="submit-button">Submit</button>
+                    </div>
+                </form>
+                <?php if (isset($notification)) { ?>
+                    <p class="notification"><?php echo $notification; ?></p>
+                <?php } ?>
+            <?php } else { ?>
+                <p class="notification">Please make an order first before submitting a question.</p>
             <?php } ?>
         </div>
 

@@ -28,6 +28,7 @@
                     <h4>Get help ?</h4>
                     <ul>
                         <li><a href="FAQ.php">FAQ</a></li>
+                        <li><a href="orders.php">Order Status</a></li>
                         <li><a href="#">Account Setting</a></li>
                         <li><a href="#">Payment options</a></li>
                         <li><a href="#">Contact Us</a></li>
@@ -46,15 +47,14 @@
                 <div class="footer-col">
                     <h4>follow us</h4>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f" ></i></a>
-                        <a href="#"><i class="fab fa-instagram" ></i></a>
-                        <a href="#"><i class="fab fa-twitter" ></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in" ></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
-     
                 </div>
             </div>
+        </div>
     </footer>
 </body>
-
 </html>

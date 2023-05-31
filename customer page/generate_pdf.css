@@ -1,0 +1,51 @@
+/* Add your styles for the PDF generation here */
+/* This CSS file is only for styling the PDF and does not affect the web page */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.receipt-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px;
+    width: 400px;
+}
+
+.customer-details p {
+    margin-bottom: 10px;
+}
+
+.order-details table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-details th,
+.order-details td {
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: left;
+}
+
+.order-details th {
+    background-color: #f2f2f2;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.buttons a button {
+    background-color: #4286f4;
+}

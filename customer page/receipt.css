@@ -1,0 +1,85 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.receipt-card {
+  width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.customer-info,
+.product-info {
+  margin-bottom: 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th,
+td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  text-align: left;
+  background-color: #f2f2f2;
+}
+
+h3 {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.buttons {
+  text-align: center;
+}
+
+.buttons form,
+.buttons a {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.buttons form input[type="submit"],
+.buttons a button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.buttons form input[type="submit"]:hover,
+.buttons a button:hover {
+  background-color: #45a049;
+}
+
+.buttons a button {
+  background-color: #007bff;
+}
+
+.buttons a button:hover {
+  background-color: #0056b3;
+}
+

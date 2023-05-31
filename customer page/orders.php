@@ -2,14 +2,16 @@
 include("fyprodbconnection.php");
 session_start();
 $user_id = $_SESSION['id'];
+
 if (!isset($_SESSION['loggedin'])) {
-	include("header.php");
+    include("header.php");
+} else {
+    include("header(loggedin).php");
 }
-else
-	include("header(loggedin).php");
-// Retrieve the orders from the database
-$get_orders_sql = "SELECT * FROM orders where user_id = $user_id";
-$result_orders = mysqli_query($connect, $get_orders_sql);
+
+// Retrieve the orders
+$retrieve_orders_sql = "SELECT * FROM orders WHERE user_id = $user_id ORDER BY order_id DESC";
+$result_orders = mysqli_query($connect, $retrieve_orders_sql);
 ?>
 
 <!DOCTYPE html>
@@ -19,52 +21,67 @@ $result_orders = mysqli_query($connect, $get_orders_sql);
     <link rel="stylesheet" href="order.css?<?php echo time(); ?>">
 </head>
 <body>
-    <h1>Order Records</h1>
-    <div class="order-list">
-        <table>
-            <thead>
-                <tr>
-                    <th>Customer Name</th>
-                    <th>Customer Number</th>
-                    <th>Customer Address</th>
-                    <th>Order Items</th>
-                    <th>Total Price (RM)</th>
-                    <th>Order Date</th>
-                    <th>Payment Method</th>
-                    <th>Payment Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                if (mysqli_num_rows($result_orders) > 0) {
-                    while ($row_orders = mysqli_fetch_assoc($result_orders)) {
-                        $customer_name = $row_orders['customer_name'];
-                        $customer_number = $row_orders['customer_number'];
-                        $customer_address = $row_orders['customer_address'];
-                        $order_items = $row_orders['order_item'];
-                        $order_total_price = $row_orders['order_total_price'];
-                        $order_date = $row_orders['order_date'];
-                        $payment_method = $row_orders['payment_method'];
-                        $payment_status = $row_orders['payment_status'];
+<h1>Order Records</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Order ID</th>
+        <th>Customer Name</th>
+        <th>Customer Number</th>
+        <th>Customer Address</th>
+        <th>Order Items</th>
+        <th>Total Price (RM)</th>
+        <th>Order Date</th>
+        <th>Payment Method</th>
+        <th>Payment Status</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    if (mysqli_num_rows($result_orders) > 0) {
+        while ($row_orders = mysqli_fetch_assoc($result_orders)) {
+            $order_id = $row_orders['order_id'];
+            $customer_name = $row_orders['customer_name'];
+            $customer_number = $row_orders['customer_number'];
+            $customer_address = $row_orders['customer_address'];
+            $order_items_json = $row_orders['order_item'];
+            $order_total_price = $row_orders['order_total_price'];
+            $order_date = $row_orders['order_date'];
+            $payment_method = $row_orders['payment_method'];
+            $payment_status = $row_orders['payment_status'];
 
-                        echo "<tr>";
-                        echo "<td>$customer_name</td>";
-                        echo "<td>$customer_number</td>";
-                        echo "<td>$customer_address</td>";
-                        echo "<td>$order_items</td>";
-                        echo "<td>" . number_format($order_total_price, 2) . "</td>";
-                        echo "<td>$order_date</td>";
-                        echo "<td>$payment_method</td>";
-                        echo "<td>$payment_status</td>";
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='8'>No orders found.</td></tr>";
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
-    <?php include 'footer.php'; ?>
+            // Decode the JSON string to an array
+            $order_items = json_decode($order_items_json, true);
+
+            echo "<tr>";
+            echo "<td>$order_id</td>";
+            echo "<td>$customer_name</td>";
+            echo "<td>$customer_number</td>";
+            echo "<td>$customer_address</td>";
+            echo "<td>";
+            foreach ($order_items as $item) {
+                $item_name = $item['name'];
+                $item_price = $item['price'];
+                $item_quantity = $item['quantity'];
+
+                echo "$item_name x $item_quantity<br>";
+            }
+            echo "</td>";
+            echo "<td>RM " . number_format($order_total_price, 2) . "</td>";
+            echo "<td>$order_date</td>";
+            echo "<td>$payment_method</td>";
+            echo "<td>$payment_status</td>";
+            echo "<td><form method='post' action='generate_pdf.php' target='_blank'><input type='hidden' name='order_id' value='$order_id'><button type='submit' name='generatepdf' class='generatepdf'><b>Generate PDF</b></button></form><br><br></td>";
+            echo "</tr>";
+        }
+    } else {
+        echo "<tr><td colspan='10'>No orders found.</td></tr>";
+    }
+    ?>
+    </tbody>
+</table>
+
+<?php include("footer.php"); ?>
 </body>
 </html>
