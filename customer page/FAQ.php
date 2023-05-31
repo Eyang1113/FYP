@@ -2,21 +2,25 @@
 include("fyprodbconnection.php");
 session_start();
 if (!isset($_SESSION['loggedin'])) {
-	include("header.php");
+    include("header.php");
+} else {
+    include("header(loggedin).php");
 }
-else
-	include("header(loggedin).php");
 
-// Retrieve user ID
-$user_id = $_SESSION['id'];
+// Check if the user is logged in and retrieve user ID
+if (isset($_SESSION['id'])) {
+    $user_id = $_SESSION['id'];
 
-// Check if the user has any orders
-$check_orders_sql = "SELECT * FROM orders WHERE user_id = $user_id";
-$result_orders = mysqli_query($connect, $check_orders_sql);
+    // Check if the user has any orders
+    $check_orders_sql = "SELECT * FROM orders WHERE user_id = $user_id";
+    $result_orders = mysqli_query($connect, $check_orders_sql);
+} else {
+    $result_orders = false;
+}
 
 // Handle form submission if the user has orders
 if (isset($_POST['submit'])) {
-    if (mysqli_num_rows($result_orders) > 0) {
+    if ($result_orders && mysqli_num_rows($result_orders) > 0) {
         $question = $_POST['question'];
         $rating = $_POST['rating'];
 
@@ -57,7 +61,7 @@ $result_faq = mysqli_query($connect, $fetch_faq_sql);
     <h1>FAQ - Customer Feedback</h1>
     <div class="feedback-container">
         <div class="feedback-form">
-            <?php if (mysqli_num_rows($result_orders) > 0) { ?>
+            <?php if ($result_orders && mysqli_num_rows($result_orders) > 0) { ?>
                 <form action="" method="post">
                     <div class="form-group">
                         <label for="question">Suggestion:</label>

@@ -1,7 +1,6 @@
 <?php
 include("fyprodbconnection.php");
 session_start();
-$user_id = $_SESSION['id'];
 
 if (!isset($_SESSION['loggedin'])) {
     include("header.php");
@@ -9,9 +8,15 @@ if (!isset($_SESSION['loggedin'])) {
     include("header(loggedin).php");
 }
 
-// Retrieve the orders
-$retrieve_orders_sql = "SELECT * FROM orders WHERE user_id = $user_id ORDER BY order_id DESC";
-$result_orders = mysqli_query($connect, $retrieve_orders_sql);
+if (isset($_SESSION['id'])) {
+    $user_id = $_SESSION['id'];
+
+    // Retrieve the orders
+    $retrieve_orders_sql = "SELECT * FROM orders WHERE user_id = $user_id ORDER BY order_id DESC";
+    $result_orders = mysqli_query($connect, $retrieve_orders_sql);
+} else {
+    $result_orders = false;
+}
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +44,7 @@ $result_orders = mysqli_query($connect, $retrieve_orders_sql);
     </thead>
     <tbody>
     <?php
-    if (mysqli_num_rows($result_orders) > 0) {
+    if ($result_orders && mysqli_num_rows($result_orders) > 0) {
         while ($row_orders = mysqli_fetch_assoc($result_orders)) {
             $order_id = $row_orders['order_id'];
             $customer_name = $row_orders['customer_name'];
