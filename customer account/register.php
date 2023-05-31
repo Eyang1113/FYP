@@ -60,7 +60,7 @@ if ($stmt = $connect->prepare('INSERT INTO user (username, email, password, veri
         $to = $_POST['email'];
         $subject = "Email Verification";
         $message = "Thank you for registering. Please click the following link to verify your email: \n";
-        $message .= "http://localhost/FYP/verify.php?token=" . urlencode($verification_token);
+        $message .= "http://localhost/FYP/customer%20page/verify.php?token=" . urlencode($verification_token);
 
         $mail = new PHPMailer\PHPMailer\PHPMailer();
 

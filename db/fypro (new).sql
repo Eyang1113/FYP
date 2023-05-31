@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2023 at 05:32 PM
+-- Generation Time: May 31, 2023 at 09:31 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -40,8 +40,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `admin_name`, `password`, `admin_email`, `name`) VALUES
-(2, 'jayden', '031113', 'jayden@gmail.com', 'Jayden'),
-(4, 'eyang1113', 'Yang_1113', 'eyang@gmail.com', 'Si E Yang');
+(2, 'jayden', '5ebce7d6811d66582777a8f2e109815f', 'jayden@gmail.com', 'Jayden'),
+(4, 'lim', 'Qwer1234', 'limchinghong5355@gmail.com', 'alex');
 
 -- --------------------------------------------------------
 
@@ -60,13 +60,6 @@ CREATE TABLE `archive_order` (
   `payment_method` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `archive_order`
---
-
-INSERT INTO `archive_order` (`id`, `order_date`, `customer_name`, `customer_number`, `customer_address`, `order_item`, `order_total_price`, `payment_method`) VALUES
-(1, '2023-05-18', 'liyarna', '012-12345678', 'abc123', 'Yonex Astrox 99 - RM 825.00 x 3 = RM 2,475.00\nLi-Ning Clothes - RM 300.00 x 2 = RM 600.00\n', 3075, 'FPX');
-
 -- --------------------------------------------------------
 
 --
@@ -81,13 +74,6 @@ CREATE TABLE `archive_product` (
   `product_detail` varchar(1000) NOT NULL,
   `product_image` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `archive_product`
---
-
-INSERT INTO `archive_product` (`product_id`, `product_name`, `product_price`, `product_stock`, `product_detail`, `product_image`) VALUES
-(13, 'Bag03', '120.00', 5, 'bag03', 'image/bag03.jpg');
 
 -- --------------------------------------------------------
 
@@ -134,8 +120,14 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `product_id`, `product_name`, `product_price`, `product_image`, `quantity`, `total_price`, `user_id`) VALUES
-(53, 5, 'Yonex Astrox 99', '825.00', 'image/yonex-astrox-99.jpg', 1, '825.00', 6),
-(54, 6, 'Victor Jetspeed S 12', '740.00', 'image/Victor Jetspeed S 12.jpg', 1, '740.00', 9);
+(12, 5, 'Yonex Astrox 99', '825.00', 'image/yonex-astrox-99.jpg', 1, '825.00', 5),
+(13, 4, 'Li-Ning Clothes', '300.00', 'image/Li-NingClothes01.jpg', 1, '300.00', 1),
+(16, 3, 'Yonex Badminton Bag 01', '200.00', 'image/Yonex badminton bag01.jpg', 1, '200.00', 0),
+(17, 3, 'Yonex Badminton Bag 01', '200.00', 'image/Yonex badminton bag01.jpg', 1, '200.00', 0),
+(18, 3, 'Yonex Badminton Bag 01', '200.00', 'image/Yonex badminton bag01.jpg', 1, '200.00', 0),
+(19, 4, 'Li-Ning Clothes', '300.00', 'image/Li-NingClothes01.jpg', 1, '300.00', 0),
+(20, 4, 'Li-Ning Clothes', '300.00', 'image/Li-NingClothes01.jpg', 1, '300.00', 0),
+(21, 4, 'Li-Ning Badminton Bag 01', '200.00', 'image/Li-Ning badminton bag 01.jpg\r\n', 1, '200.00', 0);
 
 -- --------------------------------------------------------
 
@@ -157,7 +149,7 @@ CREATE TABLE `clothes` (
 --
 
 INSERT INTO `clothes` (`clothes_id`, `clothes_name`, `clothes_price`, `clothes_stock`, `clothes_detail`, `clothes_image`) VALUES
-(3, 'Yonex Clothes', '150.00', 100, 'Yonex is a well-known brand in the badminton world and offers a wide range of badminton clothing for both men and women. Their clothing is made of high-quality materials that provide comfort, breathability, and flexibility.', 'image/yonexClothes01.jpg'),
+(3, 'Yonex Clothes', '150.00', 99, 'Yonex is a well-known brand in the badminton world and offers a wide range of badminton clothing for both men and women. Their clothing is made of high-quality materials that provide comfort, breathability, and flexibility.', 'image/yonexClothes01.jpg'),
 (4, 'Li-Ning Clothes', '300.00', 100, 'Li-Ning is another popular badminton clothing brand that offers a variety of clothing options for men and women. Their clothing is made of high-quality materials that provide comfort, durability, and style.', 'image/Li-NingClothes01.jpg'),
 (5, 'Victor Clothes', '250.00', 100, 'Victor is a brand that is known for its high-quality badminton equipment and clothing. Their clothing is made of high-quality materials that provide comfort, breathability, and flexibility.', 'image/VictorClothes01.jpg');
 
@@ -199,12 +191,7 @@ INSERT INTO `loginhistory` (`id`, `username`, `name`, `email`, `time`) VALUES
 (6, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-15 14:44:07'),
 (7, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-15 14:59:07'),
 (8, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-15 18:20:00'),
-(9, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-17 16:55:08'),
-(10, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-17 19:42:22'),
-(11, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-18 16:34:14'),
-(12, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-24 16:55:31'),
-(13, 'eyang1113', 'Si E Yang', 'eyang@gmail.com', '2023-05-24 17:40:06'),
-(14, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-25 16:09:03');
+(9, 'lim', 'alex', 'limchinghong5355@gmail.com', '2023-05-31 15:10:59');
 
 -- --------------------------------------------------------
 
@@ -230,9 +217,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `order_date`, `order_total_price`, `customer_name`, `customer_number`, `order_item`, `customer_address`, `payment_method`, `delivery_status`, `user_id`) VALUES
-(20, '2023-05-18', 280, 'Jay', '0167869985', 'Yonex AS-50 - RM 70.00 x 4 = RM 280.00\n', '12, Jalan Nilai 20, Taman Murni', 'VISA', 'COMPLETE', 6),
-(21, '2023-05-18', 150, 'Jay', '0183882392', 'Yonex Clothes - RM 150.00 x 1 = RM 150.00\n', '12, Jalan Nibong 54', 'FPX', 'PENDING', 6),
-(22, '2023-05-18', 400, 'Alex', '0183882392', 'Yonex Badminton Bag 01 - RM 200.00 x 2 = RM 400.00\n', '15, Jalan Rose 23', 'FPX', 'PENDING', 8);
+(10, '2023-05-17', 2475, 'Si', '0183882392', 'Yonex Astrox 99 - RM 825.00 x 3 = RM 2,475.00\n', '12, Jalan Nibong', 'TNG', 'PENDING', 3),
+(11, '2023-05-17', 1565, 'Jay', '0183882392', 'Yonex Astrox 99 - RM 825.00 x 1 = RM 825.00\nVictor Jetspeed S 12 - RM 740.00 x 1 = RM 740.00\n', '12, Jalan Nibong', 'FPX', 'COMPLETE', 5),
+(12, '2023-05-31', 50, 'LIM CHING HONG', '01119295654', '[{\"name\":\"Victor Gold Feather 77\",\"price\":\"50.00\",\"quantity\":\"1\"}]', 'Menara IMC, No 8, Jalan Sultan Ismail, Kuala Lumpur, Malaysia', 'Online Banking', 'PENDING', 18);
 
 -- --------------------------------------------------------
 
@@ -428,22 +415,25 @@ CREATE TABLE `user` (
   `email` varchar(255) NOT NULL,
   `contact` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL
+  `address` varchar(255) NOT NULL,
+  `verification_token` varchar(255) DEFAULT NULL,
+  `verified` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `email`, `contact`, `password`, `address`) VALUES
-(3, 'user1', 'user1@gmail.com', '', '5ebce7d6811d66582777a8f2e109815f', ''),
-(4, 'user', 'user@gmail.com', '', '$2y$10$p/OLSsu9Q9Hjcf6zKY44xeEq.Z9Qh0/IcHENdj1VVXdlxYpNWPfda', ''),
-(5, 'JaydenSi', 'jay@gmail.com', '013-2456789', '5ebce7d6811d66582777a8f2e109815f', '12, Jalan Hari 23, Taman Bulan, 81100'),
-(6, 'Jayden', 'jayden@gmail.com', '', '$2y$10$BWRzW5EqhnpzlhExUWoCGOCFNXbc7YfzzTS/1uGC3n/54SnLxo1ru', ''),
-(7, 'Si', 'Si@gmail.com', '', '$2y$10$P4adAqbTb6LC6Iqp3c1pF.AUR9nwCa3zun/rtRUspIPtr6D17f7.S', ''),
-(8, 'User8', 'user8@gmail.com', '018-6609887', '$2y$10$pEEAWpoF8ECpdLPCXWXcRejpWiHK2c9VMOTzYyp5q.WPhWzktU57i', '123ascefq'),
-(9, 'SiEYang', 'SiEYang@gmail.com', '', '$2y$10$K5hU82sssMwZ6sOFuLNlMOW7F.c4EDsf0dPB4rGBr/Pd6D8z.eCTy', ''),
-(10, 'ivan0530', 'ivan0530@gmail.com', '', '$2y$10$7EoZVBOMPzK97I9hQAAgbOeBXHYEYDpgqzRAes0FjuoVQM.zOemwy', '');
+INSERT INTO `user` (`user_id`, `username`, `email`, `contact`, `password`, `address`, `verification_token`, `verified`) VALUES
+(3, 'user1', 'user1@gmail.com', '', '5ebce7d6811d66582777a8f2e109815f', '', NULL, 0),
+(4, 'user', 'user@gmail.com', '', '$2y$10$p/OLSsu9Q9Hjcf6zKY44xeEq.Z9Qh0/IcHENdj1VVXdlxYpNWPfda', '', NULL, 0),
+(5, 'JaydenSi', 'jay@gmail.com', '013-2456789', '5ebce7d6811d66582777a8f2e109815f', '12, Jalan Hari 23, Taman Bulan, 81100', NULL, 0),
+(7, 'jcng101', '1211204451@student.mmu.edu.my', '', '$2y$10$Pc1PiadTSyaXXR/BbkAOnOepf.3lSFKkSHr02BLgzTqzEd848zGsW', '', NULL, 0),
+(20, 'sm117s3', 'limchinghong@yahoo.com', '', '$2y$10$BIVKZOAEVO94Eu/zMWs4T.nUumu/1qOu.B5tl22UcyJKS.4kFIB1S', '', '668ffee40b2a58db79185de38f42f1c58a1bef402c3e6df77d58996e41f3699f', 0),
+(21, 'sm117234', 'fyproemail@gmail.com', '', '$2y$10$0HwlhDt2j3hUhKwXvBTMquI5ihuInd/.K161Yy7DEUevU6E.l9RqS', '', 'bf1525c3b9075262a3dbb63bba8f5b4265e20a16a48846d68a7b36016881d129', 0),
+(23, 'summer117364534', '1211204346@student.mmu.edu.my', '', '$2y$10$qohuE45W1uOOhKNJpErtZursNbazVK1p/KHexPwAhidJOYnP.mgJy', '', 'a5d8eda41973b46e350994f03783d97272770404553f6139d3c2b30a92a64242', 1),
+(24, 'Lim Ching Hong3545435', '1211203714@student.mmu.edu.my', '', '$2y$10$phikRla9TjtsMdI4Fo5gT.NSkA0oqR7IJolvVttlf10aKTK1exPKq', '', '474d93fa67bfa66885dd4c287bb12f56d9516736448be10f65511635290a9e78', 1),
+(27, 'summer1177werwer', 'limchinghong5355@gmail.com', '', '$2y$10$f.36wAJpgP4PE7qIObcGteqtVLmk4eFQziSijggkAGhLlimtGCQta', '', '120d18185af090c076cfdaf1f663a2176075576afe7b8942379e414a092f6407', 1);
 
 --
 -- Indexes for dumped tables
@@ -583,25 +573,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `archive_order`
 --
 ALTER TABLE `archive_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `archive_product`
 --
 ALTER TABLE `archive_product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `bag`
 --
 ALTER TABLE `bag`
-  MODIFY `bag_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `bag_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `clothes`
@@ -619,19 +609,19 @@ ALTER TABLE `faq`
 -- AUTO_INCREMENT for table `loginhistory`
 --
 ALTER TABLE `loginhistory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `racquet`
 --
 ALTER TABLE `racquet`
-  MODIFY `racquet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `racquet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `receipt`
@@ -691,7 +681,7 @@ ALTER TABLE `supply receipt`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

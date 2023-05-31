@@ -38,6 +38,18 @@
             </ul>
         </nav>
     </div>
+    <div class="title" style="
+                text-align: center;
+                font-family: 'Roboto', sans-serif;
+                font-size: 28px;
+                font-weight: bold;
+                margin-top: 10px;
+                margin-left: 10px;
+                margin-bottom: 20px;
+                color: white;"
+            >
+            Online Badminton Accessories Shop
+        </div>
 
     <div class="wrapper">
         <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span>
@@ -55,7 +67,6 @@
                     <label>Password</label>
                 </div>
                 <div class="remember-forgot">
-                    
                     <label><input type="checkbox">Remember me</label>
                     <a href="#">Forgot Password</a>
                 </div>
@@ -103,6 +114,14 @@
     </div>
     <?php
             include('swiper.php');
+        ?>
+        <h1 style="color:white;
+                margin-left: 43%;
+                margin-top: 20px;
+                margin-bottom: -10px;">New Product</h1>
+        <br><br>
+        <?php
+            include('racquetshow.php');
             include('footer.php');
         ?>
     <script src="script.js"></script>
