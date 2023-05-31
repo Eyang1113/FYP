@@ -88,8 +88,5 @@ $result = mysqli_query($connect, $query);
     });
   </script>
 
-  <?php
-   include("footer.php"); 
-  ?>
 </body>
 </html>
