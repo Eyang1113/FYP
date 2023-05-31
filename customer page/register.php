@@ -1,4 +1,7 @@
 <?php
+require 'PHPMailer-master/src/PHPMailer.php';
+require 'PHPMailer-master/src/SMTP.php';
+require 'PHPMailer-master/src/Exception.php';
 
 $connect = mysqli_connect("localhost","root","","fypro");
 if (mysqli_connect_errno()) {
@@ -48,12 +51,43 @@ if ($stmt = $connect->prepare('SELECT user_id FROM user WHERE email = ?')) {
 	exit;
 }
 
-if ($stmt = $connect->prepare('INSERT INTO user (username, email, password) VALUES (?, ?, ?)')) {
+$verification_token = bin2hex(random_bytes(32));
+
+if ($stmt = $connect->prepare('INSERT INTO user (username, email, password, verification_token) VALUES (?, ?, ?, ?)')) {
 	$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-	$stmt->bind_param('sss', $_POST['username'], $_POST['email'], $password);
+	$stmt->bind_param('ssss', $_POST['username'], $_POST['email'], $password, $verification_token);
 	$stmt->execute();
-	echo '<script>alert("Registration successful!");</script>';
-	echo '<script>window.location.href = "index.php";</script>';
+        $to = $_POST['email'];
+        $subject = "Email Verification";
+        $message = "Thank you for registering. Please click the following link to verify your email: \n";
+        $message .= "http://localhost/FYP/verify.php?token=" . urlencode($verification_token);
+
+        $mail = new PHPMailer\PHPMailer\PHPMailer();
+
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = '1211204346@student.mmu.edu.my'; 
+        $mail->Password = 'ckkubghtiqzgplmr'; 
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
+
+
+        $mail->setFrom('1211204346@student.mmu.edu.my', 'Fypro'); 
+        $mail->addAddress($to); 
+        $mail->Subject = $subject; 
+        $mail->Body = $message; 
+
+        if ($mail->send()) {
+            echo '<script>alert("Registration successful!");</script>';
+			echo '<script>window.location.href = "index.php";</script>';
+        }
+        
+        else {
+            echo "Error sending verification email: " . $mail->ErrorInfo;
+        }
+		echo '<script>alert("Registration successful!");</script>';
+		echo '<script>window.location.href = "index.php";</script>';
 	$stmt->close();
 } else {
 	echo 'Could not prepare statement for user insertion!';
