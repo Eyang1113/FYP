@@ -1,0 +1,40 @@
+/* Custom CSS for Product Show */
+
+html,
+body {
+  margin-top: 20px;
+  padding: 0;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+}
+
+.product-show-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Added CSS to display slides side by side */
+.swiper-wrapper {
+  display: flex; /* Display the slides in a row */
+}
+
+.swiper-slide {
+  text-align: center;
+  flex: 0 0 auto; /* Ensure equal width for each slide */
+  margin-right: 15px; /* Add spacing between slides */
+}
+
+.swiper-slide:last-child {
+  margin-right: 0; /* Remove margin from the last slide */
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%; /* Set the width to 100% to fill the slide */
+  height: auto; /* Set the height to auto to maintain aspect ratio */
+  max-height: 200px; /* Adjust the max-height as needed */
+  object-fit: contain; /* Use object-fit: contain to maintain aspect ratio */
+}

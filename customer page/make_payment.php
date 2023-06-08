@@ -167,7 +167,7 @@ if (isset($_POST['make_payment'])) {
 </div>
 
 <div class="payment-form">
-    <h2>Customer Information</h2>
+    <h2>Shipping Information</h2>
     <form action="" method="post">
         <div class="form-group">
             <label for="customer_name">Customer Name:</label>

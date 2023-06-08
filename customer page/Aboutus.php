@@ -26,22 +26,22 @@ else
 <div class="namecard">
 
         <div class="card">
-            <img src="https://t4.ftcdn.net/jpg/00/65/77/27/360_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.jpg" alt="Avatar">
+            <img src="image/supervisor.jpg" alt="Supervisor" style="height:450px;width:450px;">
                 <div class="container">
                     <h4><b>Ms. Nur Liyana Binti Rosli</b></h4><br>
                     <ul>
                         <li>Position      : Supervisor of FyPro</li>
-                        <li>Birthday      : </li>
+                        <li>Birthday      : 27/11/1985</li>
                         <li>Company Name  : Fypro</li>
                         <li>Contact No    : 06-2523826</li>
                         <li>Email address : liyana.rosli@mmu.edu.my</li>
-                        <li>Instagram     : </li>
+                        <li>Instagram     : lia.lilana85</li>
                     </ul>
                 </div>
         </div>
 
         <div class="card">
-            <img src="https://t4.ftcdn.net/jpg/00/65/77/27/360_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.jpg" alt="Avatar">
+            <img src="image/ivan.jpeg" alt="Supervisor" style="height:450px;width:450px;">
                 <div class="container">
                     <h4><b>Mr.Teok Tze Earn</b></h4><br>
                     <ul>
@@ -56,7 +56,7 @@ else
         </div>
 
         <div class="card">
-            <img src="https://t4.ftcdn.net/jpg/00/65/77/27/360_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.jpg" alt="Avatar">
+            <img src="image/chinghong.jpg" alt="Supervisor" style="height:450px;width:450px;">
                 <div class="container">
                     <h4><b>Mr.Lim Ching Hong</b></h4><br>
                     <ul>
@@ -71,7 +71,7 @@ else
         </div>
 
         <div class="card">
-            <img src="https://t4.ftcdn.net/jpg/00/65/77/27/360_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.jpg" alt="Avatar">
+            <img src="image/eyang.jpg" alt="Supervisor" style="height:450px;width:450px;">
                 <div class="container">
                     <h4><b>Mr.Si E Yang</b></h4><br>
                     <ul>
