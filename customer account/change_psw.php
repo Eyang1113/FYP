@@ -26,6 +26,7 @@ if ($stmt = $con->prepare('SELECT password FROM user WHERE user_id = ?')) {
                 $new_password = password_hash($_POST['new-password'], PASSWORD_DEFAULT);
                 $stmt->bind_param('si', $new_password, $_SESSION['id']);
                 $stmt->execute();
+                echo "<script>alert('password changed');</script>";
                 header("refresh:0.5; url=user_profile.php");
             }
         } else {
