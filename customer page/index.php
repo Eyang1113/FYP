@@ -68,7 +68,7 @@
                 </div>
                 <div class="remember-forgot">
                     <label><input type="checkbox">Remember me</label>
-                    <a href="#">Forgot Password</a>
+
                 </div>
                 <button type="submit" class="btn">Login</button>
                 <div class="login-register">
