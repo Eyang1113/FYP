@@ -51,6 +51,8 @@ else
 					<li><a href="user_profile.php"><p>Account Information</p></a></li>
 					<li><a href="edit_profile.php"><p>Edit Profile</p></a></li>
 					<li><a href="change_password.php"><p>Change Password</p></a></li>
+					<li><a href="orders.php"><p>My Order</p></a></li>
+                    <li><a href="logout.php"><p>Logout</p></a></li>
 				</ul>
 			</div>
 		</div>
