@@ -24,6 +24,7 @@
             <p>Total Price : <span><?php echo $row["order_total_price"]; ?></span></p>
             <p>Payment Method : <span><?php echo $row["payment_method"]; ?></span></p>
             <input type="hidden" name="order_id" value="<?= $row['order_id']; ?>">
+            <p>Delivery Status : </p>
             <select name="delivery_status" class="select">
                 <option selected disabled><?= $row['delivery_status']; ?></option>
                 <option value="PENDING"><b>PENDING</b></option>
