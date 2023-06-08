@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2023 at 09:31 AM
+-- Generation Time: Jun 08, 2023 at 04:29 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -40,8 +40,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `admin_name`, `password`, `admin_email`, `name`) VALUES
-(2, 'jayden', '5ebce7d6811d66582777a8f2e109815f', 'jayden@gmail.com', 'Jayden'),
-(4, 'lim', 'Qwer1234', 'limchinghong5355@gmail.com', 'alex');
+(4, 'admin01', 'Yang_031113', 'user01@gmail.com', 'Si E Yang');
 
 -- --------------------------------------------------------
 
@@ -96,7 +95,7 @@ CREATE TABLE `bag` (
 
 INSERT INTO `bag` (`bag_id`, `bag_name`, `bag_price`, `bag_stock`, `bag_detail`, `bag_image`) VALUES
 (3, 'Yonex Badminton Bag 01', '200.00', 45, 'Yonex is a popular brand that offers a variety of badminton bags for players of all levels. Their bags are made of high-quality materials that provide durability, style, and functionality.', 'image/Yonex badminton bag01.jpg'),
-(4, 'Li-Ning Badminton Bag 01', '200.00', 50, 'Li-Ning is another popular badminton brand that offers a variety of bags for players of all levels. Their bags are made of high-quality materials that provide durability, style, and functionality.', 'image/Li-Ning badminton bag 01.jpg\r\n');
+(4, 'Li-Ning Badminton Bag 01', '200.00', 49, 'Li-Ning is another popular badminton brand that offers a variety of bags for players of all levels. Their bags are made of high-quality materials that provide durability, style, and functionality.', 'image/Li-Ning badminton bag 01.jpg\r\n');
 
 -- --------------------------------------------------------
 
@@ -191,7 +190,9 @@ INSERT INTO `loginhistory` (`id`, `username`, `name`, `email`, `time`) VALUES
 (6, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-15 14:44:07'),
 (7, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-15 14:59:07'),
 (8, 'jayden', 'Jayden', 'jayden@gmail.com', '2023-05-15 18:20:00'),
-(9, 'lim', 'alex', 'limchinghong5355@gmail.com', '2023-05-31 15:10:59');
+(9, 'admin01', 'Si E Yang', 'user01@gmail.com', '2023-05-31 14:11:20'),
+(10, 'admin01', 'Si E Yang', 'user01@gmail.com', '2023-05-31 14:54:09'),
+(11, 'admin01', 'Si E Yang', 'user01@gmail.com', '2023-06-06 23:12:51');
 
 -- --------------------------------------------------------
 
@@ -218,8 +219,7 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`order_id`, `order_date`, `order_total_price`, `customer_name`, `customer_number`, `order_item`, `customer_address`, `payment_method`, `delivery_status`, `user_id`) VALUES
 (10, '2023-05-17', 2475, 'Si', '0183882392', 'Yonex Astrox 99 - RM 825.00 x 3 = RM 2,475.00\n', '12, Jalan Nibong', 'TNG', 'PENDING', 3),
-(11, '2023-05-17', 1565, 'Jay', '0183882392', 'Yonex Astrox 99 - RM 825.00 x 1 = RM 825.00\nVictor Jetspeed S 12 - RM 740.00 x 1 = RM 740.00\n', '12, Jalan Nibong', 'FPX', 'COMPLETE', 5),
-(12, '2023-05-31', 50, 'LIM CHING HONG', '01119295654', '[{\"name\":\"Victor Gold Feather 77\",\"price\":\"50.00\",\"quantity\":\"1\"}]', 'Menara IMC, No 8, Jalan Sultan Ismail, Kuala Lumpur, Malaysia', 'Online Banking', 'PENDING', 18);
+(11, '2023-05-17', 1565, 'Jay', '0183882392', 'Yonex Astrox 99 - RM 825.00 x 1 = RM 825.00\nVictor Jetspeed S 12 - RM 740.00 x 1 = RM 740.00\n', '12, Jalan Nibong', 'FPX', 'COMPLETE', 5);
 
 -- --------------------------------------------------------
 
@@ -243,19 +243,6 @@ CREATE TABLE `racquet` (
 INSERT INTO `racquet` (`racquet_id`, `racquet_name`, `racquet_price`, `racquet_stock`, `racquet_detail`, `racquet_images`) VALUES
 (5, 'Yonex Astrox 99', '825.00', 50, 'This racquet is used by top-ranked players like Kento Momota and Tai Tzu-Ying. It has a head-heavy balance, stiff shaft, and is designed for aggressive attacking players.', 'image/yonex-astrox-99.jpg'),
 (6, 'Victor Jetspeed S 12', '740.00', 50, 'This racquet is used by Lee Chong Wei, a retired Malaysian badminton player and former world number one. It has a balanced head and medium-flex shaft, making it versatile for both attacking and defensive play.', 'image/Victor Jetspeed S 12.jpg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `receipt`
---
-
-CREATE TABLE `receipt` (
-  `receipt_id` int(11) NOT NULL,
-  `receipt_date` date NOT NULL,
-  `receipt_price` float NOT NULL,
-  `receipt_details` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -345,67 +332,6 @@ INSERT INTO `string` (`string_id`, `string_name`, `string_price`, `string_stock`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `superadmin`
---
-
-CREATE TABLE `superadmin` (
-  `superadmin_id` int(11) NOT NULL,
-  `superadmin_name` varchar(20) NOT NULL,
-  `superadmin_email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `superadmin`
---
-
-INSERT INTO `superadmin` (`superadmin_id`, `superadmin_name`, `superadmin_email`, `password`, `name`) VALUES
-(1, 'superadmin01', 'superadmin01@gmail.com', '5ebce7d6811d66582777a8f2e109815f', 'Jayden'),
-(2, 'superadmin02', 'superadmin02@gmail.com', '5ebce7d6811d66582777a8f2e109815f', 'Alex');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `supplier`
---
-
-CREATE TABLE `supplier` (
-  `supplier_id` int(11) NOT NULL,
-  `supplier_name` varchar(20) NOT NULL,
-  `supplier_contact` int(15) NOT NULL,
-  `supplier_email` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `supply order`
---
-
-CREATE TABLE `supply order` (
-  `supply_id` int(11) NOT NULL,
-  `supply_price` float NOT NULL,
-  `supply_date` date NOT NULL,
-  `supply_details` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `supply receipt`
---
-
-CREATE TABLE `supply receipt` (
-  `supply_receipt_id` int(11) NOT NULL,
-  `supply_receipt_date` date NOT NULL,
-  `supply_receipt_price` float NOT NULL,
-  `supply_receipt_details` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user`
 --
 
@@ -428,12 +354,11 @@ INSERT INTO `user` (`user_id`, `username`, `email`, `contact`, `password`, `addr
 (3, 'user1', 'user1@gmail.com', '', '5ebce7d6811d66582777a8f2e109815f', '', NULL, 0),
 (4, 'user', 'user@gmail.com', '', '$2y$10$p/OLSsu9Q9Hjcf6zKY44xeEq.Z9Qh0/IcHENdj1VVXdlxYpNWPfda', '', NULL, 0),
 (5, 'JaydenSi', 'jay@gmail.com', '013-2456789', '5ebce7d6811d66582777a8f2e109815f', '12, Jalan Hari 23, Taman Bulan, 81100', NULL, 0),
+(6, 'summer117', '1211204346@student.mmu.edu.my', '', '$2y$10$Hxxi6i5lpWY/e1I00.aCGOsHqOfblnv.sgHxeUwsfvZZAEB1cblHW', '', NULL, 0),
 (7, 'jcng101', '1211204451@student.mmu.edu.my', '', '$2y$10$Pc1PiadTSyaXXR/BbkAOnOepf.3lSFKkSHr02BLgzTqzEd848zGsW', '', NULL, 0),
-(20, 'sm117s3', 'limchinghong@yahoo.com', '', '$2y$10$BIVKZOAEVO94Eu/zMWs4T.nUumu/1qOu.B5tl22UcyJKS.4kFIB1S', '', '668ffee40b2a58db79185de38f42f1c58a1bef402c3e6df77d58996e41f3699f', 0),
-(21, 'sm117234', 'fyproemail@gmail.com', '', '$2y$10$0HwlhDt2j3hUhKwXvBTMquI5ihuInd/.K161Yy7DEUevU6E.l9RqS', '', 'bf1525c3b9075262a3dbb63bba8f5b4265e20a16a48846d68a7b36016881d129', 0),
-(23, 'summer117364534', '1211204346@student.mmu.edu.my', '', '$2y$10$qohuE45W1uOOhKNJpErtZursNbazVK1p/KHexPwAhidJOYnP.mgJy', '', 'a5d8eda41973b46e350994f03783d97272770404553f6139d3c2b30a92a64242', 1),
-(24, 'Lim Ching Hong3545435', '1211203714@student.mmu.edu.my', '', '$2y$10$phikRla9TjtsMdI4Fo5gT.NSkA0oqR7IJolvVttlf10aKTK1exPKq', '', '474d93fa67bfa66885dd4c287bb12f56d9516736448be10f65511635290a9e78', 1),
-(27, 'summer1177werwer', 'limchinghong5355@gmail.com', '', '$2y$10$f.36wAJpgP4PE7qIObcGteqtVLmk4eFQziSijggkAGhLlimtGCQta', '', '120d18185af090c076cfdaf1f663a2176075576afe7b8942379e414a092f6407', 1);
+(18, 's123', 'limchinghong5355@gmail.com', '012-3456789', '$2y$10$VflrxyF80dqcFehqg0aWKOwbgMPrqupcsKWd0EmIpJpd/9WEg9P.i', 'No 20, Jalan Nibong 12, Taman Daya', '3237593691734b960a8aa9016c1e04df4bb2ded07e741b90810195eb9555ed4e', 1),
+(22, 'Jaye', '1211203714@student.mmu.edu.my', '', '$2y$10$PviXoDNQqp5sX8BI6lZgzeIR.UFjPajmtMBvwyWLdaEKk.U//qRmW', '', '9122bd0cd83ac0d4118b28f2b7a40c47fc86e37edd176fc119449eee4ded78c3', 1),
+(23, 'user02', 'iameyang1113@gmail.com', '', '$2y$10$m19OIWeDRLCQ2ENPe2yFg.Zg9GmhdVEsB2Qzin1tPhP2pClSgI2sO', '', 'eb92e12682541817736cf8dc283b2bdaa360ac6c9a3e02625ba7d930a0045925', 1);
 
 --
 -- Indexes for dumped tables
@@ -500,12 +425,6 @@ ALTER TABLE `racquet`
   ADD PRIMARY KEY (`racquet_id`);
 
 --
--- Indexes for table `receipt`
---
-ALTER TABLE `receipt`
-  ADD PRIMARY KEY (`receipt_id`);
-
---
 -- Indexes for table `shoe`
 --
 ALTER TABLE `shoe`
@@ -528,30 +447,6 @@ ALTER TABLE `shuttlecock`
 --
 ALTER TABLE `string`
   ADD PRIMARY KEY (`string_id`);
-
---
--- Indexes for table `superadmin`
---
-ALTER TABLE `superadmin`
-  ADD PRIMARY KEY (`superadmin_id`);
-
---
--- Indexes for table `supplier`
---
-ALTER TABLE `supplier`
-  ADD PRIMARY KEY (`supplier_id`);
-
---
--- Indexes for table `supply order`
---
-ALTER TABLE `supply order`
-  ADD PRIMARY KEY (`supply_id`);
-
---
--- Indexes for table `supply receipt`
---
-ALTER TABLE `supply receipt`
-  ADD PRIMARY KEY (`supply_receipt_id`);
 
 --
 -- Indexes for table `user`
@@ -591,7 +486,7 @@ ALTER TABLE `bag`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `clothes`
@@ -609,25 +504,19 @@ ALTER TABLE `faq`
 -- AUTO_INCREMENT for table `loginhistory`
 --
 ALTER TABLE `loginhistory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `racquet`
 --
 ALTER TABLE `racquet`
   MODIFY `racquet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `receipt`
---
-ALTER TABLE `receipt`
-  MODIFY `receipt_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `shoe`
@@ -654,34 +543,10 @@ ALTER TABLE `string`
   MODIFY `string_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `superadmin`
---
-ALTER TABLE `superadmin`
-  MODIFY `superadmin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `supplier`
---
-ALTER TABLE `supplier`
-  MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `supply order`
---
-ALTER TABLE `supply order`
-  MODIFY `supply_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `supply receipt`
---
-ALTER TABLE `supply receipt`
-  MODIFY `supply_receipt_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
