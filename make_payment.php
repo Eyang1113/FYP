@@ -17,7 +17,6 @@ $result_cart = mysqli_query($connect, $find_cart_sql);
 $total = 0;
 if (mysqli_num_rows($result_cart) > 0) {
     while ($row_cart = mysqli_fetch_assoc($result_cart)) {
-        $product_category = $row_cart['product_category'];
         $product_id = $row_cart['product_id'];
         $product_price = $row_cart['product_price'];
         $quantity = $row_cart['quantity'];
@@ -36,70 +35,74 @@ if (isset($_POST['make_payment'])) {
         $customer_address = $_POST['customer_address'];
         $payment_method = $_POST['payment_method']; // Get the selected payment method
 
-        // Prepare the order_items as a string
-        mysqli_data_seek($result_cart, 0); // Reset the result pointer to the beginning
-        $order_items = [];
-        if (mysqli_num_rows($result_cart) > 0) {
-            while ($row_cart = mysqli_fetch_assoc($result_cart)) {
-                $product_category = $row_cart['product_category'];
-                $product_id = $row_cart['product_id'];
-                $product_name = $row_cart['product_name'];
-                $product_price = $row_cart['product_price'];
-                $quantity = $row_cart['quantity'];
-                $product_total = $product_price * $quantity;
+        // Validate customer number
+        if (!preg_match('/^\d{10,12}$/', $customer_number)) {
+            $notification = "Invalid customer number. Please enter a valid 10-digit number.";
+        } else {
+            // Prepare the order_items as a string
+            mysqli_data_seek($result_cart, 0); // Reset the result pointer to the beginning
+            $order_items = [];
+            if (mysqli_num_rows($result_cart) > 0) {
+                while ($row_cart = mysqli_fetch_assoc($result_cart)) {
+                    $product_id = $row_cart['product_id'];
+                    $product_name = $row_cart['product_name'];
+                    $product_price = $row_cart['product_price'];
+                    $quantity = $row_cart['quantity'];
+                    $product_total = $product_price * $quantity;
 
-                $order_items[] = [
-                    'name' => $product_name,
-                    'price' => $product_price,
-                    'quantity' => $quantity
-                ];
+                    $order_items[] = [
+                        'name' => $product_name,
+                        'price' => $product_price,
+                        'quantity' => $quantity
+                    ];
 
-                // Reduce the stock in the respective table using product ID
-                $update_stock_sql = "";
+                    // Reduce the stock in the respective table using product ID
+                    $update_stock_sql = "";
 
-                switch ($product_category) {
-                    case 1: // Racquet
-                        $update_stock_sql = "UPDATE racquet SET racquet_stock = racquet_stock - $quantity WHERE racquet_id = $product_id";
-                        break;
-                    case 2: // Shoe
-                        $update_stock_sql = "UPDATE shoe SET shoe_stock = shoe_stock - $quantity WHERE shoe_id = $product_id";
-                        break;
-                    case 3: // Clothes
-                        $update_stock_sql = "UPDATE clothes SET clothes_stock = clothes_stock - $quantity WHERE clothes_category = $product_id";
-                        break;
-                    case 4: // Bag
-                        $update_stock_sql = "UPDATE bag SET bag_stock = bag_stock - $quantity WHERE bag_id = $product_id";
-                        break;
-                    case 5: // String
-                        $update_stock_sql = "UPDATE string SET string_stock = string_stock - $quantity WHERE string_id = $product_id";
-                        break;
-                    case 6: // Shuttlecock
-                        $update_stock_sql = "UPDATE shuttlecock SET shuttlecock_stock = shuttlecock_stock - $quantity WHERE shuttlecock_id = $product_id";
-                        break;
-                }
+                    switch ($product_id) {
+                        case 1: // Racquet
+                            $update_stock_sql = "UPDATE racquet SET racquet_stock = racquet_stock - $quantity WHERE racquet_id = $product_id";
+                            break;
+                        case 2: // Shoe
+                            $update_stock_sql = "UPDATE shoe SET shoe_stock = shoe_stock - $quantity WHERE shoe_id = $product_id";
+                            break;
+                        case 3: // Clothes
+                            $update_stock_sql = "UPDATE clothes SET clothes_stock = clothes_stock - $quantity WHERE clothes_id = $product_id";
+                            break;
+                        case 4: // Bag
+                            $update_stock_sql = "UPDATE bag SET bag_stock = bag_stock - $quantity WHERE bag_id = $product_id";
+                            break;
+                        case 5: // String
+                            $update_stock_sql = "UPDATE string SET string_stock = string_stock - $quantity WHERE string_id = $product_id";
+                            break;
+                        case 6: // Shuttlecock
+                            $update_stock_sql = "UPDATE shuttlecock SET shuttlecock_stock = shuttlecock_stock - $quantity WHERE shuttlecock_id = $product_id";
+                            break;
+                    }
 
-                if (!empty($update_stock_sql)) {
-                    mysqli_query($connect, $update_stock_sql);
+                    if (!empty($update_stock_sql)) {
+                        mysqli_query($connect, $update_stock_sql);
+                    }
                 }
             }
+
+            // Convert order_items array to JSON string
+            $order_items_json = json_encode($order_items);
+
+            // Insert the order into the database
+            $insert_order_sql = "INSERT INTO orders (customer_name, customer_number, customer_address, order_item, order_total_price, order_date, payment_method, user_id) VALUES ('$customer_name', '$customer_number', '$customer_address', '$order_items_json', $total, CURDATE(), '$payment_method', $user_id)";
+            mysqli_query($connect, $insert_order_sql);
+
+            // Clear the cart after successful order placement
+            $clear_cart_sql = "DELETE FROM cart WHERE user_id = $user_id";
+            mysqli_query($connect, $clear_cart_sql);
+
+            // Redirect to the order record page
+            ob_start(); // Start output buffering
+            header("Location: orders.php");
+            ob_end_flush(); // Flush output buffer and redirect
+            exit();
         }
-
-        // Convert order_items array to JSON string
-        $order_items_json = json_encode($order_items);
-
-        // Insert the order into the database
-        $insert_order_sql = "INSERT INTO orders (customer_name, customer_number, customer_address, order_item, order_total_price, order_date, payment_method, user_id) VALUES ('$customer_name', '$customer_number', '$customer_address', '$order_items_json', $total, CURDATE(), '$payment_method', $user_id)";
-        mysqli_query($connect, $insert_order_sql);
-
-        // Clear the cart after successful order placement
-        $clear_cart_sql = "DELETE FROM cart WHERE user_id = $user_id";
-        mysqli_query($connect, $clear_cart_sql);
-
-        // Redirect to the order record page
-        ob_start(); // Start output buffering
-        header("Location: orders.php");
-        ob_end_flush(); // Flush output buffer and redirect
-        exit();
     } else {
         $notification = "Failed to make a payment because there are no products in your cart!";
     }
@@ -192,6 +195,9 @@ if (isset($_POST['make_payment'])) {
             <button class="make-payment-btn" type="submit" name="make_payment">Make Payment</button>
         </div>
     </form>
+    <?php if (isset($notification)) { ?>
+        <p><?php echo $notification; ?></p>
+    <?php } ?>
 </div>
 
 <?php include("footer.php"); ?>
