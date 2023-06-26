@@ -28,7 +28,7 @@
                 <li><a href="Athlete.php">Athlete</a></li>
                 <li><a href="Aboutus.php">About Us</a></li>
                 <li>
-                    <form>
+                    <form action="searchbar.php" method="GET">
                         <input style="height:35px;" type="text" name="search" id="search" placeholder="   Search for ......">
                         <button type="submit" class="btn">Search</button>
                     </form>
