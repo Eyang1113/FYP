@@ -2,23 +2,23 @@
 include("fyprodbconnection.php");
 
 // Fetch racquet products from the database
-$queryRacquet = "SELECT * FROM racquet ORDER BY RAND() LIMIT 3";
+$queryRacquet = "SELECT * FROM racquet ORDER BY RAND() LIMIT 1";
 $resultRacquet = mysqli_query($connect, $queryRacquet);
 
 // Fetch shoe products from the database
-$queryShoe = "SELECT * FROM shoe ORDER BY RAND() LIMIT 3";
+$queryShoe = "SELECT * FROM shoe ORDER BY RAND() LIMIT 1";
 $resultShoe = mysqli_query($connect, $queryShoe);
 
 // Fetch clothes products from the database
-$queryClothes = "SELECT * FROM clothes ORDER BY RAND() LIMIT 3";
+$queryClothes = "SELECT * FROM clothes ORDER BY RAND() LIMIT 1";
 $resultClothes = mysqli_query($connect, $queryClothes);
 
 // Fetch string products from the database
-$queryString = "SELECT * FROM string ORDER BY RAND() LIMIT 3";
+$queryString = "SELECT * FROM string ORDER BY RAND() LIMIT 1";
 $resultString = mysqli_query($connect, $queryString);
 
 // Fetch shuttlecock products from the database
-$queryShuttlecock = "SELECT * FROM shuttlecock ORDER BY RAND() LIMIT 3";
+$queryShuttlecock = "SELECT * FROM shuttlecock ORDER BY RAND() LIMIT 1";
 $resultShuttlecock = mysqli_query($connect, $queryShuttlecock);
 ?>
 
@@ -73,6 +73,11 @@ $resultShuttlecock = mysqli_query($connect, $queryShuttlecock);
       height: auto;
       max-height: 200px;
       object-fit: contain;
+    }
+
+    h3,a{
+      color:white;
+      text-decoration: none;
     }
   </style>
 </head>

@@ -11,6 +11,15 @@ if (!isset($_SESSION['loggedin'])) {
     $user_id = $_SESSION['id'];
 }
 
+// Handle remove from cart form submission
+if (isset($_POST['remove_from_cart'])) {
+    $cart_item_id = $_POST['cart_item_id'];
+    $remove_item_sql = "DELETE FROM cart WHERE id = $cart_item_id AND user_id = $user_id";
+    mysqli_query($connect, $remove_item_sql);
+    header('Location: cart.php');
+    exit;
+}
+
 // Handle update quantity form submission
 if (isset($_POST['update_quantity'])) {
     $cart_item_ids = $_POST['cart_item_id'];
@@ -19,18 +28,20 @@ if (isset($_POST['update_quantity'])) {
     foreach ($cart_item_ids as $index => $cart_item_id) {
         $quantity = $quantities[$index];
 
-        $update_quantity_sql = "UPDATE cart SET quantity = $quantity WHERE id = $cart_item_id";
+        // Update quantity and calculate new total price
+        $update_quantity_sql = "UPDATE cart SET quantity = $quantity WHERE id = $cart_item_id AND user_id = $user_id";
         mysqli_query($connect, $update_quantity_sql);
-    }
-}
 
-// Handle remove from cart form submission
-if (isset($_POST['remove_from_cart'])) {
-    $cart_item_id = $_POST['cart_item_id'];
-    $remove_item_sql = "DELETE FROM cart WHERE id = $cart_item_id";
-    mysqli_query($connect, $remove_item_sql);
-    header('Location: cart.php');
-    exit;
+        $find_product_price_sql = "SELECT product_price FROM cart WHERE id = $cart_item_id AND user_id = $user_id";
+        $result_product_price = mysqli_query($connect, $find_product_price_sql);
+        $row_product_price = mysqli_fetch_assoc($result_product_price);
+        $product_price = $row_product_price['product_price'];
+
+        $new_total_price = $product_price * $quantity;
+
+        $update_total_price_sql = "UPDATE cart SET total_price = $new_total_price WHERE id = $cart_item_id AND user_id = $user_id";
+        mysqli_query($connect, $update_total_price_sql);
+    }
 }
 
 // Handle checkout button click
@@ -52,15 +63,15 @@ if (isset($_POST['checkout'])) {
         }
 
         function updateCartQuantity(cartItemId, newQuantity) {
-            // Send an AJAX request to update the quantity in the database
+            // Send an AJAX request to update the quantity and total price in the database
             const xhr = new XMLHttpRequest();
             xhr.open('POST', 'cart.php');
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onload = function () {
                 if (xhr.status === 200) {
-                    console.log('Quantity updated in the database');
+                    console.log('Quantity and total price updated in the database');
                 } else {
-                    console.error('Error updating quantity in the database');
+                    console.error('Error updating quantity and total price in the database');
                 }
             };
             const params = `update_quantity=true&cart_item_id[]=${cartItemId}&quantity[]=${newQuantity}`;
@@ -92,26 +103,20 @@ if (isset($_POST['checkout'])) {
                     $product_name = $row_cart['product_name'];
                     $product_price = $row_cart['product_price'];
                     $quantity = $row_cart['quantity'];
-                    $product_total = $product_price * $quantity;
+                    $product_total = $row_cart['total_price'];
 
                     echo "<tr>";
                     echo "<td><img src='$product_image' class='img-class'></td>";
                     echo "<td>$product_name</td>";
                     echo "<td>$product_price</td>";
-                    echo "<td>
-                        <select name='quantity[]' onchange='updateCartQuantity($cart_item_id, this.value)'>";
-                            for ($i = 1; $i <= 30; $i++) {
-                                $selected = ($i == $quantity) ? 'selected' : '';
-                                echo "<option value='$i' $selected>$i</option>";
-                            }
-                    echo "</select>
-                    </td>";
+                    echo "<td><input type='number' name='quantity[]' value='$quantity' min='1' onchange='updateCartQuantity($cart_item_id, this.value)'></td>";
                     echo "<td>$product_total</td>";
                     echo "<td>
-                        <input type='hidden' name='cart_item_id[]' value='$cart_item_id'>
-                        <button class='remove-button' type='submit' name='remove_from_cart' onclick='return confirmRemove()'>Remove</button>
+                        <form action='' method='post' onsubmit='return confirmRemove();'>
+                            <input type='hidden' name='cart_item_id' value='$cart_item_id'>
+                            <button class='remove-button' type='submit' name='remove_from_cart'>Remove</button>
+                        </form>
                     </td>";
-
                     echo "</tr>";
 
                     $total += $product_total;
@@ -121,8 +126,8 @@ if (isset($_POST['checkout'])) {
 
             <tr class="total-row">
                 <td colspan="3" align="right">Total:</td>
-                <td colspan="2"><?php echo $total; ?></td>
-                <td></td>
+                <td><?php echo $total; ?></td>
+                <td colspan="2"></td>
             </tr>
         </table>
         <br>
